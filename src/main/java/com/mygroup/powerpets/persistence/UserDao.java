@@ -1,6 +1,4 @@
 package com.mygroup.powerpets.persistence;
-
-
 import com.mygroup.powerpets.domain.User;
 
 import java.util.List;
