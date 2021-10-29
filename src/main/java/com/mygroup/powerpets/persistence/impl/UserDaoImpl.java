@@ -5,6 +5,7 @@ import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.persistence.UserDao;
 import com.mygroup.powerpets.util.DBUtils;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,12 +32,14 @@ public class UserDaoImpl implements UserDao {
 
             String username = rs.getString("username");
             String password = rs.getString("password");
-            String email = rs.getString("email");
+            String address = rs.getString("address");
+            BigDecimal balance = rs.getBigDecimal("balance");
             String sex = rs.getString("sex");
-            byte age = (byte) rs.getInt("age");
+            int age = rs.getInt("age");
+            String email = rs.getString("email");
 
             DBUtils.close(connection, pstmt, rs);
-            return new User(id, username, password, email, sex, age);
+            return new User(id, username, password, address, balance, sex, age, email);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -59,12 +62,15 @@ public class UserDaoImpl implements UserDao {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
+
                 int id = rs.getInt("id");
                 String password = rs.getString("password");
-                String email = rs.getString("email");
+                String address = rs.getString("address");
+                BigDecimal balance = rs.getBigDecimal("balance");
                 String sex = rs.getString("sex");
-                byte age = (byte) rs.getInt("age");
-                userList.add(new User(id, username, password, email, sex, age));
+                int age = rs.getInt("age");
+                String email = rs.getString("email");
+                userList.add(new User(id, username, password, address, balance, sex, age, email));
             }
             DBUtils.close(connection, pstmt, rs);
             return userList;
@@ -93,14 +99,16 @@ public class UserDaoImpl implements UserDao {
                 return null;
             }
 
-            int id = rs.getInt("id");
+            int id  = rs.getInt("id");
             String username = rs.getString("username");
             String password = rs.getString("password");
+            String address = rs.getString("address");
+            BigDecimal balance = rs.getBigDecimal("balance");
             String sex = rs.getString("sex");
-            byte age = (byte) rs.getInt("age");
+            int age = rs.getInt("age");
 
             DBUtils.close(connection, pstmt, rs);
-            return new User(id, username, password, email, sex, age);
+            return new User(id, username, password, address, balance, sex, age, email);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -114,17 +122,18 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void UpdateUser(User user) {
         Connection connection = DBUtils.getConnection();
-        String sql = "UPDATE user " +
-                "SET username = ?, password = ?, email = ?, sex = ?, age = ?" +
-                "WHERE id = ?";
+        String sql = "UPDATE user SET username = ?,password = ?,address = ?, balance = ?, sex = ?, age = ?, email = ?" +
+                     "WHERE id = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getPassword());
-            pstmt.setString(3, user.getEmail());
-            pstmt.setString(4, user.getSex());
-            pstmt.setInt(5, user.getAge());
-            pstmt.setInt(6, user.getId());
+            pstmt.setString(3, user.getAddress());
+            pstmt.setBigDecimal(4, user.getBalance());
+            pstmt.setString(5,user.getSex());
+            pstmt.setInt(6, user.getAge());
+            pstmt.setString(7, user.getEmail());
+            pstmt.setInt(8,user.getId());
             pstmt.executeUpdate();
 
             DBUtils.close(connection, pstmt, null);
@@ -156,14 +165,16 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void insertUser(User user) {
         Connection connection = DBUtils.getConnection();
-        String sql = "INSERT INTO user (username, password, email, sex, age) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO user (username, password,address,balance,sex, age,email) VALUES (?,?,?,?,?,?,?)";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getPassword());
-            pstmt.setString(3, user.getEmail());
-            pstmt.setString(4, user.getSex());
-            pstmt.setInt(5, user.getAge());
+            pstmt.setString(3, user.getAddress());
+            pstmt.setBigDecimal(4, user.getBalance());
+            pstmt.setString(5, user.getSex());
+            pstmt.setInt(6,user.getAge());
+            pstmt.setString(7,user.getEmail());
 
             pstmt.executeUpdate();
             DBUtils.close(connection, pstmt, null);

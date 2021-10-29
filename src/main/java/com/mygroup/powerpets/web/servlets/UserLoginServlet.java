@@ -1,6 +1,5 @@
 package com.mygroup.powerpets.web.servlets;
 
-
 import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.service.AccountService;
 
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-//@WebServlet(name = "loginServlet", value = "/loginServlet")
 public class UserLoginServlet extends HttpServlet {
     /*
         JSP链接

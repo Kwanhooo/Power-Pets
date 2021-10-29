@@ -1,22 +1,35 @@
 package com.mygroup.powerpets.domain;
 
+import java.math.BigDecimal;
+
 public class User {
     private int id;
     private String username;
     private String password;
-    private String email;
+    private String address;
+    private BigDecimal balance;
     private String sex;
-    private byte age;
+    private int age;
+    private String email;
 
-    public User(){}
 
-    public User(int id, String username, String password, String email, String sex, byte age) {
+    public User(int id, String username, String password, String address, BigDecimal balance, String sex, int age, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.email = email;
+        this.address = address;
+        this.balance = balance;
         this.sex = sex;
         this.age = age;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -35,12 +48,20 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public String getSex() {
@@ -51,19 +72,19 @@ public class User {
         this.sex = sex;
     }
 
-    public byte getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(byte age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
-    public int getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
