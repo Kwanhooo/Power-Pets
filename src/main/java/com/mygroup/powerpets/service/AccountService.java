@@ -2,6 +2,7 @@ package com.mygroup.powerpets.service;
 
 import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.persistence.impl.UserDaoImpl;
+import com.mygroup.powerpets.util.CookiesUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -52,6 +53,7 @@ public class AccountService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             return true;
         }
         else {

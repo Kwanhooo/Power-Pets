@@ -26,9 +26,15 @@ public class UserDaoImpl implements UserDao {
         String sql = "SELECT * FROM user WHERE id = ?";
 
         try {
+
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
+
+            if (!rs.next()) {
+                DBUtils.close(connection, pstmt, rs);
+                return null;
+            }
 
             String username = rs.getString("username");
             String password = rs.getString("password");
@@ -37,9 +43,10 @@ public class UserDaoImpl implements UserDao {
             String sex = rs.getString("sex");
             int age = rs.getInt("age");
             String email = rs.getString("email");
-
             DBUtils.close(connection, pstmt, rs);
             return new User(id, username, password, address, balance, sex, age, email);
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -62,7 +69,6 @@ public class UserDaoImpl implements UserDao {
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
-
                 int id = rs.getInt("id");
                 String password = rs.getString("password");
                 String address = rs.getString("address");
@@ -109,6 +115,8 @@ public class UserDaoImpl implements UserDao {
 
             DBUtils.close(connection, pstmt, rs);
             return new User(id, username, password, address, balance, sex, age, email);
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
