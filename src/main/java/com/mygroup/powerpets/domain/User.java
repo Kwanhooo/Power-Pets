@@ -24,6 +24,16 @@ public class User {
         this.email = email;
     }
 
+    public User(String username, String password, String address, BigDecimal balance, String sex, int age, String email) {
+        this.username = username;
+        this.password = password;
+        this.address = address;
+        this.balance = balance;
+        this.sex = sex;
+        this.age = age;
+        this.email = email;
+    }
+
     public int getId() {
         return id;
     }

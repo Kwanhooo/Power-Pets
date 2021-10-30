@@ -1,10 +1,10 @@
 <%--
-  User: Kwanho
-  Date: 2021/10/29
-  Time: 15:09
+  Author: Kwanho
+  Date: 2021/10/30
+  Time: 14:04
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="Zh-CN">
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <title>登录 - 电力宠物</title>
@@ -19,8 +19,8 @@
 <div class="wrapper">
     <form class="form-signIn" action="login" method="post">
         <h2 class="form-signIn-heading text-center">电力宠物</h2>
-        <input type="text" class="form-control" name="email" placeholder="Email Address">
-        <input type="password" class="form-control" name="password" placeholder="Password" required="">
+        <input type="text" class="form-control" name="email" placeholder="邮箱">
+        <input type="password" class="form-control" name="password" placeholder="密码" required="">
         <label class="checkbox">
             <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">&nbsp;记住我吧
         </label>
@@ -34,14 +34,13 @@
                     out.println("<br><font color=\"red\">" + session.getAttribute("login_error_msg") + "</font>");
                 }
             %>
-            <br><a href="register.html">没有账号？注册一个</a>
+            <br><a href="register.jsp">没有账号？注册一个</a>
         </center>
 
     </form>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.21.0/prism.min.js"></script>
 <script src="static/js/vsclick.min.js"></script>
 <script>
     let drop2 = new VsClick({
