@@ -69,6 +69,12 @@ public class CartDaoImpl implements CartDao {
             pstmt.setInt(1,id);
             ResultSet rs = pstmt.executeQuery();
 
+            if (!rs.next()) {
+                DBUtils.close(connection, pstmt, rs);
+                return null;
+            }
+
+
             String petsID = rs.getString("petsID");
             int amount = rs.getInt("amount");
 

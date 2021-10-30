@@ -103,6 +103,12 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
             pstmt.setInt(1,id);
             ResultSet rs = pstmt.executeQuery();
 
+            if (!rs.next()) {
+                DBUtils.close(connection, pstmt, rs);
+                return null;
+            }
+
+
             int orderID = id;
             int userID = rs.getInt("userID");
             int petID = rs.getInt("petID");

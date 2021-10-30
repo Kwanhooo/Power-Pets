@@ -103,6 +103,11 @@ public class OngoingOrderDaoImpl implements OngoingOrderDao {
             pstmt.setInt(1,id);
             ResultSet rs = pstmt.executeQuery();
 
+            if (!rs.next()) {
+                DBUtils.close(connection, pstmt, rs);
+                return null;
+            }
+
             int orderID = rs.getInt("orderID");
             int userID = rs.getInt("userID");
             int petID = rs.getInt("petID");

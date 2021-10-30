@@ -1,9 +1,34 @@
-<%--
+<%@ page import="java.net.URLDecoder" %><%--
   Author: Kwanho
   Date: 2021/10/30
   Time: 14:04
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+
+<%
+    System.out.println("request.getContextPath() = " + request.getContextPath().toString());
+
+    String password = "";
+    String email = "";
+
+    //取出cookie对象组
+    Cookie[] cookies = request.getCookies();
+
+    for (int i = 0; cookies != null && i < cookies.length; i++) {
+        Cookie cookie = cookies[i];//取出其中的一个对象，含有email ,value
+        if (cookie != null && "email".equals(cookie.getName())) {//获取第一个cookie对象的email
+            email = URLDecoder.decode(cookie.getValue(), "UTF-8");//进行解码
+        }
+        if (cookie != null && "password".equals(cookie.getName())) {
+            password = cookie.getValue();
+        }
+    }
+
+    System.out.println("cookies::");
+    System.out.println("password = " + password);
+    System.out.println("email = " + email);
+%>
+
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -19,8 +44,8 @@
 <div class="wrapper">
     <form class="form-signIn" action="login" method="post">
         <h2 class="form-signIn-heading text-center">电力宠物</h2>
-        <input type="text" class="form-control" name="email" placeholder="邮箱">
-        <input type="password" class="form-control" name="password" placeholder="密码" required="">
+        <input type="text" class="form-control" name="email" placeholder="邮箱📮">
+        <input type="password" class="form-control" name="password" placeholder="密码🔑" required="">
         <label class="checkbox">
             <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">&nbsp;记住我吧
         </label>

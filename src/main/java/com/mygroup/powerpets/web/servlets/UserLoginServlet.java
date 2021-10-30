@@ -2,6 +2,7 @@ package com.mygroup.powerpets.web.servlets;
 
 import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.service.AccountService;
+import com.mygroup.powerpets.util.CookiesUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +38,8 @@ public class UserLoginServlet extends HttpServlet {
         if(!isLoginSuccess)//登录失败
         {
             req.getRequestDispatcher(AccountService.INDEX_URL).forward(req,resp);
+            return;
         }
+        CookiesUtil.remember(req,resp);
     }
 }

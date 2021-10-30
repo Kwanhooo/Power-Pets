@@ -25,6 +25,11 @@ public class PetDaoImpl implements PetDao {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
 
+            if (!rs.next()) {
+                DBUtils.close(connection, pstmt, rs);
+                return null;
+            }
+
             String petName = rs.getString("petName");
             int petId = rs.getInt("petID");
             BigDecimal price = rs.getBigDecimal("price");
