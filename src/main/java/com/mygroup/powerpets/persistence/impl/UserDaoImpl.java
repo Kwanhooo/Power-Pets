@@ -116,7 +116,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
-     * @param user 用户
+     * @param user 用户对象
      * @author Kwanho
      */
     @Override

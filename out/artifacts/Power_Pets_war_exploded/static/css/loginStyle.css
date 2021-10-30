@@ -1,4 +1,6 @@
+
 body{
+	transform: scale(2);
 	background: #eee;
 }
 .wrapper{
@@ -8,7 +10,7 @@ body{
 	max-width: 380px;
 	margin: 0 auto;
 	background-color: #fff;
-	padding: 25px 40px 50px;
+	padding: 30px 40px 50px;
 	border: 1px solid #e5e5e5;
 	border-radius: 10px;
 }
