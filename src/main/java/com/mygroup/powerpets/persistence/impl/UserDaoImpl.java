@@ -99,7 +99,7 @@ public class UserDaoImpl implements UserDao {
                 return null;
             }
 
-            int id  = rs.getInt("id");
+            int id = rs.getInt("id");
             String username = rs.getString("username");
             String password = rs.getString("password");
             String address = rs.getString("address");
@@ -116,24 +116,24 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
-     * @param user 用户对象
+     * @param user 用户
      * @author Kwanho
      */
     @Override
     public void UpdateUser(User user) {
         Connection connection = DBUtils.getConnection();
         String sql = "UPDATE user SET username = ?,password = ?,address = ?, balance = ?, sex = ?, age = ?, email = ?" +
-                     "WHERE id = ?";
+                "WHERE id = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getPassword());
             pstmt.setString(3, user.getAddress());
             pstmt.setBigDecimal(4, user.getBalance());
-            pstmt.setString(5,user.getSex());
+            pstmt.setString(5, user.getSex());
             pstmt.setInt(6, user.getAge());
             pstmt.setString(7, user.getEmail());
-            pstmt.setInt(8,user.getId());
+            pstmt.setInt(8, user.getId());
             pstmt.executeUpdate();
 
             DBUtils.close(connection, pstmt, null);
@@ -152,7 +152,10 @@ public class UserDaoImpl implements UserDao {
         String sql = "DELETE FROM user WHERE id = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setInt(1, user.getId());
             pstmt.executeUpdate();
+
+            DBUtils.close(connection, pstmt, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -173,8 +176,8 @@ public class UserDaoImpl implements UserDao {
             pstmt.setString(3, user.getAddress());
             pstmt.setBigDecimal(4, user.getBalance());
             pstmt.setString(5, user.getSex());
-            pstmt.setInt(6,user.getAge());
-            pstmt.setString(7,user.getEmail());
+            pstmt.setInt(6, user.getAge());
+            pstmt.setString(7, user.getEmail());
 
             pstmt.executeUpdate();
             DBUtils.close(connection, pstmt, null);

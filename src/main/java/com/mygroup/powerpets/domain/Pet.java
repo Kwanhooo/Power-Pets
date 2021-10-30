@@ -8,7 +8,7 @@ public class Pet {
     private String petName;
     private BigDecimal price;
     private int age;
-    private char sex;
+    private String sex;
 
     /*
      *  1 is not sold
@@ -19,7 +19,7 @@ public class Pet {
     private String category;
     private String product;
 
-    public Pet(int petID, String petName, BigDecimal price, int age, char sex, int status, String catagory, String product) {
+    public Pet(int petID, String petName, BigDecimal price, int age, String sex, int status, String catagory, String product) {
         this.petID = petID;
         this.petName = petName;
         this.price = price;
@@ -62,11 +62,11 @@ public class Pet {
         this.age = age;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
