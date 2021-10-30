@@ -128,7 +128,7 @@ public class UserDaoImpl implements UserDao {
      * @author Kwanho
      */
     @Override
-    public void UpdateUser(User user) {
+    public void updateUser(User user) {
         Connection connection = DBUtils.getConnection();
         String sql = "UPDATE user SET username = ?,password = ?,address = ?, balance = ?, sex = ?, age = ?, email = ?" +
                 "WHERE id = ?";
@@ -155,7 +155,7 @@ public class UserDaoImpl implements UserDao {
      * @author Kwanho
      */
     @Override
-    public void DeleteUser(User user) {
+    public void deleteUser(User user) {
         Connection connection = DBUtils.getConnection();
         String sql = "DELETE FROM user WHERE id = ?";
         try {

@@ -78,7 +78,7 @@ public class PetDaoImpl implements PetDao {
         return null;
     }
 
-    public void UpdateUser(Pet pet) {
+    public void updateUser(Pet pet) {
         Connection connection = DBUtils.getConnection();
         String sql = "Update pets SET petName = ?,price = ?,age = ?,sex = ?,status = ?,category = ?,product = ?" +
                 "Where petID = ?";
@@ -104,7 +104,7 @@ public class PetDaoImpl implements PetDao {
      * @param
      * @author mxs
      */
-    public void InsertPet(Pet pet) {
+    public void insertPet(Pet pet) {
         Connection connection = DBUtils.getConnection();
         String sql = "Insert into pets (petID,petName,price,age,sex,status,category,product) values (?,?,?,?,?,?,?,?)";
         try {
@@ -126,7 +126,7 @@ public class PetDaoImpl implements PetDao {
     }
 
     @Override
-    public void DeletePet(Pet pet) {
+    public void deletePet(Pet pet) {
         Connection connection = DBUtils.getConnection();
         String sql = "DELETE FROM pets WHERE petID = ?";
         try {
