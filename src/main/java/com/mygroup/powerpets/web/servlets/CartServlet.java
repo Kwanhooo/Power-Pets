@@ -11,8 +11,7 @@ import java.io.IOException;
 public class CartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if(req.getParameter("action") == null)
-        {
+        if (req.getParameter("action") == null) {
             req.getRequestDispatcher(ForwardUtil.CART_URL);
             return;
         }

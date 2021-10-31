@@ -51,7 +51,7 @@
         </label>
         <button class="btn btn-lg btn-primary btn-block">登录</button>
         <center>
-            <%
+                <%
                 if (request.getAttribute("login_error_msg") != null) {
                     out.println("<br><font color=\"red\">" + request.getAttribute("login_error_msg") + "</font>");
                 }

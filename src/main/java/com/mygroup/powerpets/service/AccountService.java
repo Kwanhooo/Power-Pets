@@ -16,8 +16,7 @@ public class AccountService {
 //    public static final String MAIN_URL = "index.jsp";
 //    public static final String REGISTER_URL = "WEB-INF/jsp/account/register.jsp";
     public static final String LOGIN_URL = "/WEB-INF/jsp/account/login.jsp";
-    public static final String LOGIN_SUCCESS_URL = "login_success.jsp";
-    public static final String REGISTER_URL = "register.jsp";
+    public static final String REGISTER_URL = "/WEB-INF/jsp/account/register.jsp";
     public static final String MAIN_URL = "/WEB-INF/jsp/catalog/Main.jsp";
     public static final String PROJECT_URL = "/WEB-INF/jsp/catalog/project.jsp";
 

@@ -51,7 +51,7 @@
                     <a href="account">我的</a>
                 </c:if>
             </c:if> <img align="middle" src="static/images/separator.gif"/>
-            <a href="../../../help.html">?</a></div>
+            <a href="help.html">?</a></div>
     </div>
 
     <div id="Search">

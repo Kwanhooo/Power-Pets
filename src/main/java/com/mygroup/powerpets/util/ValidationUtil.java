@@ -8,9 +8,9 @@ public class ValidationUtil {
     public static final String emailPattern = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
 
     /**
-     * @author Kwanho
      * @param email 待检测邮箱
      * @return 是否符合邮箱规范
+     * @author Kwanho
      */
     public static boolean emailValidator(String email) {
         Pattern emailPattern = Pattern.compile(ValidationUtil.emailPattern);
