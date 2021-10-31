@@ -6,8 +6,12 @@ import java.util.List;
 
 public interface CompletedOrderDao {
     void insertCompletedOrder(CompletedOrder order);
+
     void deleteCompletedOrder(CompletedOrder order);
+
     void updateOngoingOrder(CompletedOrder order);
+
     List<CompletedOrder> selectByuserID(int id);
+
     CompletedOrder selectByorderID(int id);
 }

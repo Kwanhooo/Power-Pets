@@ -19,11 +19,11 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
         String sql = "Insert Into completedorder (orderID,userID,petID,comments,cost) values(?,?,?,?,?)";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,order.getOrderID());
-            pstmt.setInt(2,order.getUserID());
-            pstmt.setInt(3,order.getPetID());
-            pstmt.setString(4,order.getComments());
-            pstmt.setBigDecimal(5,order.getCost());
+            pstmt.setInt(1, order.getOrderID());
+            pstmt.setInt(2, order.getUserID());
+            pstmt.setInt(3, order.getPetID());
+            pstmt.setString(4, order.getComments());
+            pstmt.setBigDecimal(5, order.getCost());
 
             pstmt.executeUpdate();
             DBUtils.close(connection, pstmt, null);
@@ -38,7 +38,7 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
         String sql = "DELETE FROM completedorder WHERE orderID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,order.getOrderID());
+            pstmt.setInt(1, order.getOrderID());
             pstmt.executeUpdate();
 
             DBUtils.close(connection, pstmt, null);
@@ -50,15 +50,15 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
     @Override
     public void updateOngoingOrder(CompletedOrder order) {
         Connection connection = DBUtils.getConnection();
-        String sql = "Update completedorder SET userID = ?,petID = ?,comments = ?,cost =?"+
-                     "WHERE  orderID = ?";
+        String sql = "Update completedorder SET userID = ?,petID = ?,comments = ?,cost =?" +
+                "WHERE  orderID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(5,order.getOrderID());
-            pstmt.setInt(1,order.getUserID());
-            pstmt.setInt(2,order.getPetID());
-            pstmt.setString(3,order.getComments());
-            pstmt.setBigDecimal(4,order.getCost());
+            pstmt.setInt(5, order.getOrderID());
+            pstmt.setInt(1, order.getUserID());
+            pstmt.setInt(2, order.getPetID());
+            pstmt.setString(3, order.getComments());
+            pstmt.setBigDecimal(4, order.getCost());
             pstmt.executeUpdate();
 
             DBUtils.close(connection, pstmt, null);
@@ -74,7 +74,7 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
         String sql = "SELECT * FROM completedorder WHERE orderID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,id);
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -84,9 +84,9 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
                 String comments = rs.getString("comments");
                 BigDecimal cost = rs.getBigDecimal("cost");
 
-                list.add(new CompletedOrder(orderID, userID, petID,comments,cost));
+                list.add(new CompletedOrder(orderID, userID, petID, comments, cost));
             }
-            DBUtils.close(connection, pstmt,rs);
+            DBUtils.close(connection, pstmt, rs);
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -100,7 +100,7 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
         String sql = "SELECT * FROM completedorder WHERE orderID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,id);
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
 
             if (!rs.next()) {
@@ -116,7 +116,7 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
             BigDecimal cost = rs.getBigDecimal("cost");
 
             DBUtils.close(connection, pstmt, rs);
-            return new CompletedOrder(orderID, userID, petID,comments,cost);
+            return new CompletedOrder(orderID, userID, petID, comments, cost);
         } catch (SQLException e) {
             e.printStackTrace();
         }

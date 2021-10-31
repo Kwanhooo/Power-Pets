@@ -1,4 +1,4 @@
-.upContent{
+.upContent {
     width: 1000px;
     height: 7px;
     background-color: white;
@@ -7,41 +7,41 @@
     text-align: center;
 }
 
-.mainContent{
-    display:grid;
+.mainContent {
+    display: grid;
     grid-template-columns: 300px 300px 300px 300px 300px 300px;
     grid-template-rows: 300px 300px 300px 300px 300px 300px;
     grid-gap: 0px;
 }
 
 
-.wordContent{
-    grid-column:1;
+.wordContent {
+    grid-column: 1;
     grid-row: 1;
     background-color: white;
 }
 
-.pictureContentDog{
+.pictureContentDog {
     grid-column: 3;
-    grid-row:2;
+    grid-row: 2;
 }
 
-.pictureContentCat{
+.pictureContentCat {
     grid-column: 2;
-    grid-row:3;
+    grid-row: 3;
 }
 
-.pictureContentBird{
+.pictureContentBird {
     grid-column: 3;
     grid-row: 1;
 }
 
-.pictureContentPig{
-    grid-column:2;
+.pictureContentPig {
+    grid-column: 2;
     grid-row: 2;
 }
 
-.pictureContentOthers{
-    grid-column:4;
+.pictureContentOthers {
+    grid-column: 4;
     grid-row: 3;
 }

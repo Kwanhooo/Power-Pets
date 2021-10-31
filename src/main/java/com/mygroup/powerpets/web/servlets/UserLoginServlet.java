@@ -13,32 +13,32 @@ import java.io.IOException;
 
 public class UserLoginServlet extends HttpServlet {
     /**
-     * @author Kwanho
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
+     * @author Kwanho
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req,resp);
+        req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req, resp);
     }
 
     /**
-     * @author Kwanho
      * @param req
      * @param resp
      * @throws ServletException
      * @throws IOException
+     * @author Kwanho
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        boolean isLoginSuccess = AccountService.loginVerifying(req.getParameter("email"), req.getParameter("password"),req,resp);
-        if(!isLoginSuccess)//登录失败
+        boolean isLoginSuccess = AccountService.loginVerifying(req.getParameter("email"), req.getParameter("password"), req, resp);
+        if (!isLoginSuccess)//登录失败
         {
-            req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req,resp);
+            req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req, resp);
             return;
         }
-        CookiesUtil.remember(req,resp);
+        CookiesUtil.remember(req, resp);
     }
 }

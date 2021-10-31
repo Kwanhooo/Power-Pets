@@ -13,32 +13,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OngoingOrderDaoImpl implements OngoingOrderDao {
-    public void insertOngoingOrder(OngoingOrder order)
-    {
+    public void insertOngoingOrder(OngoingOrder order) {
         Connection connection = DBUtils.getConnection();
         String sql = "INSERT INTO ongoingorder (orderID,userID,petID,deliveryID,status,cost) values (?,?,?,?,?,?)";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,order.getOrderID());
-            pstmt.setInt(2,order.getUserID());
-            pstmt.setInt(3,order.getPetID());
-            pstmt.setInt(4,order.getDeliveryID());
-            pstmt.setInt(5,order.getStatus());
-            pstmt.setBigDecimal(6,order.getCost());
+            pstmt.setInt(1, order.getOrderID());
+            pstmt.setInt(2, order.getUserID());
+            pstmt.setInt(3, order.getPetID());
+            pstmt.setInt(4, order.getDeliveryID());
+            pstmt.setInt(5, order.getStatus());
+            pstmt.setBigDecimal(6, order.getCost());
 
-            DBUtils.close(connection, pstmt,null);
+            DBUtils.close(connection, pstmt, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void deleteOngoingOrder(OngoingOrder order)
-    {
+    public void deleteOngoingOrder(OngoingOrder order) {
         Connection connection = DBUtils.getConnection();
         String sql = "DELETE FROM ongoingorder WHERE orderID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,order.getOrderID());
+            pstmt.setInt(1, order.getOrderID());
             pstmt.executeUpdate();
 
             DBUtils.close(connection, pstmt, null);
@@ -46,21 +44,21 @@ public class OngoingOrderDaoImpl implements OngoingOrderDao {
             e.printStackTrace();
         }
     }
-    public void updateOngoingOrder(OngoingOrder order)
-    {
+
+    public void updateOngoingOrder(OngoingOrder order) {
         Connection connection = DBUtils.getConnection();
-        String sql = "Update ongoingorder SET userID = ?,petID = ?,deliveryID = ?,status = ?,cost =?"+
-                     "Where orderID = ?";
+        String sql = "Update ongoingorder SET userID = ?,petID = ?,deliveryID = ?,status = ?,cost =?" +
+                "Where orderID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(6,order.getOrderID());
-            pstmt.setInt(1,order.getUserID());
-            pstmt.setInt(2,order.getPetID());
-            pstmt.setInt(3,order.getDeliveryID());
-            pstmt.setInt(4,order.getStatus());
-            pstmt.setBigDecimal(5,order.getCost());
+            pstmt.setInt(6, order.getOrderID());
+            pstmt.setInt(1, order.getUserID());
+            pstmt.setInt(2, order.getPetID());
+            pstmt.setInt(3, order.getDeliveryID());
+            pstmt.setInt(4, order.getStatus());
+            pstmt.setBigDecimal(5, order.getCost());
 
-            DBUtils.close(connection, pstmt,null);
+            DBUtils.close(connection, pstmt, null);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,7 +71,7 @@ public class OngoingOrderDaoImpl implements OngoingOrderDao {
         String sql = "SELECT * FROM ongoingorder WHERE userID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,id);
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -83,9 +81,9 @@ public class OngoingOrderDaoImpl implements OngoingOrderDao {
                 int status = rs.getInt("status");
                 BigDecimal cost = rs.getBigDecimal("cost");
 
-                list.add(new OngoingOrder(orderID, id,petID, deliveryID,status,cost));
+                list.add(new OngoingOrder(orderID, id, petID, deliveryID, status, cost));
             }
-            DBUtils.close(connection, pstmt,rs);
+            DBUtils.close(connection, pstmt, rs);
             return list;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -100,7 +98,7 @@ public class OngoingOrderDaoImpl implements OngoingOrderDao {
         String sql = "SELECT * FROM ongoingorder WHERE orderID = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,id);
+            pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
 
             if (!rs.next()) {
@@ -115,7 +113,7 @@ public class OngoingOrderDaoImpl implements OngoingOrderDao {
             int status = rs.getInt("status");
             BigDecimal cost = rs.getBigDecimal("cost");
 
-            return new OngoingOrder(orderID, userID,petID, deliveryID,status,cost);
+            return new OngoingOrder(orderID, userID, petID, deliveryID, status, cost);
         } catch (SQLException e) {
             e.printStackTrace();
         }

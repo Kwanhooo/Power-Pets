@@ -21,7 +21,7 @@ public class UserRegisterServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req,resp);
+        req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req, resp);
     }
 
     /**
@@ -53,8 +53,7 @@ public class UserRegisterServlet extends HttpServlet {
         }
 
         String email = req.getParameter("email");
-        if (!ValidationUtil.emailValidator(email))
-        {
+        if (!ValidationUtil.emailValidator(email)) {
             req.setAttribute("register_error_msg", "邮箱格式错误！请检查后重试");
             req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req, resp);
             return;
