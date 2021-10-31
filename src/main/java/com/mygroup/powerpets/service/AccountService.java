@@ -8,22 +8,26 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AccountService {
-    /*
-    JSP链接
- */
-    public static final String INDEX_URL = "login.jsp";
+    //    public static final String INDEX_URL = "WEB-INF/jsp/account/login.jsp";
+//    //    public static final String MAIN_URL = "WEB-INF/jsp/catalog/Main.jsp";
+//    public static final String MAIN_URL = "index.jsp";
+//    public static final String REGISTER_URL = "WEB-INF/jsp/account/register.jsp";
+    public static final String LOGIN_URL = "/WEB-INF/jsp/account/login.jsp";
     public static final String LOGIN_SUCCESS_URL = "login_success.jsp";
     public static final String REGISTER_URL = "register.jsp";
+    public static final String MAIN_URL = "/WEB-INF/jsp/catalog/Main.jsp";
+    public static final String PROJECT_URL = "/WEB-INF/jsp/catalog/project.jsp";
 
     /**
-     * @author Kwanho
-     * @param email 邮箱作为登录的唯一id
+     * @param email    邮箱作为登录的唯一id
      * @param password 密码
-     * @param req http请求对象，用来返回错误信息
-     * @param resp http响应对象，用来发送响应
+     * @param req      http请求对象，用来返回错误信息
+     * @param resp     http响应对象，用来发送响应
      * @return 是否登陆成功
+     * @author Kwanho
      */
     public static boolean loginVerifying(String email, String password, HttpServletRequest req, HttpServletResponse resp) {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -31,32 +35,30 @@ public class AccountService {
         if (loginUser == null) {//不存在该账号
             req.setAttribute("login_error_msg", "不存在该账号");
             return false;
-        }
-        else if (loginUser.getPassword().equals(password)) //正确
+        } else if (loginUser.getPassword().equals(password)) //正确
         {
             //基本信息
-            req.getSession().setAttribute("username", loginUser.getUsername());
-            req.getSession().setAttribute("age", loginUser.getAge());
-            req.getSession().setAttribute("sex", loginUser.getSex());
-            req.getSession().setAttribute("email", loginUser.getEmail());
-            req.getSession().setAttribute("id", loginUser.getId());
-            req.getSession().setAttribute("balance", loginUser.getBalance());
-            req.getSession().setAttribute("isLogin", "1");
-
+//            req.getSession().setAttribute("username", loginUser.getUsername());
+//            req.getSession().setAttribute("age", loginUser.getAge());
+//            req.getSession().setAttribute("sex", loginUser.getSex());
+//            req.getSession().setAttribute("email", loginUser.getEmail());
+//            req.getSession().setAttribute("id", loginUser.getId());
+//            req.getSession().setAttribute("balance", loginUser.getBalance());
+            req.getSession().setAttribute("isLogin", "true");
+            req.getSession().setAttribute("user", loginUser);
             //清空登录错误信息
             req.setAttribute("login_error_msg", null);
             req.getSession().setAttribute("login_error_msg", null);
 
-            //重定向至登陆成功页
+            //转发至登陆成功页
             try {
-                resp.sendRedirect(AccountService.LOGIN_SUCCESS_URL);
-            } catch (IOException e) {
+                req.getRequestDispatcher(MAIN_URL).forward(req, resp);
+            } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }
 
             return true;
-        }
-        else {
+        } else {
             req.setAttribute("login_error_msg", "账号或密码不正确!");
             return false;
         }

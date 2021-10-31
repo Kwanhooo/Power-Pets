@@ -5,7 +5,7 @@
          version="4.0">
     
     <welcome-file-list>
-        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -24,5 +24,40 @@
     <servlet-mapping>
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>mainPageServlet</servlet-name>
+        <servlet-class>com.mygroup.powerpets.web.servlets.MainPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mainPageServlet</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cartServlet</servlet-name>
+        <servlet-class>com.mygroup.powerpets.web.servlets.CartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cartServlet</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>accountServlet</servlet-name>
+        <servlet-class>com.mygroup.powerpets.web.servlets.AccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>accountServlet</servlet-name>
+        <url-pattern>/account</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>categoryServlet</servlet-name>
+        <servlet-class>com.mygroup.powerpets.web.servlets.CategoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>categoryServlet</servlet-name>
+        <url-pattern>/category</url-pattern>
     </servlet-mapping>
 </web-app>
