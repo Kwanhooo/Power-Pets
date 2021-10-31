@@ -1,0 +1,47 @@
+.upContent{
+    width: 1000px;
+    height: 7px;
+    background-color: white;
+    margin: 0 auto;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+}
+
+.mainContent{
+    display:grid;
+    grid-template-columns: 300px 300px 300px 300px 300px 300px;
+    grid-template-rows: 300px 300px 300px 300px 300px 300px;
+    grid-gap: 0px;
+}
+
+
+.wordContent{
+    grid-column:1;
+    grid-row: 1;
+    background-color: white;
+}
+
+.pictureContentDog{
+    grid-column: 3;
+    grid-row:2;
+}
+
+.pictureContentCat{
+    grid-column: 2;
+    grid-row:3;
+}
+
+.pictureContentBird{
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.pictureContentPig{
+    grid-column:2;
+    grid-row: 2;
+}
+
+.pictureContentOthers{
+    grid-column:4;
+    grid-row: 3;
+}

@@ -21,8 +21,7 @@ public class UserLoginServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("error_msg","请从登录页面登录");
-        req.getRequestDispatcher(AccountService.INDEX_URL).forward(req,resp);
+        req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req,resp);
     }
 
     /**
@@ -37,7 +36,7 @@ public class UserLoginServlet extends HttpServlet {
         boolean isLoginSuccess = AccountService.loginVerifying(req.getParameter("email"), req.getParameter("password"),req,resp);
         if(!isLoginSuccess)//登录失败
         {
-            req.getRequestDispatcher(AccountService.INDEX_URL).forward(req,resp);
+            req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req,resp);
             return;
         }
         CookiesUtil.remember(req,resp);
