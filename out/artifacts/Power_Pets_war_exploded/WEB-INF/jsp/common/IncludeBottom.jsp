@@ -1,20 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-</div>
+<div class="wrapper">
+    <div class="mainContent">
 
-<div id="Footer">
+        <div id="PoweredBy">&nbsp<a href="www.mybatis.org">www.mybatis.org</a>
+        </div>
 
-    <div id="PoweredBy">&nbsp<a href="www.mybatis.org">www.mybatis.org</a>
-    </div>
-
-    <div id="Banner"><c:if test="${sessionScope.accountBean != null }">
-        <c:if test="${sessionScope.accountBean.authenticated}">
-            <c:if test="${sessionScope.accountBean.account.bannerOption}">
-                ${sessionScope.accountBean.account.bannerName}
+        <div id="Banner"><c:if test="${sessionScope.user != null }">
+            <c:if test="${sessionScope.isLogin.equals(\"true\")}">
+                <c:if test="${sessionScope.user}">
+                    ${sessionScope.accountBean.account.bannerName}
+                </c:if>
             </c:if>
-        </c:if>
-    </c:if></div>
-
+        </c:if></div>
+    </div>
 </div>
-
 </body>
 </html>

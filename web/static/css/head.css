@@ -1,0 +1,93 @@
+body {
+    background: #eee;
+}
+
+.wrapper {
+    margin: 30px 30px 80px 80px;
+}
+
+
+.topBar {
+    max-width: 1800px;
+    max-height: 230px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 40px 50px;
+    border: 1px solid #e5e5e5;
+    border-radius: 23px;
+
+    display: grid;
+    grid-template-columns:175px 1025px 600px;
+    grid-template-rows:150px 25px 25px;
+    grid-gap: 0;
+}
+
+.mainContent {
+    max-width: 1800px;
+    max-height: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 40px 50px;
+    border: 1px solid #e5e5e5;
+    border-radius: 23px;
+}
+
+.topBar .topBar-heading, .topBar .checkbox {
+    margin-bottom: 30px;
+}
+
+.topBar input[type="text"], .topBar input[type="text"] {
+    margin-bottom: 10px;
+}
+
+.topBar {
+    padding: 10px;
+}
+
+.Logo {
+    grid-column: 1;
+    grid-row: 1/3;
+}
+
+.Title {
+    grid-column: 2;
+    grid-row: 1/3;
+}
+
+.MenuContent {
+    grid-column: 3;
+    grid-row: 1;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.Search {
+    grid-column: 3;
+    grid-row: 2;
+    font-size:25px;
+    max-width:350px;
+    height:20px;
+}
+
+.QuickLinks {
+    grid-column: 2/4;
+    grid-row: 3;
+    font-family: "苹方-简", Courier, mono,serif;
+    font-size:20px;
+}
+
+.projectDescription{
+    font-family: "苹方-简", Courier, mono,serif;
+    font-size:20px;
+}
+
+#QuickLinks-text{
+    float: bottom;
+}
+
+#title-text {
+    font-family: "Cascadia Code", Courier, mono, serif;
+    font-size: 90px;
+    font-weight: bold;
+    align-content: center;
+}

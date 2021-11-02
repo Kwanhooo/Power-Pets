@@ -60,4 +60,13 @@
         <servlet-name>categoryServlet</servlet-name>
         <url-pattern>/category</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>projectServlet</servlet-name>
+        <servlet-class>com.mygroup.powerpets.web.servlets.ProjectServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>projectServlet</servlet-name>
+        <url-pattern>/project</url-pattern>
+    </servlet-mapping>
 </web-app>

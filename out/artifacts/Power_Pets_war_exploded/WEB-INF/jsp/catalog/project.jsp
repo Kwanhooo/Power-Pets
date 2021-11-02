@@ -5,14 +5,20 @@
   Time: 13:10
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="../common/IncludeTop.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
 </head>
 <body>
-<%
-    out.println(session.getAttribute("selectedCategory"));
-%>
+<div class="mainContent">
+    <c:forEach var="project" items="${sessionScope.projectList}">
+        <h3>
+            <a href="project?projectName=${project.projectName}"><c:out value="${project.projectName}"></c:out></a>
+        </h3>
+        <p class="projectDescription"><c:out value="${project.projectDescription}"></c:out></p>
+        <hr>
+    </c:forEach>
+</div>
 </body>
 </html>
