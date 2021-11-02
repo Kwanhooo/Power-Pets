@@ -6,29 +6,6 @@
 <%@ page import="java.net.URLDecoder" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
-<%
-    System.out.println("request.getContextPath() = " + request.getContextPath().toString());
-
-    String password = "";
-    String email = "";
-
-    //取出cookie对象组
-    Cookie[] cookies = request.getCookies();
-    for (int i = 0; cookies != null && i < cookies.length; i++) {
-        Cookie cookie = cookies[i];//取出其中的一个对象，含有email ,value
-        if (cookie != null && "email".equals(cookie.getName())) {//获取第一个cookie对象的email
-            email = URLDecoder.decode(cookie.getValue(), "UTF-8");//进行解码
-        }
-        if (cookie != null && "password".equals(cookie.getName())) {
-            password = cookie.getValue();
-        }
-    }
-
-    System.out.println("cookies::");
-    System.out.println("password = " + password);
-    System.out.println("email = " + email);
-%>
-
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
@@ -44,12 +21,12 @@
 <div class="wrapper">
     <form class="form-signIn" action="login" method="post">
         <h2 class="form-signIn-heading text-center">电力宠物</h2>
-        <input type="text" class="form-control" name="email" placeholder="邮箱📮">
-        <input type="password" class="form-control" name="password" placeholder="密码🔑">
+        <input type="text" class="form-control" name="email" id="email" placeholder="邮箱📮">
+        <input type="password" class="form-control" name="password" id="password" placeholder="密码🔑">
         <label class="checkbox">
             <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">&nbsp;记住我吧
         </label>
-        <button class="btn btn-lg btn-primary btn-block">登录</button>
+        <button class="btn btn-lg btn-primary btn-block" id="login_btn">登录</button>
         <center>
                 <%
                 if (request.getAttribute("login_error_msg") != null) {
@@ -63,6 +40,77 @@
     </form>
 
 </div>
+
+<script>
+    $(function () {
+        initView();
+        $("#login_btn").click(function () {
+            if ($("#rememberMe").is(":checked")) {
+                setCookie("cookie_account", $("#email").val());
+                setCookie("cookie_password", $("#password").val());
+                setCookie("rememberMe", true);
+            } else {
+                delCookie("cookie_account");
+                delCookie("cookie_password");
+                delCookie("rememberMe");
+            }
+            window.location.reload()
+        });
+    });
+
+    function initView() {
+        if (getCookie("cookie_account")) {
+            $("#email").val(getCookie("cookie_account"));
+        }
+        if (getCookie("cookie_password")) {
+            $("#password").val(getCookie("cookie_password"));
+        }
+        if (getCookie("rememberMe")) {
+            $("#rememberMe").attr("checked", getCookie("rememberMe"));
+        }
+        $("#email").focus(function () {
+            this.select();
+        });
+        $("#password").focus(function () {
+            this.select();
+        });
+    }
+
+    /**
+     * 写入cookie
+     * @param name  cookie 名
+     * @param value  cookie 值
+     */
+    function setCookie(name, value) {
+        var Days = 30; //此 cookie 将被保存 30 天
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+
+    /**
+     * 删除cookie
+     * @param name
+     */
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+
+    /**
+     * 读取cookie
+     * @param name
+     * @returns
+     */
+    function getCookie(name) {
+        var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+        if (arr != null)
+            return unescape(arr[2]);
+        return null;
+    }
+</script>
 
 <script src="../../../static/js/vsclick.min.js"></script>
 <script>
