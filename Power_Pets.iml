@@ -32,5 +32,7 @@
     <orderEntry type="library" name="Tomcat 8.5.71" level="application_server_libraries" />
     <orderEntry type="library" name="jsp-api" level="project" />
     <orderEntry type="library" name="jstl-1.2" level="project" />
+    <orderEntry type="library" name="bootstrap-table" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

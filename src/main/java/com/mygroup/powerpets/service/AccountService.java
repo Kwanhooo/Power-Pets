@@ -2,24 +2,16 @@ package com.mygroup.powerpets.service;
 
 import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.persistence.impl.UserDaoImpl;
-import com.mygroup.powerpets.util.CookiesUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
+
+import static com.mygroup.powerpets.util.ForwardUtil.MAIN_URL;
+import static com.mygroup.powerpets.util.ForwardUtil.REGISTER_URL;
 
 public class AccountService {
-    //    public static final String INDEX_URL = "WEB-INF/jsp/account/login.jsp";
-//    //    public static final String MAIN_URL = "WEB-INF/jsp/catalog/Main.jsp";
-//    public static final String MAIN_URL = "index.jsp";
-//    public static final String REGISTER_URL = "WEB-INF/jsp/account/register.jsp";
-    public static final String LOGIN_URL = "/WEB-INF/jsp/account/login.jsp";
-    public static final String REGISTER_URL = "/WEB-INF/jsp/account/register.jsp";
-    public static final String MAIN_URL = "/WEB-INF/jsp/catalog/Main.jsp";
-    public static final String PROJECT_URL = "/WEB-INF/jsp/catalog/project.jsp";
-
     /**
      * @param email    邮箱作为登录的唯一id
      * @param password 密码
@@ -79,7 +71,7 @@ public class AccountService {
         if (userWithThatEmail != null) {
             req.setAttribute("register_error_msg", "该邮箱已经注册过！请检查后重试");
             try {
-                req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req, resp);
+                req.getRequestDispatcher(REGISTER_URL).forward(req, resp);
             } catch (ServletException | IOException e) {
                 e.printStackTrace();
             }

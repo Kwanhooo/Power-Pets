@@ -9,6 +9,8 @@ public interface PetDao {
 
     List<Pet> selectByName(String name);
 
+    List<Pet> selectByProjectName(String name);
+
     void updateUser(Pet pet);
 
     void insertPet(Pet pet);

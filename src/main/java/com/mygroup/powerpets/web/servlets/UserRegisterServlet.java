@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import static com.mygroup.powerpets.util.ForwardUtil.REGISTER_URL;
+
 public class UserRegisterServlet extends HttpServlet {
     /**
      * @param req
@@ -21,7 +23,7 @@ public class UserRegisterServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req, resp);
+        req.getRequestDispatcher(REGISTER_URL).forward(req, resp);
     }
 
     /**
@@ -42,20 +44,20 @@ public class UserRegisterServlet extends HttpServlet {
             age = Integer.parseInt(req.getParameter("age"));
         } catch (NumberFormatException ex) {
             req.setAttribute("register_error_msg", "您输入的年龄格式有误！");
-            req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req, resp);
+            req.getRequestDispatcher(REGISTER_URL).forward(req, resp);
             return;
         }
 
         if (!password.equals(doubleCheckPassword)) {
             req.setAttribute("register_error_msg", "两次输入的密码不一致！请检查重新输入");
-            req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req, resp);
+            req.getRequestDispatcher(REGISTER_URL).forward(req, resp);
             return;
         }
 
         String email = req.getParameter("email");
         if (!ValidationUtil.emailValidator(email)) {
             req.setAttribute("register_error_msg", "邮箱格式错误！请检查后重试");
-            req.getRequestDispatcher(AccountService.REGISTER_URL).forward(req, resp);
+            req.getRequestDispatcher(REGISTER_URL).forward(req, resp);
             return;
         }
 

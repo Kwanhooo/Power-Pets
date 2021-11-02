@@ -8,10 +8,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <link rel="StyleSheet" href="static/css/jpetstore.css" type="text/css" media="screen"/>
+    <link rel="StyleSheet" href="static/css/head.css" type="text/css" media="screen"/>
+    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <meta name="generator"
-          content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
     <title>PowerPets - 电力宠物</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <meta http-equiv="Cache-Control" content="max-age=0"/>
@@ -22,18 +26,17 @@
 </head>
 
 <body>
-<div id="Header">
-
-    <div id="Logo">
-        <div id="LogoContent">
-            <a href="main"><img src="static/images/logo-topbar.gif" alt="logo"/></a>
+<div class="wrapper">
+    <div class="topBar">
+        <div class="Logo">
+            <a href="main"><img width="175px" height="175px" align="middle" src="static/images/PageLogo.png"
+                                alt="logo"/></a>
         </div>
-    </div>
 
-    <div id="Menu">
-        <div id="MenuContent">
-            <a href="cart">
-                <img align="middle" name="img_cart" src="static/images/cart.gif"/>
+        <div class="MenuContent">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="cart?action=view">
+                🛒
             </a>
             <img align="middle" src="static/images/separator.gif"/>
             <c:if test="${sessionScope.user == null}">
@@ -51,11 +54,13 @@
                     <a href="account">我的</a>
                 </c:if>
             </c:if> <img align="middle" src="static/images/separator.gif"/>
-            <a href="help.html">?</a></div>
-    </div>
+            <a href="help.html">?</a>
+        </div>
 
-    <div id="Search">
-        <div id="SearchContent">
+        <div class="Title">
+            <p id="title-text">&nbsp;&nbsp;&nbsp;Power-Pets</p>
+        </div>
+        <div class="Search">
             <form action="main" method="post">
                 <label>
                     <input type="text" name="keywords">
@@ -63,22 +68,44 @@
                 </label>
             </form>
         </div>
-    </div>
 
-    <div id="QuickLinks">
-        <a href="category?categoryId=FISH"><img src="static/images/sm_fish.gif"/></a>
-        <img src="static/images/separator.gif"/>
+        <div class="QuickLinks">
+            <div id="QuickLinks-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="category?categoryName=DOGS">
+                    <%--                <img src="static/images/sm_fish.gif"/>--%>
+                    看狗狗
+                </a>
 
-        <a href="category?categoryId=FISH"><img src="static/images/sm_dogs.gif"/></a>
-        <img src="static/images/separator.gif"/>
+                <img src="static/images/separator.gif"/>
 
-        <a href="category?categoryId=REPTILES"><img src="static/images/sm_reptiles.gif"/></a>
-        <img src="static/images/separator.gif"/>
+                <a href="category?categoryName=CATS">
+                    <%--                <img src="static/images/sm_dogs.gif"/>--%>
+                    看猫猫
+                </a>
 
-        <a href="category?categoryId=CATS"><img src="static/images/sm_cats.gif"/></a>
-        <img src="static/images/separator.gif"/>
+                <img src="static/images/separator.gif"/>
 
-        <a href="category?categoryId=BIRDS"><img src="static/images/sm_birds.gif"/></a>
+                <a href="category?categoryName=BIRDS">
+                    <%--                <img src="static/images/sm_reptiles.gif"/>--%>
+                    看鸟鸟
+                </a>
+
+                <img src="static/images/separator.gif"/>
+
+                <a href="category?categoryName=PIG">
+                    <%--                <img src="static/images/sm_cats.gif"/>--%>
+                    看猪猪
+                </a>
+
+                <img src="static/images/separator.gif"/>
+
+                <a href="category?categoryName=OTHERS">
+                    <%--                <img src="static/images/sm_birds.gif"/>--%>
+                    看点别的
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 

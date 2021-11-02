@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.mygroup.powerpets.util.ForwardUtil.LOGIN_URL;
+
 
 public class UserLoginServlet extends HttpServlet {
     /**
@@ -21,7 +23,7 @@ public class UserLoginServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req, resp);
+        req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
     }
 
     /**
@@ -36,7 +38,7 @@ public class UserLoginServlet extends HttpServlet {
         boolean isLoginSuccess = AccountService.loginVerifying(req.getParameter("email"), req.getParameter("password"), req, resp);
         if (!isLoginSuccess)//登录失败
         {
-            req.getRequestDispatcher(AccountService.LOGIN_URL).forward(req, resp);
+            req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
             return;
         }
         CookiesUtil.remember(req, resp);
