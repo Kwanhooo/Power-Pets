@@ -3,7 +3,7 @@
   Date: 2021/10/8
   Time: 10:33
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="UTF-8">

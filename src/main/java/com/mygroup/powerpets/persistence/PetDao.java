@@ -11,6 +11,10 @@ public interface PetDao {
 
     List<Pet> selectByProjectName(String name);
 
+    List<Pet> vagueSelectByName(String name);
+
+    List<Pet> vagueSelectByProjectName(String name);
+
     void updateUser(Pet pet);
 
     void insertPet(Pet pet);

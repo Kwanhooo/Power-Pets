@@ -27,7 +27,7 @@ public class CookiesUtil {
         nameCookie.setPath(request.getContextPath() + "/");//设置Cookie的有效路径
         passwordCookie.setPath(request.getContextPath() + "/");//设置Cookie的有效路径
 
-        if (rememberMe != null && "rememberMe".equals(rememberMe)) {//有记住我，就设置cookie的保存时间
+        if ("rememberMe".equals(rememberMe)) {//有记住我，就设置cookie的保存时间
             nameCookie.setMaxAge(7 * 24 * 60 * 60);
             passwordCookie.setMaxAge(7 * 24 * 60 * 60);
         } else {//没有记住我，设置cookie的时间为0

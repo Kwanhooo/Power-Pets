@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.mygroup.powerpets.domain.Pet" %><%--
   Created by IntelliJ IDEA.
   User: 11957
   Date: 2021/11/1
@@ -6,13 +7,29 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="../common/IncludeTop.jsp" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
 </head>
 <body>
 <div class="mainContent">
-    <c:if test="${sessionScope.petList.size() != 0}">
+    <%
+        List<Pet> petList = (List<Pet>) session.getAttribute("petList");
+        boolean isEmpty = true;
+        if (petList.size() > 0) {
+            for (Pet pet : petList) {
+                if (pet.getStatus() == 1) {
+                    isEmpty = false;
+                    break;
+                }
+            }
+        }
+        if (isEmpty)
+            session.setAttribute("isEmpty", "true");
+        else
+            session.setAttribute("isEmpty", "false");
+    %>
+    <c:if test="${sessionScope.isEmpty == \"false\"}">
         <table class="table table-striped table-bordered table-hover table-condensed">
             <tr>
                 <th>Pet ID</th>
@@ -30,15 +47,18 @@
                         <td>${pet.age}</td>
                         <td>${pet.sex}</td>
                         <td>${pet.price}</td>
-                        <td><a href="cart?action=add-to-cart&petID=${pet.petID}&projectName=${pet.product}">加入购物车</a>
+                        <td>
+                            <a href="cart?action=add-to-cart&petID=${pet.petID}&projectName=${pet.product}&userID=${sessionScope.user.id}">
+                                <button type="button" class="btn btn-primary btn-lg btn-block">加入购物车</button>
+                            </a>
                         </td>
                     </tr>
                 </c:if>
             </c:forEach>
         </table>
     </c:if>
-    <c:if test="${sessionScope.petList.size() == 0}">
-        <center><h3>没有这种宠物呢！！！好奇怪啊啊啊啊</h3></center>
+    <c:if test="${sessionScope.isEmpty == \"true\"}">
+        <center><h3>这些都被抢光啦，晚点再来吧！！!</h3></center>
     </c:if>
 </div>
 </body>
