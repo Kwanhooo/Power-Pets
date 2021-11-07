@@ -79,12 +79,11 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
 
             while (rs.next()) {
                 int orderID = rs.getInt("orderID");
-                int userID = id;
                 int petID = rs.getInt("petID");
                 String comments = rs.getString("comments");
                 BigDecimal cost = rs.getBigDecimal("cost");
 
-                list.add(new CompletedOrder(orderID, userID, petID, comments, cost));
+                list.add(new CompletedOrder(orderID, id, petID, comments, cost));
             }
             DBUtils.close(connection, pstmt, rs);
             return list;
@@ -109,14 +108,13 @@ public class CompletedOrderDaoImpl implements CompletedOrderDao {
             }
 
 
-            int orderID = id;
             int userID = rs.getInt("userID");
             int petID = rs.getInt("petID");
             String comments = rs.getString("comments");
             BigDecimal cost = rs.getBigDecimal("cost");
 
             DBUtils.close(connection, pstmt, rs);
-            return new CompletedOrder(orderID, userID, petID, comments, cost);
+            return new CompletedOrder(id, userID, petID, comments, cost);
         } catch (SQLException e) {
             e.printStackTrace();
         }

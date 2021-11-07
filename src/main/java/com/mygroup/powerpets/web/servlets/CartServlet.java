@@ -1,7 +1,11 @@
 package com.mygroup.powerpets.web.servlets;
 
+import com.mygroup.powerpets.domain.Cart;
 import com.mygroup.powerpets.domain.Pet;
+import com.mygroup.powerpets.domain.User;
+import com.mygroup.powerpets.persistence.impl.CartDaoImpl;
 import com.mygroup.powerpets.persistence.impl.PetDaoImpl;
+import com.mygroup.powerpets.service.LogService;
 import com.mygroup.powerpets.util.ForwardUtil;
 
 import javax.servlet.ServletException;
@@ -25,24 +29,91 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
 
-        //请求的操作是加入购物车
+        //若用户未登录 先进行登录
+
+        String userID = req.getParameter("userID");
+        if (userID.trim().equals("") || userID == null) {
+            System.out.println("FUCKYOU");
+            resp.sendRedirect("login");
+            return;
+            //req.getRequestDispatcher(ForwardUtil.LOGIN_URL).forward(req, resp);
+        }
+
+        //请求操作 加入购物车
+        //更新购物车数据库
         if (action.equals("add-to-cart")) {
             String petID = req.getParameter("petID");
-            PetDaoImpl petDaoImpl = new PetDaoImpl();
-            Pet petToAdd = petDaoImpl.selectById(Integer.parseInt(petID));
-            //如果还没有购物车列表，立即建立一个
-            if (req.getSession().getAttribute("cartList") == null) {
-                List<Pet> cartList = new ArrayList();
-                cartList.add(petToAdd);
-                req.getSession().setAttribute("cartList", cartList);
-            } else {//有购物车列表了，把这个新的加上
-                List<Pet> cartList = (List<Pet>) req.getSession().getAttribute("cartList");
-                cartList.add(petToAdd);
-                req.getSession().setAttribute("cartList", cartList);
+
+            //日志
+            User user = (User) req.getSession().getAttribute("user");
+            if (user != null)
+                LogService.addCartAction(user.getId(), "ADD", Integer.parseInt(petID));
+
+            CartDaoImpl cartdaoimpl = new CartDaoImpl();
+            Cart nowCart = cartdaoimpl.selectByuserID(Integer.parseInt(userID));
+            String petsID = nowCart.getPetsID();
+            if (petsID.contains(petID)) {
+                resp.sendRedirect("project?projectName=" + URLEncoder.encode(req.getParameter("projectName"), "UTF-8"));
+                return;
             }
+            Cart newCart = new Cart(Integer.parseInt(userID), nowCart.getPetsID() + petID + "#", nowCart.getAmount() + 1);
+            cartdaoimpl.updateCart(newCart);
             resp.sendRedirect("project?projectName=" + URLEncoder.encode(req.getParameter("projectName"), "UTF-8"));
             return;
         }
+
+        //如果是删除操作
+        if (action.equals("delete-from-cart")) {
+            //先更改数据库
+            List<Pet> cartList = new ArrayList<>();
+            String petID = req.getParameter("petID");
+
+            //日志
+            User user = (User) req.getSession().getAttribute("user");
+            if (user != null)
+                LogService.addCartAction(user.getId(), "DELETE", Integer.parseInt(petID));
+
+            CartDaoImpl cartdaoimpl = new CartDaoImpl();
+            PetDaoImpl petdaoimpl = new PetDaoImpl();
+            Cart nowCart = cartdaoimpl.selectByuserID(Integer.parseInt(userID));
+            String petString = nowCart.getPetsID();
+            String[] getPetsID = petString.split("#");
+            StringBuilder nowPetsID = new StringBuilder();
+            for (String getPetID : getPetsID) {
+                if (!getPetID.equals(petID)) {
+                    nowPetsID.append(getPetID).append("#");
+                    Pet pet = petdaoimpl.selectById(Integer.parseInt(petID));
+                    cartList.add(pet);
+                }
+            }
+            Cart newCart = new Cart(Integer.parseInt(userID), nowPetsID.toString(), nowCart.getAmount() - 1);
+            cartdaoimpl.updateCart(newCart);
+            //再更改显示界面
+            req.getSession().setAttribute("cartList", cartList);
+            req.getRequestDispatcher(ForwardUtil.CART_URL).forward(req, resp);
+        }
+
+
+        //请求操作 浏览购物车
+        if (action.equals("view")) {
+            PetDaoImpl petdaoimpl = new PetDaoImpl();
+            List<Pet> cartList = new ArrayList<>();
+            CartDaoImpl cartdaoimpl = new CartDaoImpl();
+            Cart nowCart = cartdaoimpl.selectByuserID(Integer.parseInt(userID));
+            String petString = nowCart.getPetsID();
+            if (!petString.equals("")) {
+                String[] getPetsID = petString.split("#");
+                for (String petID : getPetsID) {
+                    Pet newPet = petdaoimpl.selectById(Integer.parseInt(petID));
+                    cartList.add(newPet);
+                }
+            }
+            req.getSession().setAttribute("cartList", cartList);
+            req.getRequestDispatcher(ForwardUtil.CART_URL).forward(req, resp);
+        }
+
+        //请求的操作是加入购物车
+
 
         //请求展示购物车内容
         if (action.equals("view")) {

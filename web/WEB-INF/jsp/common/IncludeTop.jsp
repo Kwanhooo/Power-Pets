@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -35,7 +35,7 @@
 
         <div class="MenuContent">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="cart?action=view">
+            <a href="cart?action=view&userID=${sessionScope.user.id}">
                 🛒
             </a>
             <img align="middle" src="static/images/separator.gif"/>
@@ -51,7 +51,7 @@
                 <c:if test="${sessionScope.isLogin.equals(\"true\")}">
                     <a href="login?action=sign-out">注销</a>
                     <img align="middle" src="static/images/separator.gif"/>
-                    <a href="account">我的</a>
+                    <a href="account?action=view">我的</a>
                 </c:if>
             </c:if> <img align="middle" src="static/images/separator.gif"/>
             <a href="help.html">?</a>

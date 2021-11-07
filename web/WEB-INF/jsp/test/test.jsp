@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ include file="../common/IncludeTop.jsp" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <div class="upContent">
     <a href="category?selectedCategory=Dog">Dog</a>|
     <a href="category?selectedCategory=Cat">Cat</a>|

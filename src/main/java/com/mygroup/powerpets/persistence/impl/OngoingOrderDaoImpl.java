@@ -14,16 +14,18 @@ import java.util.List;
 
 public class OngoingOrderDaoImpl implements OngoingOrderDao {
     public void insertOngoingOrder(OngoingOrder order) {
+
+        System.out.println(order.toString());
         Connection connection = DBUtils.getConnection();
-        String sql = "INSERT INTO ongoingorder (orderID,userID,petID,deliveryID,status,cost) values (?,?,?,?,?,?)";
+        String sql = "INSERT INTO ongoingorder (userID,petID,deliveryID,status,cost) values (?,?,?,?,?)";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, order.getOrderID());
-            pstmt.setInt(2, order.getUserID());
-            pstmt.setInt(3, order.getPetID());
-            pstmt.setInt(4, order.getDeliveryID());
-            pstmt.setInt(5, order.getStatus());
-            pstmt.setBigDecimal(6, order.getCost());
+            pstmt.setInt(1, order.getUserID());
+            pstmt.setInt(2, order.getPetID());
+            pstmt.setInt(3, order.getDeliveryID());
+            pstmt.setInt(4, order.getStatus());
+            pstmt.setBigDecimal(5, order.getCost());
+            pstmt.executeUpdate();
 
             DBUtils.close(connection, pstmt, null);
         } catch (SQLException e) {

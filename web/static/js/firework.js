@@ -1,4 +1,4 @@
-var canvasEl = document.querySelector('.fireworks')
+const canvasEl = document.querySelector('.fireworks');
 if (canvasEl) {
     var ctx = canvasEl.getContext('2d')
     var numberOfParticules = 30
@@ -6,23 +6,23 @@ if (canvasEl) {
     var pointerY = 0
     // var tap = ('ontouchstart' in window || navigator.msMaxTouchPoints) ? 'touchstart' : 'mousedown'
     // Fixed the mobile scroll
-    var tap = 'mousedown'
+    const tap = 'mousedown';
     var colors = ['#ff1461', '#18FF92', '#5A87FF', '#FBF38C']
 
-    var setCanvasSize = debounce(function () {
+    const setCanvasSize = debounce(function () {
         canvasEl.width = window.innerWidth
         canvasEl.height = window.innerHeight
         canvasEl.style.width = window.innerWidth + 'px'
         canvasEl.style.height = window.innerHeight + 'px'
         canvasEl.getContext('2d').scale(1, 1)
-    }, 500)
+    }, 500);
 
-    var render = anime({
+    const render = anime({
         duration: Infinity,
         update: function () {
             ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
         }
-    })
+    });
 
     document.addEventListener(tap, function (e) {
         if (e.target.id !== 'sidebar' && e.target.id !== 'toggle-sidebar' && e.target.nodeName !== 'A' && e.target.nodeName !== 'IMG') {
@@ -42,9 +42,9 @@ function updateCoords(e) {
 }
 
 function setParticuleDirection(p) {
-    var angle = anime.random(0, 360) * Math.PI / 180
-    var value = anime.random(50, 180)
-    var radius = [-1, 1][anime.random(0, 1)] * value
+    const angle = anime.random(0, 360) * Math.PI / 180;
+    const value = anime.random(50, 180);
+    const radius = [-1, 1][anime.random(0, 1)] * value;
     return {
         x: p.x + radius * Math.cos(angle),
         y: p.y + radius * Math.sin(angle)
@@ -52,7 +52,7 @@ function setParticuleDirection(p) {
 }
 
 function createParticule(x, y) {
-    var p = {}
+    const p = {};
     p.x = x
     p.y = y
     p.color = colors[anime.random(0, colors.length - 1)]
@@ -68,7 +68,7 @@ function createParticule(x, y) {
 }
 
 function createCircle(x, y) {
-    var p = {}
+    const p = {};
     p.x = x
     p.y = y
     p.color = '#F00'
@@ -88,15 +88,15 @@ function createCircle(x, y) {
 }
 
 function renderParticule(anim) {
-    for (var i = 0; i < anim.animatables.length; i++) {
+    for (let i = 0; i < anim.animatables.length; i++) {
         anim.animatables[i].target.draw()
     }
 }
 
 function animateParticules(x, y) {
-    var circle = createCircle(x, y)
-    var particules = []
-    for (var i = 0; i < numberOfParticules; i++) {
+    const circle = createCircle(x, y);
+    const particules = [];
+    for (let i = 0; i < numberOfParticules; i++) {
         particules.push(createParticule(x, y))
     }
     anime.timeline().add({

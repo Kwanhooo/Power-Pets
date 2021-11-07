@@ -1,6 +1,8 @@
 package com.mygroup.powerpets.service;
 
+import com.mygroup.powerpets.domain.Cart;
 import com.mygroup.powerpets.domain.User;
+import com.mygroup.powerpets.persistence.impl.CartDaoImpl;
 import com.mygroup.powerpets.persistence.impl.UserDaoImpl;
 
 import javax.servlet.ServletException;
@@ -29,12 +31,6 @@ public class AccountService {
         } else if (loginUser.getPassword().equals(password)) //正确
         {
             //基本信息
-//            req.getSession().setAttribute("username", loginUser.getUsername());
-//            req.getSession().setAttribute("age", loginUser.getAge());
-//            req.getSession().setAttribute("sex", loginUser.getSex());
-//            req.getSession().setAttribute("email", loginUser.getEmail());
-//            req.getSession().setAttribute("id", loginUser.getId());
-//            req.getSession().setAttribute("balance", loginUser.getBalance());
             req.getSession().setAttribute("isLogin", "true");
             req.getSession().setAttribute("user", loginUser);
             //清空登录错误信息
@@ -80,6 +76,15 @@ public class AccountService {
 
         //在数据库添加这个用户的信息
         userDaoImpl.insertUser(newUser);
+
+        //为对应用户添加其购物车数据库信息
+        CartDaoImpl cartDaoImpl = new CartDaoImpl();
+        //System.out.println("In service "+newUser.getUsername());
+        User fuckUser = userDaoImpl.selectByEmail(newUser.getEmail());
+        int FUCKUSERID = fuckUser.getId();
+        Cart cart = new Cart(FUCKUSERID, "", 0);
+        cartDaoImpl.insertCart(cart);
+
 
         //直接登录
         loginVerifying(newUser.getEmail(), newUser.getPassword(), req, resp);

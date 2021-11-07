@@ -19,6 +19,14 @@ public class OngoingOrder {
         this.cost = cost;
     }
 
+    public OngoingOrder(int userID, int petID, BigDecimal cost) {
+        this.userID = userID;
+        this.petID = petID;
+        this.deliveryID = (int) (Math.random() * 900000) + 100000;
+        this.status = 1;
+        this.cost = cost;
+    }
+
     public int getOrderID() {
         return orderID;
     }
@@ -65,5 +73,17 @@ public class OngoingOrder {
 
     public void setCost(BigDecimal cost) {
         this.cost = cost;
+    }
+
+    @Override
+    public String toString() {
+        return "OngoingOrder{" +
+                "orderID=" + orderID +
+                ", userID=" + userID +
+                ", petID=" + petID +
+                ", deliveryID=" + deliveryID +
+                ", status=" + status +
+                ", cost=" + cost +
+                '}';
     }
 }

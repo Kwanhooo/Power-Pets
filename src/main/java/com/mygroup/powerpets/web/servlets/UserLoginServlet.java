@@ -1,6 +1,5 @@
 package com.mygroup.powerpets.web.servlets;
 
-import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.service.AccountService;
 import com.mygroup.powerpets.util.CookiesUtil;
 
@@ -35,6 +34,13 @@ public class UserLoginServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String realVerifyCode = (String) req.getSession().getAttribute("verifyCode");
+        if (!req.getParameter("verifyCode").equalsIgnoreCase(realVerifyCode)) {
+            req.setAttribute("login_error_msg", "验证码输入错误");
+            req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
+            return;
+        }
+
         boolean isLoginSuccess = AccountService.loginVerifying(req.getParameter("email"), req.getParameter("password"), req, resp);
         if (!isLoginSuccess)//登录失败
         {

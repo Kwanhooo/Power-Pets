@@ -57,31 +57,31 @@ body {
 .MenuContent {
     grid-column: 3;
     grid-row: 1;
-    font-size:30px;
-    font-weight:bold;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .Search {
     grid-column: 3;
     grid-row: 2;
-    font-size:25px;
-    max-width:350px;
-    height:20px;
+    font-size: 25px;
+    max-width: 350px;
+    height: 20px;
 }
 
 .QuickLinks {
     grid-column: 2/4;
     grid-row: 3;
-    font-family: "苹方-简", Courier, mono,serif;
-    font-size:20px;
+    font-family: "苹方-简", Courier, mono, serif;
+    font-size: 20px;
 }
 
-.projectDescription{
-    font-family: "苹方-简", Courier, mono,serif;
-    font-size:20px;
+.projectDescription {
+    font-family: "苹方-简", Courier, mono, serif;
+    font-size: 20px;
 }
 
-#QuickLinks-text{
+#QuickLinks-text {
     float: bottom;
 }
 

@@ -20,7 +20,7 @@ public class ProjectDaoImpl implements ProjectDao {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, project.getProjectName());
             pstmt.setString(2, project.getCategoryName());
-            pstmt.setString(3,project.getProjectDescription());
+            pstmt.setString(3, project.getProjectDescription());
 
             pstmt.executeUpdate();
             DBUtils.close(connection, pstmt, null);
@@ -45,7 +45,7 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @Override
-    public void updateProject(Project project) {
+    public void updateProject() {
         //这个好像不需要用到改的方法
     }
 
@@ -56,14 +56,14 @@ public class ProjectDaoImpl implements ProjectDao {
         String sql = "Select * FROM project WHERE categoryName = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1,category);
+            pstmt.setString(1, category);
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 String projectName = rs.getString("projectName");
                 String categoryName = rs.getString("categoryName");
                 String projectDescription = rs.getString("projectDescription");
-                list.add(new Project(projectName,categoryName,projectDescription));
+                list.add(new Project(projectName, categoryName, projectDescription));
             }
 
             DBUtils.close(connection, pstmt, rs);
@@ -92,7 +92,7 @@ public class ProjectDaoImpl implements ProjectDao {
             String categoryName = rs.getString("categoryName");
             String projectDescription = rs.getString("projectDescription");
             DBUtils.close(connection, pstmt, rs);
-            return new Project(projectName, categoryName,projectDescription);
+            return new Project(projectName, categoryName, projectDescription);
 
         } catch (SQLException e) {
             e.printStackTrace();

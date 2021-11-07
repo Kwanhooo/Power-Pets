@@ -10,4 +10,10 @@ public class ForwardUtil {
     public static final String CART_URL = "WEB-INF/jsp/cart/cart.jsp";
     public static final String PROJECT_URL = "/WEB-INF/jsp/catalog/project.jsp";
     public static final String PET_URL = "/WEB-INF/jsp/catalog/pet.jsp";
+    public static final String ACCOUNT_URL = "/WEB-INF/jsp/account/account.jsp";
+    public static final String SEARCH_URL = "WEB-INF/jsp/search/search.jsp";
+    public static final String ORDER_URL = "WEB-INF/jsp/order/order.jsp";
+    public static final String CHECKOUT_URL = "WEB-INF/jsp/order/checkout.jsp";
+    public static final String MY_ORDER_URL = "WEB-INF/jsp/account/myorder.jsp";
+    public static final String LOG_URL = "WEB-INF/jsp/account/log.jsp";
 }

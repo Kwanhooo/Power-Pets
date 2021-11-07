@@ -3,9 +3,6 @@ package com.mygroup.powerpets.util;
 import java.sql.*;
 
 public class DBUtils {
-    private DBUtils() {
-    }
-
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String url = "jdbc:mysql://120.78.235.195:3306/powerpets";
     private static final String user = "root";
@@ -17,6 +14,9 @@ public class DBUtils {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    private DBUtils() {
     }
 
     //获取连接

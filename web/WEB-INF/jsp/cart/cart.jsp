@@ -4,7 +4,7 @@
   Time: 21:34
 --%>
 <%@ include file="../common/IncludeTop.jsp" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
 </head>
@@ -15,7 +15,8 @@
             <div class="col-md-12 column">
                 <div class="page-header">
                     <h1 class="text-primary">
-                        购物车 <small>&nbsp;&nbsp;-&nbsp;在此下订吧！<strong><i>${sessionScope.user.username}</i></strong></small>
+                        购物车
+                        <small>&nbsp;&nbsp;-&nbsp;在此下订吧！<strong><i>${sessionScope.user.username}</i></strong></small>
                     </h1>
                 </div>
             </div>
@@ -53,15 +54,20 @@
                                     ${petToBuy.price}
                             </td>
                             <td>
-                                <button type="button" class="btn btn-warning btn-lg btn-block">下单</button>
-                                <button type="button" class="btn btn-danger btn-lg btn-block">删除</button>
+                                <a href="order?action=checkout&orderPetID=${petToBuy.petID}&userID=${sessionScope.user.id}">
+                                    <button type="button" class="btn btn-warning btn-lg btn-block">下单</button>
+                                </a>
+                                <a href="cart?petID=${petToBuy.petID}&userID=${sessionScope.user.id}&action=delete-from-cart">
+                                    <button type="button" class="btn btn-danger btn-lg btn-block">删除</button>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>
                     </c:if>
 
                     <c:if test="${sessionScope.cartList.size() == 0 || sessionScope.cartList == null}">
-                        <br><br><center><h3 class="text-danger">您的购物车空空如也，快去选购吧</h3></center>
+                        <br><br>
+                        <center><h3 class="text-danger">您的购物车空空如也，快去选购吧</h3></center>
                     </c:if>
                     </tbody>
                 </table>

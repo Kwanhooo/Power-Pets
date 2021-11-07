@@ -11,6 +11,11 @@ public class Cart {
         this.amount = amount;
     }
 
+    public Cart(String petsID, int amount) {
+        this.petsID = petsID;
+        this.amount = amount;
+    }
+
     public int getUserID() {
         return userID;
     }
