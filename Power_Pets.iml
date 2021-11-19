@@ -34,5 +34,7 @@
     <orderEntry type="library" name="jstl-1.2" level="project" />
     <orderEntry type="library" name="bootstrap-table" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="popper" level="application" />
+    <orderEntry type="library" name="spacingjs" level="application" />
   </component>
 </module>

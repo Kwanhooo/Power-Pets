@@ -2,8 +2,9 @@
   Author: Kwanho
   Date: 2021/10/8
   Time: 10:33
+  Annotation:废除
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta charset="UTF-8">

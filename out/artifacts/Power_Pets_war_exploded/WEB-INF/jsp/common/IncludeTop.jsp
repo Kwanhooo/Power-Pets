@@ -9,11 +9,20 @@
 
 <head>
     <link rel="StyleSheet" href="static/css/head.css" type="text/css" media="screen"/>
-    <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+    <!-- Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.css">
+
+    <!-- jquery 核心 -->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/spacingjs" defer></script>
 
     <meta name="generator" content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
     <title>PowerPets - 电力宠物</title>
@@ -58,7 +67,7 @@
         </div>
 
         <div class="Title">
-            <p id="title-text">&nbsp;&nbsp;&nbsp;Power-Pets</p>
+            <h1 id="title-text">&nbsp;&nbsp;&nbsp;Power-Pets</h1>
         </div>
         <div class="Search">
             <form action="main" method="post">
@@ -73,40 +82,33 @@
             <div id="QuickLinks-text">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="category?categoryName=DOGS">
-                    <%--                <img src="static/images/sm_fish.gif"/>--%>
                     看狗狗
                 </a>
 
                 <img src="static/images/separator.gif"/>
 
                 <a href="category?categoryName=CATS">
-                    <%--                <img src="static/images/sm_dogs.gif"/>--%>
                     看猫猫
                 </a>
 
                 <img src="static/images/separator.gif"/>
 
                 <a href="category?categoryName=BIRDS">
-                    <%--                <img src="static/images/sm_reptiles.gif"/>--%>
                     看鸟鸟
                 </a>
 
                 <img src="static/images/separator.gif"/>
 
                 <a href="category?categoryName=PIG">
-                    <%--                <img src="static/images/sm_cats.gif"/>--%>
                     看猪猪
                 </a>
 
                 <img src="static/images/separator.gif"/>
 
                 <a href="category?categoryName=OTHERS">
-                    <%--                <img src="static/images/sm_birds.gif"/>--%>
                     看点别的
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-<%--<div id="Content"><stripes:messages/></div>--%>

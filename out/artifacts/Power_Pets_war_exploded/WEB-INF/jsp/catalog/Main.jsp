@@ -5,64 +5,70 @@
   Time: 13:10
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="../common/IncludeTop.jsp" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <link rel="StyleSheet" href="static/css/Main.css" type="text/css" media="screen"/>
-</head>
-<body>
-<div class="wrapper">
-    <div class="mainContent">
-
-        <div class="wordContent">
-
-            <a href="category?categoryName=DOGS"><h3>Dog</h3></a>
-
-            <h6>这里有可爱的小狗勾</h6>
-            <br>
-            <a href="category?categoryName=CATS"><h3>Cat</h3></a>
-
-            <h6>这里有可爱的小猫猫</h6>
-            <br>
-            <a href="category?categoryName=BIRDS"><h3>Bird</h3></a>
-
-            <h6>这里有可爱的小鸟鸟</h6>
-            <br>
-            <a href="category?categoryName=PIG"><h3>Pig</h3></a>
-
-            <h6>这里有可爱的小猪猪</h6>
-            <br>
-            <a href="category?categoryName=OTHERS"><h3>Others</h3></a>
-
-            <h6>我也不知道这里有什么</h6>
-            <br>
+<%@ include file="../common/header.jsp" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<div class="content">
+    <div class="navigator"></div>
+    <div class="category">
+        <div class="dog">
+            <div class="categoryCount">
+                13
+            </div>
+            <div class="categoryTitle">Dogs</div>
+            <div class="categoryDescription">可爱的小狗勾</div>
+            <hr style="width:480px">
+            <a href="category?categoryName=DOGS">
+                <button class="categoryButton" id="dogBtn">看看我</button>
+            </a>
+        </div>
+        <div class="cat">
+            <div class="categoryCount">
+                13
+            </div>
+            <div class="categoryTitle">Cats</div>
+            <div class="categoryDescription">可爱的小猫咪</div>
+            <hr style="width:480px">
+            <a href="category?categoryName=CATS">
+                <button class="categoryButton" id="catBtn">看看我</button>
+            </a>
+        </div>
+        <div class="bird">
+            <div class="categoryCount">
+                13
+            </div>
+            <div class="categoryTitle">Birds</div>
+            <div class="categoryDescription">可爱的鸟鸟</div>
+            <hr style="width:480px">
+            <a href="category?categoryName=BIRDS">
+                <button class="categoryButton" id="birdBtn">看看我</button>
+            </a>
+        </div>
+        <div class="pig">
+            <div class="categoryCount">
+                13
+            </div>
+            <div class="categoryTitle">Pigs</div>
+            <div class="categoryDescription">可爱的小猪猪</div>
+            <hr style="width:480px">
+            <a href="category?categoryName=PIG">
+                <button class="categoryButton" id="pigBtn">看看我</button>
+            </a>
         </div>
 
-        <div class="pictureContentDog">
-            <a href="category?categoryName=DOGS"><img src="static/images/dogLogo.png" height="350px" width="350px"></a>
-        </div>
-
-        <div class="pictureContentCat">
-            <a href="category?categoryName=CATS"><img src="static/images/catLogo.png" height="80px" width="80px"></a>
-        </div>
-
-        <div class="pictureContentBird">
-            <a href="category?categoryName=BIRDS"><img src="static/images/birdLogo.png" height="200px"
-                                                       width="200px"></a>
-        </div>
-
-        <div class="pictureContentPig">
-            <a href="category?categoryName=PIG"><img src="static/images/pigLogo.png" height="80px" width="80px"></a>
-        </div>
-
-        <div class="pictureContentOthers">
-            <a href="category?categoryName=OTHERS"><img src="static/images/othersLogo.png" height="80px"
-                                                        width="80px"></a>
+        <div class="others">
+            <div class="othersTitle">Others</div>
+<%--            <div id="othersCount">--%>
+<%--                13--%>
+<%--            </div>--%>
+            <div class="othersDescription">
+                奇奇怪怪的宠物&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="category?categoryName=OTHERS">
+                    <button class="othersBtn">看看我</button>
+                </a>
+            </div>
         </div>
     </div>
+    <div class="itemDisplay"></div>
 </div>
 
-
-</body>
-</html>
+<%@ include file="../common/bottom.jsp" %>
