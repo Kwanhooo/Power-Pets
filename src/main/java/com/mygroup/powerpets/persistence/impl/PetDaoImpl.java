@@ -16,6 +16,71 @@ import java.util.List;
  * @author Mxs
  */
 public class PetDaoImpl implements PetDao {
+    @Override
+    public List<Pet> selectByCategory(String category) {
+        List<Pet> petList = new ArrayList<>();
+        Connection connection = DBUtils.getConnection();
+        String sql = "SELECT * FROM pets WHERE category =?";
+
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, category);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                String petName = rs.getString("petName");
+                int petId = rs.getInt("petID");
+                BigDecimal price = rs.getBigDecimal("price");
+                int age = rs.getInt("age");
+                String sex = rs.getString("sex");
+                int status = rs.getInt("status");
+                String product = rs.getString("product");
+
+                petList.add(new Pet(petId, petName, price, age, sex, status, category, product));
+            }
+
+            DBUtils.close(connection, pstmt, rs);
+            return petList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<Pet> selectAll() {
+        List<Pet> petList = new ArrayList<>();
+        Connection connection = DBUtils.getConnection();
+        String sql = "SELECT * FROM pets";
+        //
+
+        System.out.println(sql);
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                String petName = rs.getString("petName");
+                int petId = rs.getInt("petID");
+                BigDecimal price = rs.getBigDecimal("price");
+                int age = rs.getInt("age");
+                String sex = rs.getString("sex");
+                int status = rs.getInt("status");
+                String category = rs.getString("category");
+                String product = rs.getString("product");
+
+                petList.add(new Pet(petId, petName, price, age, sex, status, category, product));
+            }
+
+            DBUtils.close(connection, pstmt, rs);
+            return petList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     public Pet selectById(int id) {
         Connection connection = DBUtils.getConnection();
         String sql = "SELECT * FROM pets WHERE petID = ?";

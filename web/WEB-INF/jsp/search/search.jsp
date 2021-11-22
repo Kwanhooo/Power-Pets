@@ -1,4 +1,4 @@
-<%@ include file="../common/IncludeTop.jsp" %>
+<%@ include file="../common/header.jsp" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -16,6 +16,7 @@
 <%
     //out.println(request.getSession().getAttribute("petList"));
 %>
+<div class="content" style="margin-top:50px;">
 <div class="mainContent">
     <div class="petList">
         <table class="table table-striped table-bordered table-hover table-condensed">
@@ -46,6 +47,7 @@
             </tr>
             </c:forEach>
     </div>
+</div>
 </div>
 </body>
 </html>

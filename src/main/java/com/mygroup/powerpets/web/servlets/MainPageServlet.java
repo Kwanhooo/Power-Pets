@@ -9,6 +9,7 @@ import com.mygroup.powerpets.persistence.impl.OngoingOrderDaoImpl;
 import com.mygroup.powerpets.persistence.impl.PetDaoImpl;
 import com.mygroup.powerpets.persistence.impl.UserDaoImpl;
 import com.mygroup.powerpets.service.LogService;
+import com.mygroup.powerpets.service.MyStatisticsService;
 import com.mygroup.powerpets.util.ForwardUtil;
 
 import javax.servlet.ServletException;
@@ -24,7 +25,16 @@ public class MainPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("action") == null) {
-            System.out.println(req.getParameter("petName") + "aaa");
+
+            //返回各种统计信息
+            req.getSession().setAttribute("userAmount", String.valueOf(MyStatisticsService.getUserAmount()));
+            req.getSession().setAttribute("itemsAmount", String.valueOf(MyStatisticsService.getItemsAmount()));
+            req.getSession().setAttribute("dogsAmount", String.valueOf(MyStatisticsService.getDogsAmount()));
+            req.getSession().setAttribute("catsAmount", String.valueOf(MyStatisticsService.getCatsAmount()));
+            req.getSession().setAttribute("birdsAmount", String.valueOf(MyStatisticsService.getBirdsAmount()));
+            req.getSession().setAttribute("pigsAmount", String.valueOf(MyStatisticsService.getPigsAmount()));
+            req.getSession().setAttribute("othersAmount", String.valueOf(MyStatisticsService.getOthersAmount()));
+
             req.getRequestDispatcher(ForwardUtil.MAIN_URL).forward(req, resp);
             return;
         }
@@ -62,6 +72,7 @@ public class MainPageServlet extends HttpServlet {
             List<OngoingOrder> listON = od.selectByuserID(user.getId());
             System.out.println(listON.toString());
             LogService.addOrderGenerated(user.getId(), listON.get(listON.size() - 2).getOrderID());
+
 
             req.getRequestDispatcher(ForwardUtil.MAIN_URL).forward(req, resp);
         }

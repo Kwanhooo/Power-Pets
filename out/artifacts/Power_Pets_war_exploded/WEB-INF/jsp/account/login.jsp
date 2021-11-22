@@ -32,7 +32,7 @@
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-8 column">
-                    <input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="验证码❓">
+                    <input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="验证码❓" required="required">
                 </div>
                     <%
             VerifyCodeUtil.Builder builder = new VerifyCodeUtil.Builder();

@@ -36,7 +36,8 @@
             <div class="Search">
                 <form action="main" method="post">
                     <label>
-                        <input type="text" name="keywords" id="keywords">
+                        <input type="text" name="keywords" id="keywords"
+                               style="font-size:25px;border: 1px solid;border-radius:8px;">
                         <input type="submit" value="🔍" id="searchBtn">
                     </label>
                 </form>
@@ -46,7 +47,7 @@
             <div class="MenuContent">
 
                 <a href="cart?action=view&userID=${sessionScope.user.id}">
-                    🛒
+                    <text style="font-family: 'Segoe UI Emoji'">🛒</text>
                 </a>
                 <img align="middle" src="static/images/separator.gif"/>
                 <c:if test="${sessionScope.user == null}">
@@ -61,7 +62,7 @@
                     <c:if test="${sessionScope.isLogin.equals(\"true\")}">
                         <a href="login?action=sign-out">注销</a>
                         <img align="middle" src="static/images/separator.gif"/>
-                        <a href="account?action=view">我的</a>
+                        <a href="account?action=view">${sessionScope.user.username}</a>
                     </c:if>
                 </c:if> <img align="middle" src="static/images/separator.gif"/>
                 <a href="help.html">?</a>

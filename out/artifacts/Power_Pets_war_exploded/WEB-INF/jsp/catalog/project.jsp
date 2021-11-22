@@ -5,20 +5,60 @@
   Time: 13:10
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="../common/IncludeTop.jsp" %>
+<%@ include file="../common/header.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
 </head>
 <body>
-<div class="mainContent">
-    <c:forEach var="project" items="${sessionScope.projectList}">
-        <h3>
-            <a href="project?projectName=${project.projectName}"><c:out value="${project.projectName}"></c:out></a>
-        </h3>
-        <p class="projectDescription"><c:out value="${project.projectDescription}"></c:out></p>
-        <hr>
-    </c:forEach>
+<div class="content" style="margin-top:50px;">
+    <div class="navigator">
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='main'">
+                <img src="static/images/home.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-dog"
+                    onclick="window.location.href ='category?categoryName=DOGS'">
+                <img src="static/images/dog.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-cat"
+                    onclick="window.location.href ='category?categoryName=CATS'">
+                <img src="static/images/cat.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-bird"
+                    onclick="window.location.href ='category?categoryName=BIRDS'">
+                <img src="static/images/bird.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-pig" onclick="window.location.href ='category?categoryName=PIG'">
+                <img src="static/images/pig.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-others"
+                    onclick="window.location.href ='category?categoryName=OTHERS'">
+                <img src="static/images/others.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+    </div>
+    <div class="mainContent">
+        <div id="projectContent">
+        <c:forEach var="project" items="${sessionScope.projectList}">
+            <h3>
+                <a href="project?projectName=${project.projectName}"><c:out value="${project.projectName}"></c:out></a>
+            </h3>
+            <p class="projectDescription"><c:out value="${project.projectDescription}"></c:out></p>
+            <hr style="width: 1500px;margin-left: 0px">
+        </c:forEach>
+        </div>
+    </div>
 </div>
-</body>
-</html>
+<%@ include file="../common/bottom.jsp" %>

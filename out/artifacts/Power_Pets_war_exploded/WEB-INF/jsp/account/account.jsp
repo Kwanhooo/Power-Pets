@@ -5,12 +5,13 @@
   Time: 20:28
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="../common/IncludeTop.jsp" %>
+<%@ include file="../common/header.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
 </head>
 <body>
+<div class="content" style="margin-top:50px;">
 <div class="mainContent">
     <div class="container">
         <div class="row clearfix">
@@ -127,6 +128,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
