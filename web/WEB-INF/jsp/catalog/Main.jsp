@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.mygroup.powerpets.domain.User" %><%--
   Author: Kwanho
   Date: 2021/11/20
   Time: 10:13
@@ -13,6 +13,18 @@
             </button>
         </div>
 
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='account?action=view'">
+                <img src="static/images/me.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+
+        <div class="navigator-item">
+            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
+                <img src="static/images/cart.png" width="40px" height="40px" style="border-radius: 25px">
+            </button>
+        </div>
+        <hr style="width:40px;margin-top: 20px;">
         <div class="navigator-item">
             <button class="navigator-btn navigator-btn-dog"
                     onclick="window.location.href ='category?categoryName=DOGS'">

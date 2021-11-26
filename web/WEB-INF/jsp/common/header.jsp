@@ -60,7 +60,7 @@
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <c:if test="${sessionScope.isLogin.equals(\"true\")}">
-                        <a href="login?action=sign-out">注销</a>
+                        <a href="login?action=sign-out"><text style="color:var(--danger);">注销</text></a>
                         <img align="middle" src="static/images/separator.gif"/>
                         <a href="account?action=view">${sessionScope.user.username}</a>
                     </c:if>
