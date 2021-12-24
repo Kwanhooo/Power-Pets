@@ -10,10 +10,14 @@
     <title>注册 - 电力宠物</title>
     <!-- Link CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link rel="stylesheet" href="static/css/registerStyle.css">
+
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/css/registerStyle.css">
+
+    <script src="static/js/register.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
@@ -21,28 +25,28 @@
         <h2 class="form-signIn-heading text-center">电力宠物</h2><br>
 
         <label class="hint-label">用户名&nbsp;&nbsp;
-            <input name="username" placeholder="😘"></label><br><br>
+            <input name="username" required="required" id ="input_username" placeholder="😘"></label><br><br>
 
 
         <label class="hint-label">密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="password" name="password" placeholder="🔑"></label><br>
+            <input type="password" required="required" id ="input_password" name="password" placeholder="🔑"></label><br>
 
         <label class="hint-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="password" name="doubleCheckPassword" placeholder="请再次输入密码"></label><br><br>
+            <input type="password" required="required" id ="input_doubleCheckPassword" name="doubleCheckPassword" placeholder="请再次输入密码"></label><br><br>
 
 
         <label class="hint-label">邮箱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input name="email" placeholder="📮"></label><br><br>
+            <input name="email" required="required" id="input_email" placeholder="📮"></label><br><br>
 
         <label class="hint-label">地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input name="address" placeholder="🏠"></label><br><br>
+            <input name="address" required="required" id="input_address" placeholder="🏠"></label><br><br>
 
         <label class="hint-label">性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="sex" value="male">👨Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="sex" value="female">👧Female</label><br>
 
         <label class="hint-label">年龄&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input name="age" placeholder="👦->👴"></label>
+            <input name="age" required="required" id="input_age" placeholder="👦->👴"></label>
 
         <br>
 
