@@ -8,8 +8,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <link rel="StyleSheet" href="static/css/jpetstore.css" type="text/css" media="screen"/>
-
     <meta name="generator"
           content="HTML Tidy for Linux/x86 (vers 1st November 2002), see www.w3.org"/>
     <title>PowerPets - 电力宠物</title>
@@ -81,5 +79,3 @@
         <a href="category?categoryId=BIRDS"><img src="static/images/sm_birds.gif"/></a>
     </div>
 </div>
-
-<%--<div id="Content"><stripes:messages/></div>--%>

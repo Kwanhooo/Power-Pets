@@ -33,6 +33,10 @@ public class AccountServlet extends HttpServlet {
             return;
         }
         if (req.getParameter("action").equals("view")) {
+            if (user == null) {
+                resp.sendRedirect("login");
+                return;
+            }
             req.getRequestDispatcher(ForwardUtil.ACCOUNT_URL).forward(req, resp);
         }
         if (req.getParameter("action").equals("view-order")) {

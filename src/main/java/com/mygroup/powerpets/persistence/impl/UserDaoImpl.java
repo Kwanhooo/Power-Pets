@@ -15,6 +15,37 @@ import java.util.List;
 
 
 public class UserDaoImpl implements UserDao {
+    @Override
+    public List<User> selectAll() {
+        List<User> userList = new ArrayList<>();
+        Connection connection = DBUtils.getConnection();
+        String sql = "SELECT * FROM user";
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String address = rs.getString("address");
+                BigDecimal balance = rs.getBigDecimal("balance");
+                String sex = rs.getString("sex");
+                int age = rs.getInt("age");
+                String email = rs.getString("email");
+                userList.add(new User(id, username, password, address, balance, sex, age, email));
+            }
+            DBUtils.close(connection, pstmt, rs);
+
+            System.out.println("SIZE ========= "+userList.size());
+            return userList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     /**
      * @param id 用户id
      * @return User引用

@@ -66,7 +66,7 @@ public class UserRegisterServlet extends HttpServlet {
         String sex = req.getParameter("sex");
 
 
-        User newUser = new User(username, password, address, balance, sex, age, email);
+        User newUser = new User(username, password, address,balance, sex, age, email);
         AccountService.registerUser(newUser, req, resp);
     }
 }

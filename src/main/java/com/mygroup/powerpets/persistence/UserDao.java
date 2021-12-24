@@ -10,6 +10,8 @@ import java.util.List;
  * @author Kwanho
  */
 public interface UserDao {
+    List<User> selectAll();
+
     User selectById(int id);
 
     List<User> selectByName(String username);

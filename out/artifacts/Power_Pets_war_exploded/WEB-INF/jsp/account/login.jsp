@@ -27,12 +27,12 @@
 <div class="wrapper">
     <form class="form-signIn" action="login" method="post">
         <h2 class="form-signIn-heading text-center">电力宠物</h2>
-        <input type="text" class="form-control" name="email" id="email" placeholder="邮箱📮">
-        <input type="password" class="form-control" name="password" id="password" placeholder="密码🔑">
+        <input type="text" class="form-control" name="email" id="email" placeholder="邮箱📮" required="required">
+        <input type="password" class="form-control" name="password" id="password" placeholder="密码🔑" required="required">
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-8 column">
-                    <input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="验证码❓">
+                    <input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="验证码❓" required="required">
                 </div>
                     <%
             VerifyCodeUtil.Builder builder = new VerifyCodeUtil.Builder();
