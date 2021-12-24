@@ -3,7 +3,7 @@
 ## 电力宠物
 
 ```
-MySQL连接：120.78.235.195:3306/powerpets
+MySQL连接：mysql://120.78.235.195:3306/powerpets
 
 java version "1.8.0_301"
 Java(TM) SE Runtime Environment (build 1.8.0_301-b09)
