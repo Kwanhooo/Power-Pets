@@ -4,6 +4,7 @@ import com.mygroup.powerpets.domain.Cart;
 import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.persistence.impl.CartDaoImpl;
 import com.mygroup.powerpets.persistence.impl.UserDaoImpl;
+import com.mygroup.powerpets.util.ValidationUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -88,5 +89,28 @@ public class AccountService {
 
         //直接登录
         loginVerifying(newUser.getEmail(), newUser.getPassword(), req, resp);
+    }
+
+
+    /**
+     * @param username ajax传来的用户名
+     * @return 传入的用户名是否可用
+     * @author Kwanho
+     */
+    public static boolean validateUsername(String username) {
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        return userDaoImpl.selectByName(username).size() == 0;
+    }
+
+    /**
+     * @param email 验证这个email是否是可用的（是不是已经注册过了）
+     * @return 可用 => true
+     * @author Kwanho
+     */
+    public static boolean validateEmail(String email) {
+        if (!ValidationUtil.emailValidator(email))
+            return false;
+        UserDaoImpl userDaoImpl = new UserDaoImpl();
+        return userDaoImpl.selectByEmail(email) == null;
     }
 }

@@ -26,7 +26,7 @@
 
 body {
     background: #f3f6fd;
-    font-family: "Segoe UI Emoji";
+    /*font-family: var(--font-family-sans-serif);*/
 }
 
 a {

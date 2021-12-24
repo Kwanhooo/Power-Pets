@@ -32,7 +32,8 @@
         </div>
 
         <div class="navigator-item">
-            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
+            <button class="navigator-btn navigator-btn-home"
+                    onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
                 <img src="static/images/cart.png" width="40px" height="40px" style="border-radius: 25px">
             </button>
         </div>
@@ -67,37 +68,37 @@
             </button>
         </div>
     </div>
-<div class="mainContent">
-    <div class="petList">
-        <table class="table table-striped table-bordered table-hover table-condensed">
-            <tr>
-                <th>ID</th>
-                <th>名字</th>
-                <th>年龄</th>
-                <th>性别</th>
-                <th>种类</th>
-                <th>品种</th>
-                <th>价格</th>
-                <th>操作</th>
-            </tr>
-            <c:forEach var="pet" items="${sessionScope.resultList}">
-            <tr>
-                <td>${pet.petID}</td>
-                <td>${pet.petName}</td>
-                <td>${pet.age}</td>
-                <td>${pet.sex}</td>
-                <td>${pet.category}</td>
-                <td>${pet.product}</td>
-                <td>${pet.price}</td>
-                <td>
-                    <a href="cart?action=add-to-cart&petID=${pet.petID}&projectName=${pet.product}&userID=${sessionScope.user.id}">
-                        <button type="button" class="btn btn-primary btn-lg btn-block">加入购物车</button>
-                    </a>
-                </td>
-            </tr>
-            </c:forEach>
+    <div class="mainContent">
+        <div class="petList">
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <tr>
+                    <th>ID</th>
+                    <th>名字</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>种类</th>
+                    <th>品种</th>
+                    <th>价格</th>
+                    <th>操作</th>
+                </tr>
+                <c:forEach var="pet" items="${sessionScope.resultList}">
+                <tr>
+                    <td>${pet.petID}</td>
+                    <td>${pet.petName}</td>
+                    <td>${pet.age}</td>
+                    <td>${pet.sex}</td>
+                    <td>${pet.category}</td>
+                    <td>${pet.product}</td>
+                    <td>${pet.price}</td>
+                    <td>
+                        <a href="cart?action=add-to-cart&petID=${pet.petID}&projectName=${pet.product}&userID=${sessionScope.user.id}">
+                            <button type="button" class="btn btn-primary btn-lg btn-block">加入购物车</button>
+                        </a>
+                    </td>
+                </tr>
+                </c:forEach>
+        </div>
     </div>
-</div>
 </div>
 </body>
 </html>

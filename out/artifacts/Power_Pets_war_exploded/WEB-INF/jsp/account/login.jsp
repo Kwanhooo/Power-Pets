@@ -78,7 +78,7 @@
                     out.println("<br><font color=\"red\">" + session.getAttribute("login_error_msg") + "</font>");
                 }
             %>
-                    <br><a href="register">没有账号？注册一个</a>
+                    <br><a href="register?action=register">没有账号？注册一个</a>
     </form>
 
 </div>

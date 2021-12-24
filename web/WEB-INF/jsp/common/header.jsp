@@ -15,6 +15,10 @@
     <!-- CSS -->
     <link rel="stylesheet" href="static/css/powerpets.css"/>
 
+    <%-- Javascript --%>
+    <%-- jqurey --%>
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -45,9 +49,8 @@
         </div>
         <div class="topBar-right">
             <div class="MenuContent">
-
                 <a href="cart?action=view&userID=${sessionScope.user.id}">
-                    <text style="font-family: 'Segoe UI Emoji'">🛒</text>
+                    <text style="font-family: var(--font-family-sans-serif);">🛒</text>
                 </a>
                 <img align="middle" src="static/images/separator.gif"/>
                 <c:if test="${sessionScope.user == null}">
@@ -60,7 +63,9 @@
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <c:if test="${sessionScope.isLogin.equals(\"true\")}">
-                        <a href="login?action=sign-out"><text style="color:var(--danger);">注销</text></a>
+                        <a href="login?action=sign-out">
+                            <text style="color:var(--danger);">注销</text>
+                        </a>
                         <img align="middle" src="static/images/separator.gif"/>
                         <a href="account?action=view">${sessionScope.user.username}</a>
                     </c:if>

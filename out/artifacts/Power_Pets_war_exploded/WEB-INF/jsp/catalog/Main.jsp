@@ -1,4 +1,5 @@
-<%@ page import="com.mygroup.powerpets.domain.User" %><%--
+<%@ page import="com.mygroup.powerpets.domain.User" %>
+<%@ page import="com.mygroup.powerpets.persistence.impl.ProjectDaoImpl" %><%--
   Author: Kwanho
   Date: 2021/11/20
   Time: 10:13
@@ -9,7 +10,7 @@
     <div class="navigator">
         <div class="navigator-item">
             <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='main'">
-                <img src="static/images/home.png" width="40px" height="40px" style="border-radius: 25px">
+                <img src="static/images/home.png" width="40px" height="40px" style="border-radius: 25px" alt="home">
             </button>
         </div>
 
@@ -20,7 +21,8 @@
         </div>
 
         <div class="navigator-item">
-            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
+            <button class="navigator-btn navigator-btn-home"
+                    onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
                 <img src="static/images/cart.png" width="40px" height="40px" style="border-radius: 25px">
             </button>
         </div>
@@ -144,7 +146,10 @@
                 <img src="static/images/hashiqi.png" width="100px" height="100px" style="border-radius: 50px">
                 <a href="project?projectName=哈士奇"><p style="font-weight: bold; font-size:23px;color:#007BFF">哈士奇</p></a>
                 <p>
-                    哈士奇性格多变，有的极端胆小，也有的极端暴力，进入人类社会和家庭的哈士奇，都已经没有了这种极端的性格，比较温顺，是一种流行于全球的宠物犬。
+                    <%
+                        ProjectDaoImpl projectDaoImpl = new ProjectDaoImpl();
+                        out.println(projectDaoImpl.selectByProject("哈士奇").getProjectDescription());
+                    %>
                 </p>
             </div>
             <hr style="width: 400px">
@@ -153,7 +158,9 @@
                 <img src="static/images/yingduan.png" width="100px" height="100px" style="border-radius: 50px">
                 <a href="project?projectName=英短"><p style="font-weight: bold; font-size:23px;color:#007BFF">英短</p></a>
                 <p>
-                    体形圆胖，四肢粗短发达，毛短而密，头大脸圆，温柔平静，对人友善，极易饲养。大而圆的眼睛根据被毛不同而呈现各种颜色。
+                    <%
+                        out.println(projectDaoImpl.selectByProject("英短").getProjectDescription());
+                    %>
                 </p>
             </div>
             <hr style="width: 400px">

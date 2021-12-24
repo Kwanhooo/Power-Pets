@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="bottomBar">
     <center>
-        <h3 style="font-size:20px;margin-left: 90px;">Made with <text style="font-family: 'Segoe UI Emoji'">❤</text> in 长沙
-            <text style="color: #007BFF;font-style: italic;font-weight: normal;font-size:15px;">28 °11′49〃N,112
-                °58′42〃E
+        <h3 style="font-size:20px;margin-left: 90px;">Made with ❤ in 长沙
+            <text style="color: #007BFF;font-style: italic;font-weight: normal;font-size:15px;">
+                28 °11′49〃N,112 °58′42〃E
             </text>
         </h3>
     </center>
