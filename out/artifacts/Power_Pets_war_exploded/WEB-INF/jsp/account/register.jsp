@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/registerStyle.css">
 
+    <%-- Link Javascript --%>
     <script type="text/javascript" src="static/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <script src="static/js/register.js"></script>
 
 </head>
 <body>
@@ -25,14 +25,15 @@
         <h2 class="form-signIn-heading text-center">电力宠物</h2><br>
 
         <label class="hint-label">用户名&nbsp;&nbsp;
-            <input name="username" required="required" id ="input_username" placeholder="😘"></label><br><br>
+            <input name="username" required="required" id="input_username" placeholder="😘"></label><br><br>
 
 
         <label class="hint-label">密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="password" required="required" id ="input_password" name="password" placeholder="🔑"></label><br>
+            <input type="password" required="required" id="input_password" name="password" placeholder="🔑"></label><br>
 
         <label class="hint-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="password" required="required" id ="input_doubleCheckPassword" name="doubleCheckPassword" placeholder="请再次输入密码"></label><br><br>
+            <input type="password" required="required" id="input_doubleCheckPassword" name="doubleCheckPassword"
+                   placeholder="请再次输入密码"></label><br><br>
 
 
         <label class="hint-label">邮箱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

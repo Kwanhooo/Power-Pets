@@ -18,21 +18,25 @@
     <title>登录 - 电力宠物</title>
     <!-- Link CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="static/css/loginStyle.css">
+
+    <%-- Link Javascript --%>
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
     <form class="form-signIn" action="login" method="post">
         <h2 class="form-signIn-heading text-center">电力宠物</h2>
         <input type="text" class="form-control" name="email" id="email" placeholder="邮箱📮" required="required">
-        <input type="password" class="form-control" name="password" id="password" placeholder="密码🔑" required="required">
+        <input type="password" class="form-control" name="password" id="password" placeholder="密码🔑"
+               required="required">
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-8 column">
-                    <input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="验证码❓" required="required">
+                    <input type="text" class="form-control" name="verifyCode" id="verifyCode" placeholder="验证码❓"
+                           required="required">
                 </div>
                     <%
             VerifyCodeUtil.Builder builder = new VerifyCodeUtil.Builder();

@@ -24,7 +24,8 @@
         </div>
 
         <div class="navigator-item">
-            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
+            <button class="navigator-btn navigator-btn-home"
+                    onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
                 <img src="static/images/cart.png" width="40px" height="40px" style="border-radius: 25px">
             </button>
         </div>
