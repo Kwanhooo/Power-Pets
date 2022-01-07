@@ -40,11 +40,9 @@ public class MainPageServlet extends HttpServlet {
         }
         if (req.getParameter("action").equals("newMain")) {
             int petId = Integer.parseInt(req.getParameter("petId"));
-            // System.out.println(petId+"woshi");
             PetDaoImpl petDaoImpl = new PetDaoImpl();
             Pet pet = petDaoImpl.selectById(petId);
             if (pet != null) {
-                //  System.out.println("nijaoya5555");
                 pet.setStatus(0);
                 petDaoImpl.updateUser(pet);
             }
@@ -70,7 +68,6 @@ public class MainPageServlet extends HttpServlet {
             od.insertOngoingOrder(on);
 
             List<OngoingOrder> listON = od.selectByuserID(user.getId());
-            System.out.println(listON.toString());
             LogService.addOrderGenerated(user.getId(), listON.get(listON.size() - 2).getOrderID());
 
 

@@ -18,7 +18,6 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String petID1 = req.getParameter("orderPetID");
-        System.out.println(petID1 + "66666");
         // String userID1 = req.getParameter("userID");
         if (petID1 != null)
             req.getSession().setAttribute("petToBuyInOrder", petID1);
@@ -32,8 +31,6 @@ public class OrderServlet extends HttpServlet {
 
         String petID = (String) req.getSession().getAttribute("petToBuyInOrder");
         String userID = String.valueOf(((User) (req.getSession().getAttribute("user"))).getId());
-        System.out.println(petID);
-        System.out.println(userID);
 
 
         UserDaoImpl userDaoImpl = new UserDaoImpl();
@@ -46,8 +43,6 @@ public class OrderServlet extends HttpServlet {
         else {
             req.getSession().setAttribute("orderCanBuy", 1);
         }
-
-        System.out.println(i);
 
         req.getSession().setAttribute("orderUserName", user.getUsername());
         req.getSession().setAttribute("orderUserAddress", user.getAddress());

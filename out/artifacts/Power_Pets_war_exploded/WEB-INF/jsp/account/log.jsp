@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -26,7 +28,8 @@
         </div>
 
         <div class="navigator-item">
-            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
+            <button class="navigator-btn navigator-btn-home"
+                    onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
                 <img src="static/images/cart.png" width="40px" height="40px" style="border-radius: 25px">
             </button>
         </div>
@@ -61,48 +64,49 @@
             </button>
         </div>
     </div>
-<div class="mainContent">
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <div class="page-header">
-                    <h1 class="text-primary">
-                        日志 <small>&nbsp;&nbsp;-&nbsp;你的历史！<strong><i>${sessionScope.user.username}</i></strong></small>
-                    </h1>
+    <div class="mainContent">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="page-header">
+                        <h1 class="text-primary">
+                            日志
+                            <small>&nbsp;&nbsp;-&nbsp;你的历史！<strong><i>${sessionScope.user.username}</i></strong></small>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr style="font-size:35px">
+                            <th>
+                                日期
+                            </th>
+                            <th>
+                                活动
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="log" items="${sessionScope.logList}">
+
+                            <tr class="info" style="font-size:30px">
+                                <td>
+                                        ${log.split("@")[0]}
+                                </td>
+                                <td>
+                                        ${log.split("@")[1]}
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr style="font-size:35px">
-                        <th>
-                            日期
-                        </th>
-                        <th>
-                            活动
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="log" items="${sessionScope.logList}">
-
-                        <tr class="info" style="font-size:30px">
-                            <td>
-                                    ${log.split("@")[0]}
-                            </td>
-                            <td>
-                                    ${log.split("@")[1]}
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
-</div>
 </div>
 </body>
 </body>

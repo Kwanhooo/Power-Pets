@@ -4,6 +4,7 @@ import com.mygroup.powerpets.domain.OngoingOrder;
 import com.mygroup.powerpets.domain.User;
 import com.mygroup.powerpets.persistence.impl.OngoingOrderDaoImpl;
 import com.mygroup.powerpets.persistence.impl.UserDaoImpl;
+import com.mygroup.powerpets.service.AccountService;
 import com.mygroup.powerpets.service.LogService;
 import com.mygroup.powerpets.util.ForwardUtil;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -29,7 +31,8 @@ public class AccountServlet extends HttpServlet {
         if (req.getParameter("action").equals("sign-out")) {
             req.getSession().removeAttribute("user");
             req.getSession().setAttribute("isLogin", "false");
-            req.getRequestDispatcher(ForwardUtil.MAIN_URL).forward(req, resp);
+//            req.getRequestDispatcher(ForwardUtil.MAIN_URL).forward(req, resp);
+            resp.sendRedirect("login");
             return;
         }
         if (req.getParameter("action").equals("view")) {
@@ -50,6 +53,24 @@ public class AccountServlet extends HttpServlet {
             req.getSession().setAttribute("logList", browsedLogList);
             req.getRequestDispatcher(ForwardUtil.LOG_URL).forward(req, resp);
         }
+        if (req.getParameter("action").equals("validate")) {
+            //account?action=validate&type=验证的类型&value=验证的内容
+            String type = req.getParameter("type");
+            String value = req.getParameter("value");
+            resp.setContentType("text/plainText");
+            PrintWriter out = resp.getWriter();
+            if (type.equals("username")) {
+                if (AccountService.validateUsername(value)) out.print("available");
+                else out.print("occupied");
+            } else if (type.equals("email")) {
+                if (AccountService.validateEmail(value)) out.print("available");
+                else out.print("occupied");
+            } else {
+                out.print("error");
+            }
+            out.flush();
+        }
+
     }
 
     @Override

@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -26,7 +28,8 @@
         </div>
 
         <div class="navigator-item">
-            <button class="navigator-btn navigator-btn-home" onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
+            <button class="navigator-btn navigator-btn-home"
+                    onclick="window.location.href ='cart?action=view&userID=${sessionScope.user.id}'">
                 <img src="static/images/cart.png" width="40px" height="40px" style="border-radius: 25px">
             </button>
         </div>
@@ -63,13 +66,14 @@
     </div>
     <div class="mainContent">
         <div id="projectContent">
-        <c:forEach var="project" items="${sessionScope.projectList}">
-            <h3>
-                <a href="project?projectName=${project.projectName}"><c:out value="${project.projectName}"></c:out></a>
-            </h3>
-            <p class="projectDescription"><c:out value="${project.projectDescription}"></c:out></p>
-            <hr style="width: 1500px;margin-left: 0px">
-        </c:forEach>
+            <c:forEach var="project" items="${sessionScope.projectList}">
+                <h3>
+                    <a href="project?projectName=${project.projectName}"><c:out
+                            value="${project.projectName}"></c:out></a>
+                </h3>
+                <p class="projectDescription"><c:out value="${project.projectDescription}"></c:out></p>
+                <hr style="width: 1500px;margin-left: 0px">
+            </c:forEach>
         </div>
     </div>
 </div>

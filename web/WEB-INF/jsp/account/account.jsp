@@ -9,6 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -62,126 +64,128 @@
             </button>
         </div>
     </div>
+
     <div class="mainContent">
         <div class="accountContent">
-            <div class="row clearfix">
-                <div class="col-md-8 column">
-                    <form action="account" method="post">
-                        <h3 class="text-info">
-                            <a href="account?action=view-order">我的订单</a>
-                        </h3>
-                        <hr style="width: 1600px;margin-left: 0">
-                        <h3 class="text-info">
-                            <a href="account?action=log">我的历史</a>
-                        </h3>
-                        <hr style="width: 1600px;margin-left: 0">
-                        <h3 class="text-info">
-                            账号设定⚙
-                        </h3>
-                        <p>
-                            <strong>用户名 😊</strong>
-                            <label>
-                                <input type="text" name="username" value="${sessionScope.user.username}">
-                            </label>
-                        </p>
-                        <p>
-                            <strong>密码 🔑&nbsp;&nbsp;&nbsp;&nbsp;</strong>
-                            <label>
-                                <input type="text" name="password" value="${sessionScope.user.password}">
-                            </label>
-                        </p>
-                        <p>
-                            <strong>性别 </strong>
-                            <%
-                                User user = (User) session.getAttribute("user");
-                                if (user.getSex().equals("male")) {
-                                    System.out.println("sb");
-                                    out.println("<input type=\"radio\" name=\"sex\" value=\"male\" checked=\"checked\">\uD83D\uDC68Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
-                                    out.println("<input type=\"radio\" name=\"sex\" value=\"female\">\uD83D\uDC67Female");
-                                } else {
-                                    out.println("<input type=\"radio\" name=\"sex\" value=\"male\">\uD83D\uDC68Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
-                                    out.println("<input type=\"radio\" name=\"sex\" value=\"female\" checked=\"checked\">\uD83D\uDC67Female");
-                                }
-                            %>
-                        </p>
-                        <hr style="width: 1600px;margin-left: 0">
-                        <h3>
-                            收货地址📫
-                        </h3>
+            <div class="container">
+                <form action="account" method="post">
+                    <div class="row clearfix">
+                        <div class="col-md-8 column">
+                            <h3 style="font-family: var(--font-family-sans-serif);">
+                                账号设定 ⚙
+                            </h3>
+                            <br>
+                            <p>
+                                <strong>用户名 😊&nbsp;</strong>
+                                <label>
+                                    <input type="text" name="username" value="${sessionScope.user.username}">
+                                </label>
+                            </p>
+                            <p>
+                                <strong>密码 🔑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                                <label>
+                                    <input type="text" name="password" value="${sessionScope.user.password}">
+                                </label>
+                            </p>
+                            <p>
+                                <strong>性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong>
+                                <%
+                                    User user = (User) session.getAttribute("user");
+                                    if (user.getSex().equals("male")) {
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\" checked=\"checked\">\uD83D\uDC68Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\">\uD83D\uDC67Female");
+                                    } else {
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\">\uD83D\uDC68Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\" checked=\"checked\">\uD83D\uDC67Female");
+                                    }
+                                %>
+                            </p>
+                        </div>
+                        <div class="col-md-4 column">
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    <br>
+                                    <h3 style="font-family: var(--font-family-sans-serif);">
+                                        <a href="account?action=view-order">我的订单</a>
+                                    </h3>
+                                </div>
+                            </div>
+                            <hr style="width: 160px;margin-left: 0">
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    <h3 style="font-family: var(--font-family-sans-serif);">
+                                        <a href="account?action=log">我的历史</a>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="width: 1000px;margin-left: 0">
+                    <div class="row clearfix">
+                        <div class="col-md-8 column">
+                            <h3 style="font-family: var(--font-family-sans-serif);">
+                                收货地址📫
+                            </h3>
+                            <br>
                             <%
                                 String consignee = user.getUsername();
                                 String city = "您还没有补全信息呢";
                                 String address = user.getAddress();
                                 String contact = "您还没有补全信息呢";
-                           String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("#");
-                            if(addressStr.length == 4) {
-                                 consignee = addressStr[0];
-                                 city = addressStr[1];
-                                 address = addressStr[2];
-                                 contact = addressStr[3];
-                            }
-                            out.print("收货人&nbsp;&nbsp;&nbsp;&nbsp;");out.print("<input type=\"text\" name=\"consignee\" value=\"");out.print(consignee);out.print("\"><br><br>");
-                            out.print("省市地址 ");out.print("<input type=\"text\" name=\"city\" value=\"");out.print(city);out.print("\"><br><br>");
-                            out.print("详细地址 ");out.print("<input type=\"text\" name=\"address\" value=\"");out.print(address);out.print("\"><br><br>");
-                            out.print("联系电话 ");out.print("<input type=\"text\" name=\"contact\" value=\"");out.print(contact);out.print("\"><br><br>");
-                        %>
-                        <hr style="width: 1600px;margin-left: 0">
-                        <h3>
-                            联系方式📱
-                        </h3>
+                                String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("#");
+                                if (addressStr.length == 4) {
+                                    consignee = addressStr[0];
+                                    city = addressStr[1];
+                                    address = addressStr[2];
+                                    contact = addressStr[3];
+                                }
+                                out.print("<strong>收货人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>");
+                                out.print("<input type=\"text\" name=\"consignee\" value=\"");
+                                out.print(consignee);
+                                out.print("\"><br><br>");
+                                out.print("<strong>省市地址 &nbsp;&nbsp;&nbsp;&nbsp;</strong>");
+                                out.print("<input type=\"text\" name=\"city\" value=\"");
+                                out.print(city);
+                                out.print("\"><br><br>");
+                                out.print("<strong>详细地址 &nbsp;&nbsp;&nbsp;&nbsp;</strong>");
+                                out.print("<input type=\"text\" name=\"address\" value=\"");
+                                out.print(address);
+                                out.print("\"><br><br>");
+                                out.print("<strong>联系电话 &nbsp;&nbsp;&nbsp;&nbsp;</strong>");
+                                out.print("<input type=\"text\" name=\"contact\" value=\"");
+                                out.print(contact);
+                                out.print("\"><br><br>");
+                            %>
+                        </div>
+                        <div class="col-md-4 column">
+                            <h3 style="font-family: var(--font-family-sans-serif);">
+                                联系方式📱
+                            </h3>
+                            <br>
                             <%
-                        out.println("<p>\n" +
-"                        <strong>手机</strong> <input type=\"text\" name=\"phone\" value=\""+contact+"\">\n" +
-"                    </p>");
-                    %>
+                                out.println("<p>\n" +
+                                        "                        <strong>手机&nbsp;&nbsp;&nbsp;&nbsp;</strong> <input type=\"text\" name=\"phone\" value=\"" + contact + "\">\n" +
+                                        "                    </p>");
+                            %>
 
-                        <p>
-                            <strong>邮箱</strong>&nbsp;<input type="text" name="email" value="${sessionScope.user.email}">
-                        </p>
-                        <center>
-                            <button class="btn btn-lg btn-danger btn-block">确认修改</button>
-                        </center>
-                </div>
-                <%--                <div class="col-md-4 column">--%>
-                <%--                    <h3>--%>
-                <%--                        常见问题❓--%>
-                <%--                    </h3><br>--%>
-                <%--                    <h4>--%>
-                <%--                        帐号与密码--%>
-                <%--                    </h4>--%>
-                <%--                    <ol>--%>
-                <%--                        <li>--%>
-                <%--                            为什么要进行二次验证？--%>
-                <%--                        </li>--%>
-                <%--                        <li>--%>
-                <%--                            二次验证的手机/邮箱不可用怎么办？--%>
-                <%--                        </li>--%>
-                <%--                        <li>--%>
-                <%--                            忘记密码怎么办？--%>
-                <%--                        </li>--%>
-                <%--                        <li>--%>
-                <%--                            手机丢失，手机号不可用怎么办？--%>
-                <%--                        </li>--%>
-                <%--                        <li>--%>
-                <%--                            我要绑定的手机号提示我已经注册了，怎么办？--%>
-                <%--                        </li>--%>
-                <%--                    </ol>--%>
-                <%--                    <h4>--%>
-                <%--                        其他问题--%>
-                <%--                    </h4>--%>
-                <%--                    <ol>--%>
-                <%--                        <li>--%>
-                <%--                            网站出现了问题？问题反馈--%>
-                <%--                        </li>--%>
-                <%--                        <li>--%>
-                <%--                            帐号如何注销？帐号注销--%>
-                <%--                        </li>--%>
-                <%--                    </ol>--%>
-                <%--                    </form>--%>
-                <%--                </div>--%>
+                            <p>
+                                <strong>邮箱&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;<input type="text" name="email"
+                                                                                        value="${sessionScope.user.email}">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12 column">
+                            <button class="btn btn-lg btn-danger btn-block" style="max-width: 90%;margin-top: 10px;">
+                                确认修改
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+<%@ include file="../common/bottom.jsp" %>
