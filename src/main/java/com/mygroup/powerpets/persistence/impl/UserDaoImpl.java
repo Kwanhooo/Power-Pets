@@ -37,7 +37,6 @@ public class UserDaoImpl implements UserDao {
             }
             DBUtils.close(connection, pstmt, rs);
 
-            System.out.println("SIZE ========= " + userList.size());
             return userList;
         } catch (SQLException e) {
             e.printStackTrace();

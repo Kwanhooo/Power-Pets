@@ -7,6 +7,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -75,7 +77,7 @@
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <c:if test="${sessionScope.cartList.size() != 0 && sessionScope.cartList != null}">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover">
                         <thead>
                         <tr style="font-size:35px">
                             <th>
@@ -127,5 +129,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+<%@ include file="../common/bottom.jsp" %>

@@ -9,7 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">

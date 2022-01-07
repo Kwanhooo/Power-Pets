@@ -39,8 +39,8 @@
         <label class="hint-label">邮箱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input name="email" required="required" id="input_email" placeholder="📮"></label><br><br>
 
-        <label class="hint-label">地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input name="address" required="required" id="input_address" placeholder="🏠"></label><br><br>
+        <label class="hint-label" style="float:top;">地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <textarea name="address" required="required" id="input_address" placeholder="🏠"></textarea></label><br><br>
 
         <label class="hint-label">性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="sex" value="male">👨Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
 
 import static com.mygroup.powerpets.util.ForwardUtil.REGISTER_URL;
@@ -24,27 +23,7 @@ public class UserRegisterServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        if (action.equals("register"))
-            req.getRequestDispatcher(REGISTER_URL).forward(req, resp);
-        else {//register?action=validate&type=验证的类型&value=验证的内容
-            if (action.equals("validate")) {
-                String type = req.getParameter("type");
-                String value = req.getParameter("value");
-                resp.setContentType("text/plainText");
-                PrintWriter out = resp.getWriter();
-                if (type.equals("username")) {
-                    if (AccountService.validateUsername(value)) out.print("available");
-                    else out.print("occupied");
-                } else if (type.equals("email")) {
-                    if (AccountService.validateEmail(value)) out.print("available");
-                    else out.print("occupied");
-                } else {
-                    out.print("error");
-                }
-                out.flush();
-            }
-        }
+        req.getRequestDispatcher(REGISTER_URL).forward(req, resp);
     }
 
     /**

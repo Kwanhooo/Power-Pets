@@ -30,14 +30,13 @@ public class CartServlet extends HttpServlet {
         String action = req.getParameter("action");
 
         //若用户未登录 先进行登录
-
-        String userID = req.getParameter("userID");
-        if (userID.trim().equals("") || userID == null) {
-            System.out.println("FUCKYOU");
+        if (req.getSession().getAttribute("user") == null) {
             resp.sendRedirect("login");
             return;
             //req.getRequestDispatcher(ForwardUtil.LOGIN_URL).forward(req, resp);
         }
+
+        String userID = String.valueOf(((User) (req.getSession().getAttribute("user"))).getId());
 
         //请求操作 加入购物车
         //更新购物车数据库
@@ -109,14 +108,6 @@ public class CartServlet extends HttpServlet {
                 }
             }
             req.getSession().setAttribute("cartList", cartList);
-            req.getRequestDispatcher(ForwardUtil.CART_URL).forward(req, resp);
-        }
-
-        //请求的操作是加入购物车
-
-
-        //请求展示购物车内容
-        if (action.equals("view")) {
             req.getRequestDispatcher(ForwardUtil.CART_URL).forward(req, resp);
         }
     }

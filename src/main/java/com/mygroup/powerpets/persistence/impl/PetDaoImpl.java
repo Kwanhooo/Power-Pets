@@ -52,9 +52,7 @@ public class PetDaoImpl implements PetDao {
         List<Pet> petList = new ArrayList<>();
         Connection connection = DBUtils.getConnection();
         String sql = "SELECT * FROM pets";
-        //
 
-        System.out.println(sql);
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
@@ -116,9 +114,7 @@ public class PetDaoImpl implements PetDao {
         List<Pet> petList = new ArrayList<>();
         Connection connection = DBUtils.getConnection();
         String sql = "SELECT * FROM pets WHERE petName =?";
-        //
 
-        System.out.println(sql);
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, name);
