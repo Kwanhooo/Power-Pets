@@ -76,9 +76,9 @@
                            String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("#");
                             User user = (User) session.getAttribute("user");
                            String consignee = user.getUsername();
-                                String city = "您还没有补全信息呢";
+                                String city = "<text style=\"color: red;\">您还没有补全信息呢</text>";
                                 String address = user.getAddress();
-                                String contact = "您还没有补全信息呢";
+                                String contact = "<text style=\"color: red;\">您还没有补全信息呢</text>";
                             if(addressStr.length == 4) {
                                  consignee = addressStr[0];
                                  city = addressStr[1];

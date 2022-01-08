@@ -27,6 +27,32 @@ public class AccountServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        if (req.getParameter("action").equals("validate")) {
+            //account?action=validate&type=验证的类型&value=验证的内容
+            String type = req.getParameter("type");
+            String value = req.getParameter("value");
+            resp.setContentType("text/plainText");
+            PrintWriter out = resp.getWriter();
+            if (type.equals("username")) {
+                if (AccountService.validateUsername(value)) out.print("available");
+                else out.print("occupied");
+            } else if (type.equals("email")) {
+                if (AccountService.validateEmail(value)) out.print("available");
+                else out.print("occupied");
+            } else {
+                out.print("error");
+            }
+            out.flush();
+            return;
+        }
+        //若用户未登录 先进行登录
+        if (req.getSession().getAttribute("user") == null) {
+            resp.sendRedirect("login");
+            return;
+            //req.getRequestDispatcher(ForwardUtil.LOGIN_URL).forward(req, resp);
+        }
+
         User user = (User) req.getSession().getAttribute("user");
         if (req.getParameter("action").equals("sign-out")) {
             req.getSession().removeAttribute("user");
@@ -53,23 +79,7 @@ public class AccountServlet extends HttpServlet {
             req.getSession().setAttribute("logList", browsedLogList);
             req.getRequestDispatcher(ForwardUtil.LOG_URL).forward(req, resp);
         }
-        if (req.getParameter("action").equals("validate")) {
-            //account?action=validate&type=验证的类型&value=验证的内容
-            String type = req.getParameter("type");
-            String value = req.getParameter("value");
-            resp.setContentType("text/plainText");
-            PrintWriter out = resp.getWriter();
-            if (type.equals("username")) {
-                if (AccountService.validateUsername(value)) out.print("available");
-                else out.print("occupied");
-            } else if (type.equals("email")) {
-                if (AccountService.validateEmail(value)) out.print("available");
-                else out.print("occupied");
-            } else {
-                out.print("error");
-            }
-            out.flush();
-        }
+
 
     }
 

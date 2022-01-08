@@ -17,6 +17,13 @@ import java.nio.charset.StandardCharsets;
 public class OrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //若用户未登录 先进行登录
+        if (req.getSession().getAttribute("user") == null) {
+            resp.sendRedirect("login");
+            return;
+            //req.getRequestDispatcher(ForwardUtil.LOGIN_URL).forward(req, resp);
+        }
+
         String petID1 = req.getParameter("orderPetID");
         // String userID1 = req.getParameter("userID");
         if (petID1 != null)
