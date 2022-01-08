@@ -90,6 +90,12 @@
                                 售价
                             </th>
                             <th>
+                                数量
+                            </th>
+                            <th>
+                                总价
+                            </th>
+                            <th>
                                 操作
                             </th>
                         </tr>
@@ -105,6 +111,28 @@
                                 </td>
                                 <td>
                                         ${petToBuy.price}
+                                </td>
+                                <td>
+                                    <div class="container input-counter" style="width: 200px;">
+                                        <div class="row clearfix">
+                                            <div class="col-md-3 column">
+                                                <button type="button" class="btn-add btn btn-primary">
+                                                    <text class="fa fa-plus">+</text>
+                                                </button>
+                                            </div>
+                                            <div class="col-md-6 column">
+                                                <input style="width:60px;" type="text" class="form-control counter" data-min="10" data-max="20" data-default="15">
+                                            </div>
+                                            <div class="col-md-3 column">
+                                                <button type="button" class="btn-subtract btn btn-primary">
+                                                    <text class="fa fa-minus">-</text>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+
                                 </td>
                                 <td>
                                     <a href="order?action=checkout&orderPetID=${petToBuy.petID}&userID=${sessionScope.user.id}">
@@ -129,4 +157,5 @@
         </div>
     </div>
 </div>
+
 <%@ include file="../common/bottom.jsp" %>

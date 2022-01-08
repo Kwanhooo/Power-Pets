@@ -29,8 +29,9 @@
     <div class="topBar">
         <div class="topBar-left">
             <div class="Logo">
-                <a href="main" style="margin-top:42px;"><img width="70px" height="70px" align="middle" src="static/images/PageLogo.png"
-                                    alt="logo"/></a>
+                <a href="main" style="margin-top:42px;"><img width="70px" height="70px" align="middle"
+                                                             src="static/images/PageLogo.png"
+                                                             alt="logo"/></a>
             </div>
 
             <div class="Title">

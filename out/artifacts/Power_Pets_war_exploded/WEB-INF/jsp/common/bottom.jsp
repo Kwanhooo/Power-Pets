@@ -15,9 +15,11 @@
         </h3>
     </center>
     <center>
-        <p style="font-family: var(--font-family-sans-serif);font-size:15px;font-style: italic;margin-top: 5px">2022 &copy; Copyright&nbsp;Power-Pets&nbsp;电力宠物&nbsp;&nbsp;&nbsp;
-            <text style="font-family: var(--font-family-sans-serif);color: #007BFF;font-style: italic;font-weight: bold;">@Mxs&nbsp;&nbsp;&nbsp;@Zjl&nbsp;&nbsp;&nbsp;@Kwanho
-        </text>
+        <p style="font-family: var(--font-family-sans-serif);font-size:15px;font-style: italic;margin-top: 5px">2022
+            &copy; Copyright&nbsp;Power-Pets&nbsp;电力宠物&nbsp;&nbsp;&nbsp;
+            <text style="font-family: var(--font-family-sans-serif);color: #007BFF;font-style: italic;font-weight: bold;">
+                @Mxs&nbsp;&nbsp;&nbsp;@Zjl&nbsp;&nbsp;&nbsp;@Kwanho
+            </text>
         </p>
     </center>
 </div>
