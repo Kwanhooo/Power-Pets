@@ -81,9 +81,9 @@ public class AccountService {
         //为对应用户添加其购物车数据库信息
         CartDaoImpl cartDaoImpl = new CartDaoImpl();
         //System.out.println("In service "+newUser.getUsername());
-        User user = userDaoImpl.selectByEmail(newUser.getEmail());
-        int userID = user.getId();
-        Cart cart = new Cart(userID, "", 0);
+        User fuckUser = userDaoImpl.selectByEmail(newUser.getEmail());
+        int FUCKUSERID = fuckUser.getId();
+        Cart cart = new Cart(FUCKUSERID, "", 0);
         cartDaoImpl.insertCart(cart);
 
 

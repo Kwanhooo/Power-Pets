@@ -15,6 +15,7 @@ import java.util.List;
 public class OngoingOrderDaoImpl implements OngoingOrderDao {
     public void insertOngoingOrder(OngoingOrder order) {
 
+        System.out.println(order.toString());
         Connection connection = DBUtils.getConnection();
         String sql = "INSERT INTO ongoingorder (userID,petID,deliveryID,status,cost) values (?,?,?,?,?)";
         try {

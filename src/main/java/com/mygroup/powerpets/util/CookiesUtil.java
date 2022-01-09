@@ -11,6 +11,9 @@ public class CookiesUtil {
         String email = request.getParameter("email");                    //获取用户名
         String password = request.getParameter("password");        //获取密码
         String rememberMe = request.getParameter("rememberMe");     //获取是否打钩
+        System.out.println("rememberMe::");
+        System.out.println("password = " + password);
+        System.out.println("email = " + email);
         String codeName = "";
         try {
             codeName = URLEncoder.encode(email, "UTF-8");      //对输入的中文进行编码，防止乱码出现

@@ -45,7 +45,7 @@
             String verifyCode = (String) o[0];
             BufferedImage verifyCodeImage = (BufferedImage) o[1];
 
-            System.out.println("verifyCode => "+verifyCode);
+            System.out.println(verifyCode);
             session.setAttribute("verifyCode",verifyCode);
 
             int size = 200;
@@ -82,7 +82,7 @@
                     out.println("<br><font color=\"red\">" + session.getAttribute("login_error_msg") + "</font>");
                 }
             %>
-                    <br><a href="register">没有账号？注册一个</a>
+                    <br><a href="register?action=register">没有账号？注册一个</a>
     </form>
 
 </div>
@@ -167,5 +167,6 @@
         spring: true
     })
 </script>
+
 </body>
 </html>

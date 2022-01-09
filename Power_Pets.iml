@@ -29,13 +29,12 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="mysql-connector-java-8.0.26" level="project" />
     <orderEntry type="library" name="Tomcat 8.5.71" level="application_server_libraries" />
-    <orderEntry type="library" name="jstl-1.2" level="project" />
-    <orderEntry type="library" name="bootstrap-table" level="application" />
-    <orderEntry type="library" name="jquery" level="application" />
-    <orderEntry type="library" name="popper" level="application" />
-    <orderEntry type="library" name="spacingjs" level="application" />
-    <orderEntry type="library" name="jquery.input-counter" level="application" />
+    <orderEntry type="library" exported="" name="bootstrap-table" level="application" />
+    <orderEntry type="library" exported="" name="jquery" level="application" />
+    <orderEntry type="library" exported="" name="popper" level="application" />
+    <orderEntry type="library" exported="" name="spacingjs" level="application" />
+    <orderEntry type="library" name="jsp-api" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>

@@ -9,8 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -76,9 +75,9 @@
                            String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("#");
                             User user = (User) session.getAttribute("user");
                            String consignee = user.getUsername();
-                                String city = "<text style=\"color: red;\">您还没有补全信息呢</text>";
+                                String city = "您还没有补全信息呢";
                                 String address = user.getAddress();
-                                String contact = "<text style=\"color: red;\">您还没有补全信息呢</text>";
+                                String contact = "您还没有补全信息呢";
                             if(addressStr.length == 4) {
                                  consignee = addressStr[0];
                                  city = addressStr[1];

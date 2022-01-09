@@ -9,8 +9,7 @@
 <%@ include file="../common/header.jsp" %>
 <html>
 <head>
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -84,9 +83,9 @@
                                 String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("#");
 
                                 String consignee = addressStr[0];
-
+                                System.out.println(consignee);
                                 String city = addressStr[1];
-
+                                System.out.println(city);
                                 String address = addressStr[2];
                                 String contact = addressStr[3];
                                 out.print("收货人&nbsp;&nbsp;&nbsp;&nbsp;");

@@ -5,5 +5,6 @@ public class Test {
     public static void main(String[] args) {
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         User user = userDaoImpl.selectById(10000);
+        System.out.println(user.getAddress());
     }
 }

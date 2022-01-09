@@ -5,6 +5,26 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
 <html lang="zh-CN">
+<script>
+    var xhr;
+    function checkUsername(){
+        var  username= document.getElementById("input_username").value;
+        xhr=new XMLHttpRequest();
+        xhr.onreadystatechange=fun1;
+        xhr.open("get","UsernameExit?username="+username,true);
+        xhr.send(null);
+    }
+    function fun1()
+    {
+        if(xhr.status===200)
+            if(xhr.readyState===4)
+            {
+                var responseInfo=xhr.responseText;
+
+                document.getElementById("usernametips").innerText=responseInfo;
+            }
+    }
+</script>
 <head>
     <meta charset="utf-8">
     <title>注册 - 电力宠物</title>
@@ -21,12 +41,13 @@
 </head>
 <body>
 <div class="wrapper">
-    <form class="form-signIn" action="register" method="post">
+    < class="form-signIn" action="register" method="post">
         <h2 class="form-signIn-heading text-center">电力宠物</h2><br>
 
         <label class="hint-label">用户名&nbsp;&nbsp;
-            <input name="username" required="required" id="input_username" placeholder="😘"></label><br><br>
-
+            <input name="username" required="required" id="input_username" placeholder="😘" onblur="checkUsername()"></label>
+        <span id="usernametips"></span>
+        <br><br>
 
         <label class="hint-label">密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="password" required="required" id="input_password" name="password" placeholder="🔑"></label><br>
@@ -39,8 +60,8 @@
         <label class="hint-label">邮箱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input name="email" required="required" id="input_email" placeholder="📮"></label><br><br>
 
-        <label class="hint-label" style="float:top;">地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <textarea name="address" required="required" id="input_address" placeholder="🏠"></textarea></label><br><br>
+        <label class="hint-label">地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input name="address" required="required" id="input_address" placeholder="🏠"></label><br><br>
 
         <label class="hint-label">性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="sex" value="male">👨Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

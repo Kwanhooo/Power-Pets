@@ -44,8 +44,7 @@ public class UserLoginServlet extends HttpServlet {
         boolean isLoginSuccess = AccountService.loginVerifying(req.getParameter("email"), req.getParameter("password"), req, resp);
         if (!isLoginSuccess)//登录失败
         {
-//            req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
-            resp.sendRedirect("main");
+            req.getRequestDispatcher(LOGIN_URL).forward(req, resp);
             return;
         }
         CookiesUtil.remember(req, resp);

@@ -12,10 +12,10 @@
 <head>
 
 
-    <!-- CSS引入 -->
+    <!-- CSS -->
     <link rel="stylesheet" href="static/css/powerpets.css"/>
 
-    <%-- Javascript引入 --%>
+    <%-- Javascript --%>
     <%-- jqurey --%>
     <script type="text/javascript" src="static/js/jquery.min.js"></script>
 
@@ -29,19 +29,19 @@
     <div class="topBar">
         <div class="topBar-left">
             <div class="Logo">
-                <a href="main" style="margin-top:42px;"><img width="70px" height="70px" align="middle"
-                                                             src="static/images/PageLogo.png"
-                                                             alt="logo"/></a>
+                <a href="main"><img width="70px" height="70px" align="middle" src="static/images/PageLogo.png"
+                                    alt="logo"/></a>
             </div>
 
             <div class="Title">
-                <h1 id="title-text" style="font-size:32px;font-weight:bold;margin-top:27px;">Power-Pets</h1>
+                <h1 id="title-text">Power-Pets</h1>
             </div>
 
             <div class="Search">
                 <form action="main" method="post">
                     <label>
-                        <input type="text" name="keywords" class="keywords" placeholder="在此处搜索您想要的宠物……">
+                        <input type="text" name="keywords" id="keywords"
+                               style="font-size:25px;border: 1px solid;border-radius:8px;">
                         <input type="submit" value="🔍" id="searchBtn">
                     </label>
                 </form>
@@ -63,7 +63,7 @@
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <c:if test="${sessionScope.isLogin.equals(\"true\")}">
-                        <a href="account?action=sign-out">
+                        <a href="login?action=sign-out">
                             <text style="color:var(--danger);">注销</text>
                         </a>
                         <img align="middle" src="static/images/separator.gif"/>
