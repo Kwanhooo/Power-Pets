@@ -1,5 +1,8 @@
 package com.mygroup.powerpets.web.servlets;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import com.mygroup.powerpets.domain.Cart;
 import com.mygroup.powerpets.domain.Pet;
 import com.mygroup.powerpets.domain.User;
@@ -7,16 +10,14 @@ import com.mygroup.powerpets.persistence.impl.CartDaoImpl;
 import com.mygroup.powerpets.persistence.impl.PetDaoImpl;
 import com.mygroup.powerpets.service.LogService;
 import com.mygroup.powerpets.util.ForwardUtil;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,18 +33,19 @@ public class CartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
 
-        //若用户未登录 先进行登录
-        if (req.getSession().getAttribute("user") == null) {
-            resp.sendRedirect("login");
-            return;
-            //req.getRequestDispatcher(ForwardUtil.LOGIN_URL).forward(req, resp);
-        }
-
-        String userID = String.valueOf(((User) (req.getSession().getAttribute("user"))).getId());
-
         //请求操作 加入购物车
         //更新购物车数据库
         if (action.equals("add-to-cart")) {
+            if (req.getSession().getAttribute("user") == null) {
+                resp.setContentType("text/plain");
+                PrintWriter writer =  resp.getWriter();
+                writer.print("loginCertificateNeeded");
+                writer.flush();
+                writer.close();
+            }
+
+            String userID = String.valueOf(((User) (req.getSession().getAttribute("user"))).getId());
+
             String petID = req.getParameter("petID");
 
             //日志
@@ -74,40 +76,56 @@ public class CartServlet extends HttpServlet {
                 cartdaoimpl.updateCart(nowCart);
             }
 
-            resp.sendRedirect("project?projectName=" + URLEncoder.encode(req.getParameter("projectName"), "UTF-8"));
-            return;
+            resp.setContentType("text/plain");
+            PrintWriter writer =  resp.getWriter();
+            writer.print("UPDATE SUCCESS");
+            writer.flush();
+            writer.close();
         }
+
+        //若用户未登录 先进行登录
+        if (req.getSession().getAttribute("user") == null) {
+            resp.sendRedirect("login");
+            return;
+            //req.getRequestDispatcher(ForwardUtil.LOGIN_URL).forward(req, resp);
+        }
+
+        String userID = String.valueOf(((User) (req.getSession().getAttribute("user"))).getId());
 
         //如果是删除操作
         if (action.equals("delete-from-cart")) {
+            System.out.println(req.getQueryString());
             //先更改数据库
             List<Pet> cartList = new ArrayList<>();
-            String petID = req.getParameter("petID");
+            String petIDToDelete = req.getParameter("petID");
 
             //日志
             User user = (User) req.getSession().getAttribute("user");
             if (user != null)
-                LogService.addCartAction(user.getId(), "DELETE", Integer.parseInt(petID));
+                LogService.addCartAction(user.getId(), "DELETE", Integer.parseInt(petIDToDelete));
 
             CartDaoImpl cartdaoimpl = new CartDaoImpl();
-            PetDaoImpl petdaoimpl = new PetDaoImpl();
-            Cart nowCart = cartdaoimpl.selectByuserID(Integer.parseInt(userID));
-            String petString = nowCart.getPetsID();
-            String[] getPetsID = petString.split("#");
-            StringBuilder nowPetsID = new StringBuilder();
-            for (String getPetID : getPetsID) {
-                if (!getPetID.equals(petID)) {
-                    nowPetsID.append(getPetID).append("#");
-                    Pet pet = petdaoimpl.selectById(Integer.parseInt(petID));
-                    cartList.add(pet);
+
+            Cart oldCart = cartdaoimpl.selectByuserID(Integer.parseInt(userID));
+            String oldPetsString = oldCart.getPetsID();
+
+            String[] oldPetsArray = oldPetsString.split("#");
+            int deleteAmount = 0;
+            StringBuilder newPetsString = new StringBuilder();
+            for (String s : oldPetsArray) {
+                if ((s.split("@"))[0].equals(petIDToDelete))
+                    deleteAmount = Integer.parseInt((s.split("@"))[1]);
+                else {
+                    newPetsString.append(s).append("#");
                 }
             }
-
-            Cart newCart = new Cart(Integer.parseInt(userID), nowPetsID.toString(), nowCart.getAmount() - 1);
-            cartdaoimpl.updateCart(newCart);
-            //再更改显示界面
-            req.getSession().setAttribute("cartList", cartList);
-            req.getRequestDispatcher(ForwardUtil.CART_URL).forward(req, resp);
+            assert user != null;
+            cartdaoimpl.updateCart(new Cart(user.getId(),newPetsString.toString(),oldCart.getAmount()-deleteAmount));
+            resp.setContentType("text/plain");
+            PrintWriter writer =  resp.getWriter();
+            writer.print("UPDATE SUCCESS");
+            writer.flush();
+            writer.close();
         }
 
         //请求操作 浏览购物车
@@ -133,18 +151,19 @@ public class CartServlet extends HttpServlet {
         }
 
         if (action.equals("update")) {
-            String JSON_str = req.getParameter("data");
-            final BASE64Encoder encoder = new BASE64Encoder();
-            final BASE64Decoder decoder = new BASE64Decoder();
-
-//            final byte[] textByte = JSON_str.getBytes(StandardCharsets.UTF_8);//编码
-
-            System.out.println(new String(decoder.decodeBuffer(JSON_str), StandardCharsets.UTF_8));
-
-
-//            URLEncoder.encode(JSON_str, "UTF-8");
-//            System.out.println("JSON:::::::::::::::" + URLEncoder.encode(JSON_str, "UTF-8"));
+            String newCartData = req.getParameter("data");
+            String[] petsString = newCartData.split("#");
+            int count = 0;
+            for (String s : petsString) {
+                count += Integer.parseInt((s.split("@"))[1]);
+            }
+            CartDaoImpl cartdaoimpl = new CartDaoImpl();
+            cartdaoimpl.updateCart(new Cart(Integer.parseInt(userID),newCartData,count));
+            resp.setContentType("text/plain");
+            PrintWriter writer =  resp.getWriter();
+            writer.print("UPDATE SUCCESS");
+            writer.flush();
+            writer.close();
         }
     }
-
 }

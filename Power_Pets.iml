@@ -38,5 +38,6 @@
     <orderEntry type="library" name="spacingjs" level="application" />
     <orderEntry type="library" name="jquery.input-counter" level="application" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="fastjson-1.2.79" level="project" />
   </component>
 </module>

@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.mask {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.prompt_box {
+    width: 400px;
+    height: 200px;
+    background: #ffffff;
+    border-radius: 6px;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    margin-left: -200px;
+    overflow: hidden;
+}
+
+.prompt_box .prompt_title {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    border-bottom: 2px solid #1a9ebf;
+    background: #e6e6e6;
+    position: relative;
+}
+
+.prompt_box .prompt_title h3 {
+    font-size: 16px;
+    color: #333333;
+    margin-top: 0;
+}
+
+.prompt_box .prompt_cancel {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.prompt_box .prompt_cont {
+    position: relative;
+    height: 158px;
+}
+
+.prompt_box .prompt_cont .prompt_text {
+    line-height: 140px;
+    padding-left: 30px;
+}
+
+.prompt_box .prompt_cont .prompt_sure {
+    position: absolute;
+    top: 130px;
+    right: 20px;
+    bottom: 34px;
+    width: 50px;
+    height: 30px;
+    background: #007BFF;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 26px;
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
