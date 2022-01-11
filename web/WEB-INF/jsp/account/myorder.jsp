@@ -1,6 +1,6 @@
 <%@ page import="com.mygroup.powerpets.persistence.impl.PetDaoImpl" %><%--
   Created by IntelliJ IDEA.
-  User: 11957
+  User: Kwanho
   Date: 2021/11/7
   Time: 16:47
   To change this template use File | Settings | File Templates.
@@ -9,7 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Title</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -64,7 +65,7 @@
         </div>
     </div>
     <div class="mainContent">
-        <div class="container">
+        <div id="my-order-content">
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <div class="page-header">
@@ -78,7 +79,8 @@
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <c:if test="${sessionScope.ongoingOrderList.size() != 0 && sessionScope.ongoingOrderList != null}">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-hover table-striped"
+                           style="margin: 0 auto;max-width:1600px;text-align: center;">
                         <thead>
                         <tr style="font-size:35px">
                             <th>
@@ -98,16 +100,16 @@
                         <tbody>
                         <c:forEach var="order" items="${sessionScope.ongoingOrderList}">
                             <tr class="info" style="font-size:30px">
-                                <td>
+                                <td style="padding:30px 0;max-height: 130px;">
                                         ${order.orderID}
                                 </td>
-                                <td>
+                                <td style="padding:30px 0;max-height: 130px;">
                                         ${order.petID}
                                 </td>
-                                <td>
+                                <td style="padding:30px 0;max-height: 130px;">
                                         ${order.cost}
                                 </td>
-                                <td>
+                                <td style="padding:30px 0;max-height: 130px;">
                                         ${order.deliveryID}
                                 </td>
                             </tr>

@@ -1,8 +1,5 @@
 package com.mygroup.powerpets.web.servlets;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-
 import com.mygroup.powerpets.domain.Cart;
 import com.mygroup.powerpets.domain.Pet;
 import com.mygroup.powerpets.domain.User;
@@ -17,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +34,7 @@ public class CartServlet extends HttpServlet {
         if (action.equals("add-to-cart")) {
             if (req.getSession().getAttribute("user") == null) {
                 resp.setContentType("text/plain");
-                PrintWriter writer =  resp.getWriter();
+                PrintWriter writer = resp.getWriter();
                 writer.print("loginCertificateNeeded");
                 writer.flush();
                 writer.close();
@@ -67,17 +63,15 @@ public class CartServlet extends HttpServlet {
                     newPetsString.append(old_petID).append("@").append(old_amount).append("#");
                 }
                 nowCart.setPetsID(String.valueOf(newPetsString));
-                nowCart.setAmount(nowCart.getAmount() + 1);
-                cartdaoimpl.updateCart(nowCart);
             } else {
                 String newPetsString = petsString + petID + "@1#";
                 nowCart.setPetsID(newPetsString);
-                nowCart.setAmount(nowCart.getAmount() + 1);
-                cartdaoimpl.updateCart(nowCart);
             }
+            nowCart.setAmount(nowCart.getAmount() + 1);
+            cartdaoimpl.updateCart(nowCart);
 
             resp.setContentType("text/plain");
-            PrintWriter writer =  resp.getWriter();
+            PrintWriter writer = resp.getWriter();
             writer.print("UPDATE SUCCESS");
             writer.flush();
             writer.close();
@@ -120,9 +114,9 @@ public class CartServlet extends HttpServlet {
                 }
             }
             assert user != null;
-            cartdaoimpl.updateCart(new Cart(user.getId(),newPetsString.toString(),oldCart.getAmount()-deleteAmount));
+            cartdaoimpl.updateCart(new Cart(user.getId(), newPetsString.toString(), oldCart.getAmount() - deleteAmount));
             resp.setContentType("text/plain");
-            PrintWriter writer =  resp.getWriter();
+            PrintWriter writer = resp.getWriter();
             writer.print("UPDATE SUCCESS");
             writer.flush();
             writer.close();
@@ -147,6 +141,7 @@ public class CartServlet extends HttpServlet {
                 }
             }
             req.getSession().setAttribute("cartList", cartList);
+            req.getSession().setAttribute("cartAmount", nowCart.getAmount());
             req.getRequestDispatcher(ForwardUtil.CART_URL).forward(req, resp);
         }
 
@@ -158,9 +153,9 @@ public class CartServlet extends HttpServlet {
                 count += Integer.parseInt((s.split("@"))[1]);
             }
             CartDaoImpl cartdaoimpl = new CartDaoImpl();
-            cartdaoimpl.updateCart(new Cart(Integer.parseInt(userID),newCartData,count));
+            cartdaoimpl.updateCart(new Cart(Integer.parseInt(userID), newCartData, count));
             resp.setContentType("text/plain");
-            PrintWriter writer =  resp.getWriter();
+            PrintWriter writer = resp.getWriter();
             writer.print("UPDATE SUCCESS");
             writer.flush();
             writer.close();

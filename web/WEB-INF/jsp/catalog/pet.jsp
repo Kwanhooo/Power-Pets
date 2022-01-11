@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.mygroup.powerpets.domain.Pet" %><%--
   Created by IntelliJ IDEA.
-  User: 11957
+  User: Kwanho
   Date: 2021/11/1
   Time: 16:36
   To change this template use File | Settings | File Templates.
@@ -68,8 +68,17 @@
     </div>
     <div class="mainContent">
         <div id="petContent">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="page-header">
+                        <h1 class="text-primary">
+                            挑选爱宠
+                            <small>&nbsp;&nbsp;-&nbsp;选出你最爱的电力宠物！<strong><i>${sessionScope.user.username}</i></strong></small>
+                        </h1>
+                    </div>
+                </div>
+            </div>
             <div class="mask hide">
-
                 <div class="prompt_box">
                     <div class="prompt_cont">
                         <p class="prompt_text" style="font-size: 21px;">成功加入购物车啦，再去挑点别的吧！</p>
@@ -117,11 +126,9 @@
                         <td style="padding:30px 0;max-height: 130px;">${pet.sex}</td>
                         <td style="padding:30px 0;max-height: 130px;">${pet.price}</td>
                         <td style="padding:30px 0;max-height: 130px;">
-                                <%--                            <a href="cart?action=add-to-cart&petID=${pet.petID}&projectName=${pet.product}&userID=${sessionScope.user.id}">--%>
                             <button type="button" class="add-to-cart-btn btn btn-primary btn-lg btn-block">
                                 加入购物车
                             </button>
-                                <%--                            </a>--%>
                         </td>
                     </tr>
                     </c:if>
@@ -130,7 +137,7 @@
                 </table>
             </c:if>
             <c:if test="${sessionScope.isEmpty == \"true\"}">
-                <center><h3>这些都被抢光啦，晚点再来吧！！!</h3></center>
+                <center><h3 class="text-danger">这些都被抢光啦，晚点再来吧！！!</h3></center>
             </c:if>
         </div>
     </div>

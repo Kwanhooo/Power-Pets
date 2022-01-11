@@ -68,10 +68,11 @@
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <div class="page-header">
-                        <h1 class="text-primary">
+                        <h1 class="text-primary" style="max-width: 600px;">
                             购物车
                             <small>&nbsp;&nbsp;-&nbsp;在此下订吧！<strong><i>${sessionScope.user.username}</i></strong></small>
                         </h1>
+                        <span style="right: 50px;"><i>共 <strong>${sessionScope.cartAmount}</strong> 件</i></span>
                     </div>
                 </div>
             </div>
