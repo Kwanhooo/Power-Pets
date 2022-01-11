@@ -17,7 +17,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <script>
+        var xhr;
 
+        function checkUsername() {
+            var username = document.getElementById("input_username").value;
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = fun1;
+            xhr.open("get", "UsernameExist?username=" + username, true);
+            xhr.send(null);
+        }
+
+        function fun1() {
+            if (xhr.status === 200)
+                if (xhr.readyState === 4) {
+                    var responseInfo = xhr.responseText;
+
+                    if (responseInfo === 'No Exist') {
+                        responseInfo = '您的用户名可用！'
+                        document.getElementById("username_tips").innerText = responseInfo;
+                        document.getElementById("username_tips").setAttribute("style", "color:green;font-size:15px;margin-left:35px;")
+                        document.getElementById("input_username").setAttribute("style", "color:green;");
+                    } else if (responseInfo === 'Exist') {
+                        responseInfo = '被人占了呢，换一个吧！'
+                        document.getElementById("username_tips").innerText = responseInfo;
+                        document.getElementById("username_tips").setAttribute("style", "color:#FC5531;font-size:15px;margin-left:35px;")
+                        document.getElementById("input_username").setAttribute("style", "color:#FC5531;")
+                    }
+                    document.getElementById("username_tips").innerText = responseInfo;
+
+                }
+        }
+    </script>
 </head>
 <body>
 <div class="wrapper">
@@ -25,7 +56,8 @@
         <h2 class="form-signIn-heading text-center">电力宠物</h2><br>
 
         <label class="hint-label">用户名&nbsp;&nbsp;
-            <input name="username" required="required" id="input_username" placeholder="😘"></label><br><br>
+            <input name="username" required="required" id="input_username" placeholder="😘" onchange="checkUsername()"></label><br>
+        <center><span id="username_tips"></span><br></center>
 
 
         <label class="hint-label">密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

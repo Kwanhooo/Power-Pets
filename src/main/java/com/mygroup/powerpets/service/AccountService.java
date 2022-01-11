@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.mygroup.powerpets.util.ForwardUtil.MAIN_URL;
 import static com.mygroup.powerpets.util.ForwardUtil.REGISTER_URL;
 
 public class AccountService {
@@ -38,12 +37,13 @@ public class AccountService {
             req.setAttribute("login_error_msg", null);
             req.getSession().setAttribute("login_error_msg", null);
 
-            //转发至登陆成功页
+            //登陆成功跳转到主页面
             try {
-                req.getRequestDispatcher(MAIN_URL).forward(req, resp);
-            } catch (ServletException | IOException e) {
+                resp.sendRedirect("main");
+            } catch (IOException e) {
                 e.printStackTrace();
             }
+
 
             return true;
         } else {

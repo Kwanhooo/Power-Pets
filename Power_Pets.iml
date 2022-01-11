@@ -37,5 +37,6 @@
     <orderEntry type="library" name="popper" level="application" />
     <orderEntry type="library" name="spacingjs" level="application" />
     <orderEntry type="library" name="jquery.input-counter" level="application" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

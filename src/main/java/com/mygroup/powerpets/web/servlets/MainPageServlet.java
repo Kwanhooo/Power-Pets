@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +73,56 @@ public class MainPageServlet extends HttpServlet {
 
 
             req.getRequestDispatcher(ForwardUtil.MAIN_URL).forward(req, resp);
+        }
+
+
+        if (req.getParameter("action").equals("searchAction")) {
+            System.out.println("6666");
+
+            String keywords = req.getParameter("searchText");
+
+            PetDaoImpl petDaoImpl = new PetDaoImpl();
+            String petList = "";//将要返回的结果
+
+            List<Pet> petListSelectByProjectName = petDaoImpl.vagueSelectByProjectName(keywords);
+            List<Pet> petListSelectByName = petDaoImpl.vagueSelectByName(keywords);
+
+            boolean notHaveLetter = true;
+            //先判断是否为纯数字序列
+            for (int i = 0; i < keywords.length(); i++) {
+                if (keywords.charAt(i) > '9' || keywords.charAt(i) < '0') {
+                    notHaveLetter = false;
+                    break;
+                }
+            }
+
+            //如果是id
+            if (notHaveLetter) {
+                if (petDaoImpl.selectById(Integer.parseInt(keywords)) != null) {
+                    petList += petDaoImpl.selectById(Integer.parseInt(keywords)).getPetName() + "*";
+                }
+            }
+            //如果是名字
+            if (petListSelectByName.size() > 0) {
+                for (int i = 0; i <= petListSelectByName.size() - 1; i++) {
+                    // petList.add(petListSelectByName.get(i));
+                    petList += petListSelectByName.get(i).getPetName() + "*";
+                }
+            }
+            //如果是品种
+            if (petListSelectByProjectName.size() > 0)
+                for (int i = 0; i <= petListSelectByProjectName.size() - 1; i++) {
+                    // petList.add(petListSelectByProjectName.get(i));
+                    petList += petListSelectByProjectName.get(i).getProduct() + "*";
+                }
+
+            resp.setContentType("text/plain");
+            PrintWriter out = resp.getWriter();
+            // out.println(petList.get(0));
+            out.print(petList);
+
+            out.flush();
+            out.close();
         }
     }
 
