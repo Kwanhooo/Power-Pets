@@ -15,9 +15,9 @@ public class Pet {
      *  0 is sold
      */
     private int status;
-
     private String category;
     private String product;
+    private int amount;
 
     public Pet(int petID, String petName, BigDecimal price, int age, String sex, int status, String catagory, String product) {
         this.petID = petID;
@@ -28,6 +28,18 @@ public class Pet {
         this.status = status;
         this.category = catagory;
         this.product = product;
+    }
+
+    public Pet(int petID, String petName, BigDecimal price, int age, String sex, int status, String category, String product, int amount) {
+        this.petID = petID;
+        this.petName = petName;
+        this.price = price;
+        this.age = age;
+        this.sex = sex;
+        this.status = status;
+        this.category = category;
+        this.product = product;
+        this.amount = amount;
     }
 
     public int getPetID() {
@@ -94,5 +106,11 @@ public class Pet {
         this.product = product;
     }
 
+    public int getAmount() {
+        return amount;
+    }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }

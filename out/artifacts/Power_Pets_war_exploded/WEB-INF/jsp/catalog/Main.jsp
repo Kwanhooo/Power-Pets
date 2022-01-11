@@ -12,6 +12,9 @@
   Date: 2021/11/19
   Time: 14:38
 --%>
+<%--
+  shitmountain
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -28,6 +31,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>电力宠物 - PowerPets</title>
+    <script>
+        console.log("111");
+        var xhr;
+
+        function search(word) {
+            console.log(word);
+            var searchText = word;
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = process;
+            xhr.open("GET", "main?action=searchAction&searchText=" + searchText, true);
+            xhr.send(null);
+        }
+
+        function process() {
+            console.log("113");
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    console.log("114");
+
+                    var $deleteli = $('li');
+                    $deleteli.remove();
+
+                    var msg = xhr.responseText;
+                    console.log("msg" + msg);
+                    console.log(msg.length);
+                    if (msg.length < 1) {
+                        console.log("xiaoyu1")
+                        var $newul = $('<li>没有这样的宠物呢</li>');
+                        $('ul').append($newul);
+                    } else {
+                        console.log("dayuyi")
+                        var pro = "";
+                        for (i = 0; i <= msg.length - 1; i++) {
+                            if (msg.charAt(i) == '*') {
+                                var $newul = $('<li>' + pro + '</li>');
+                                $('ul').append($newul);
+                                pro = "";
+                            } else {
+                                pro = pro + msg.charAt(i);
+                            }
+                        }
+
+                        $("#Search-Automatic-Completion").show();
+
+                        $(function () {
+                            var $listItems = $('li');
+                            var $ulItem = $('ul');
+                            $listItems.on('click', function () {
+                                console.log("haha");
+                                document.getElementById("search-keywords").value = this.innerHTML;
+                                // $ulItem.hidden;
+                                $("#Search-Automatic-Completion").hide();
+                            });
+                        });
+                    }
+                }
+            }
+        }
+
+        $(function () {
+            var $listItems = $('li');
+            $listItems.on('click', function () {
+                console.log("haha");
+                document.getElementById("search-keywords").value = this.innerHTML;
+            });
+        });
+    </script>
 </head>
 <body>
 <div class="wrapper">
@@ -45,10 +115,15 @@
             <div class="Search">
                 <form action="main" method="post">
                     <label>
-                        <input type="text" name="keywords" class="keywords" placeholder="在此处搜索您想要的宠物……">
+                        <input type="text" name="keywords" id="search-keywords" value="" class="keywords"
+                               placeholder="在此处搜索您想要的宠物……" onkeyup="search(this.value);">
                         <input type="submit" value="🔍" id="searchBtn">
                     </label>
                 </form>
+            </div>
+            <div class="Search-Automatic-Completion" id="Search-Automatic-Completion">
+                <ul class="ul" id="ul">
+                </ul>
             </div>
         </div>
         <div class="topBar-right">
@@ -244,4 +319,4 @@
         </div>
     </div>
 
-<%@ include file="../common/bottom.jsp" %>
+    <%@ include file="../common/bottom.jsp" %>

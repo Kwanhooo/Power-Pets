@@ -136,6 +136,19 @@ a:hover {
     height: 80px;
 }
 
+.Search-Automatic-Completion {
+    grid-column: 3;
+    grid-row: 2;
+    font-size: 22px;
+    height: 300px;
+    z-index: 99999;
+    display: none;
+    width: 450px;
+    border: #eee solid 1px;
+    overflow: scroll;
+    background-color: #ffffff;
+}
+
 .topBar-left {
     position: absolute;
     width: 1021px;
@@ -544,3 +557,4 @@ a:hover {
     margin-top: 40px;
     margin-left: 50px;
 }
+

@@ -7,6 +7,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
+    <%--    <script type="text/javascript" src="static/js/jquery.min.js"></script>--%>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -77,9 +78,10 @@
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <c:if test="${sessionScope.cartList.size() != 0 && sessionScope.cartList != null}">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-bordered table-hover" id="cart-table"
+                           style="margin: 0 auto;max-width:1600px;text-align: center;">
                         <thead>
-                        <tr style="font-size:35px">
+                        <tr style="font-size:35px;">
                             <th>
                                 您的选购
                             </th>
@@ -102,39 +104,46 @@
                         </thead>
                         <tbody>
                         <c:forEach var="petToBuy" items="${sessionScope.cartList}">
-                            <tr class="info" style="font-size:30px">
-                                <td>
+                            <tr class="info" style="font-size:30px;padding:70px 0;" id="${petToBuy.petID}">
+                                <td style="padding:30px 0;max-height: 130px;">
                                         ${petToBuy.petName}
                                 </td>
-                                <td>
+                                <td style="padding:30px 0;max-height: 130px;">
                                         ${petToBuy.product}
                                 </td>
-                                <td>
+                                <td style="padding:30px 0;max-height: 130px;">
                                         ${petToBuy.price}
                                 </td>
-                                <td>
+                                <td style="padding:25px 0;max-height: 130px;">
                                     <div class="container input-counter" style="width: 200px;">
                                         <div class="row clearfix">
-                                            <div class="col-md-3 column">
-                                                <button type="button" class="btn-add btn btn-primary">
+                                            <div class="col-md-3 column div-add">
+                                                <button type="button" class="btn-add btn btn-primary"
+                                                        style="margin-top: 10px;">
                                                     <text class="fa fa-plus">+</text>
                                                 </button>
                                             </div>
                                             <div class="col-md-6 column">
-                                                <input style="width:60px;" type="text" class="form-control counter" data-min="10" data-max="20" data-default="15">
+                                                <label>
+                                                    <input style="width:80px;margin-top: 11px;"
+                                                           value="${petToBuy.amount}" type="text"
+                                                           class="form-control counter"
+                                                           data-min="0" data-max="100" data-default="1"
+                                                           style="margin-top: 30px;">
+                                                </label>
                                             </div>
-                                            <div class="col-md-3 column">
-                                                <button type="button" class="btn-subtract btn btn-primary">
+                                            <div class="col-md-3 column div-minus">
+                                                <button type="button" class="btn-subtract btn btn-primary"
+                                                        style="margin-top: 10px;">
                                                     <text class="fa fa-minus">-</text>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td>
-
+                                <td style="padding:30px 0;max-height: 130px;">
                                 </td>
-                                <td>
+                                <td style="max-height: 130px;">
                                     <a href="order?action=checkout&orderPetID=${petToBuy.petID}&userID=${sessionScope.user.id}">
                                         <button type="button" class="btn btn-warning btn-lg btn-block">下单</button>
                                     </a>
@@ -144,6 +153,7 @@
                                 </td>
                             </tr>
                         </c:forEach>
+
                         </c:if>
 
                         <c:if test="${sessionScope.cartList.size() == 0 || sessionScope.cartList == null}">
@@ -158,4 +168,83 @@
     </div>
 </div>
 
+<script type="text/javascript" src="static/js/cart.js"></script>
+<%--    function refreshTotalPrice() {--%>
+<%--        $('#cart-table tr').each(function (i) {// 遍历 tr--%>
+<%--            let unit_price = 0;--%>
+<%--            let amount = 0;--%>
+
+<%--            $(this).children('td').each(function (j) {  //遍历 tr 的各个 td--%>
+<%--                if (j === 2) {--%>
+<%--                    unit_price = (Number)($(this).text());--%>
+<%--                }--%>
+<%--                if (j === 3) {--%>
+<%--                    let input_amount = $(this).children().children().children(".col-md-6").children().children();--%>
+<%--                    amount = (Number)(input_amount.val());--%>
+<%--                }--%>
+<%--                if (j === 4) {--%>
+<%--                    $(this).text((unit_price * amount).toFixed(2));--%>
+<%--                }--%>
+
+<%--            });--%>
+<%--        });--%>
+<%--    }--%>
+
+<%--    $(function () {--%>
+<%--        $('#cart-table tr').each(function (i) {// 遍历 tr--%>
+<%--            let unit_price = 0;--%>
+<%--            let amount = 0;--%>
+
+<%--            $(this).children('td').each(function (j) {  //遍历 tr 的各个 td--%>
+<%--                if (j === 2) {--%>
+<%--                    unit_price = (Number)($(this).text());--%>
+<%--                    console.log(unit_price);--%>
+<%--                }--%>
+<%--                if (j === 3) {--%>
+<%--                    let input_amount = $(this).children().children().children(".col-md-6").children().children();--%>
+<%--                    amount = (Number)(input_amount.val());--%>
+<%--                    console.log(amount);--%>
+
+<%--                    input_amount.change(function (e) {--%>
+<%--                        if ($(this).val() < 0) {--%>
+<%--                            $(this).val(0);--%>
+<%--                        }--%>
+<%--                        if ($(this).val > 100) {--%>
+<%--                            $(this).val(100);--%>
+<%--                        }--%>
+<%--                        refreshTotalPrice();--%>
+<%--                    })--%>
+
+<%--                    let btn_add = $(this).children().children().children(".div-add").children();--%>
+<%--                    console.log(btn_add);--%>
+<%--                    btn_add.click(function (e) {--%>
+<%--                        console.log("btn_add is clicked");--%>
+<%--                        if (amount >= 100)--%>
+<%--                            return;--%>
+<%--                        amount++;--%>
+<%--                        input_amount.val(amount);--%>
+<%--                        refreshTotalPrice();--%>
+<%--                    })--%>
+
+
+<%--                    let btn_minus = $(this).children().children().children(".div-minus").children();--%>
+<%--                    btn_minus.click(function (e) {--%>
+<%--                        console.log("btn_minus is clicked");--%>
+<%--                        if (amount <= 0)--%>
+<%--                            return;--%>
+<%--                        amount--;--%>
+<%--                        input_amount.val(amount);--%>
+<%--                        refreshTotalPrice();--%>
+<%--                    })--%>
+
+<%--                }--%>
+<%--                if (j === 4) {--%>
+<%--                    $(this).text(((Number)(unit_price * amount)).toFixed(2));--%>
+<%--                    console.log(unit_price * amount);--%>
+<%--                }--%>
+
+<%--            });--%>
+<%--        });--%>
+<%--    });--%>
+<%--</script>--%>
 <%@ include file="../common/bottom.jsp" %>

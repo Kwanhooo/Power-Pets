@@ -78,4 +78,12 @@
         <servlet-name>orderServlet</servlet-name>
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UsernameExist</servlet-name>
+        <servlet-class>com.mygroup.powerpets.web.servlets.UsernameExistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsernameExist</servlet-name>
+        <url-pattern>/UsernameExist</url-pattern>
+    </servlet-mapping>
 </web-app>
