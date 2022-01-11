@@ -158,7 +158,7 @@
     }
 </script>
 
-<script src="../../../static/js/vsclick.min.js"></script>
+<script src="static/js/vsclick.min.js"></script>
 <script>
     let drop2 = new VsClick({
         dom: 'drop2',

@@ -11,6 +11,7 @@
 <html>
 <head>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/pet.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -67,6 +68,15 @@
     </div>
     <div class="mainContent">
         <div id="petContent">
+            <div class="mask hide">
+
+                <div class="prompt_box">
+                    <div class="prompt_cont">
+                        <p class="prompt_text" style="font-size: 21px;">成功加入购物车啦，再去挑点别的吧！</p>
+                        <button class="btn-OK btn btn-primary" style="margin-left: 340px;">好</button>
+                    </div>
+                </div>
+            </div>
             <%
                 List<Pet> petList = (List<Pet>) session.getAttribute("petList");
                 boolean isEmpty = true;
@@ -84,31 +94,39 @@
                     session.setAttribute("isEmpty", "false");
             %>
             <c:if test="${sessionScope.isEmpty == \"false\"}">
-                <table class="table table-bordered table-hover">
-                    <tr>
-                        <th>Pet ID</th>
-                        <th>Name</th>
-                        <th>age</th>
-                        <th>sex</th>
-                        <th>price</th>
-                        <th>add to Cart</th>
+                <table class="table table-bordered table-hover table-striped"
+                       style="margin: 0 auto;max-width:1600px;text-align: center;">
+
+                    <thead>
+                    <tr style="font-size:35px;">
+                        <th>宠物编号</th>
+                        <th>名字</th>
+                        <th>年龄</th>
+                        <th>性别</th>
+                        <th>价格</th>
+                        <th>操作</th>
                     </tr>
+                    </thead>
                     <c:forEach var="pet" items="${sessionScope.petList}">
-                        <c:if test="${pet.status == \"1\"}">
-                            <tr>
-                                <td>${pet.petID}</td>
-                                <td>${pet.petName}</td>
-                                <td>${pet.age}</td>
-                                <td>${pet.sex}</td>
-                                <td>${pet.price}</td>
-                                <td>
-                                    <a href="cart?action=add-to-cart&petID=${pet.petID}&projectName=${pet.product}&userID=${sessionScope.user.id}">
-                                        <button type="button" class="btn btn-primary btn-lg btn-block">加入购物车</button>
-                                    </a>
-                                </td>
-                            </tr>
-                        </c:if>
+                    <c:if test="${pet.status == \"1\"}">
+                    <tbody>
+                    <tr>
+                        <td class="pet_id" style="padding:30px 0;max-height: 130px;">${pet.petID}</td>
+                        <td style="padding:30px 0;max-height: 130px;">${pet.petName}</td>
+                        <td style="padding:30px 0;max-height: 130px;">${pet.age}</td>
+                        <td style="padding:30px 0;max-height: 130px;">${pet.sex}</td>
+                        <td style="padding:30px 0;max-height: 130px;">${pet.price}</td>
+                        <td style="padding:30px 0;max-height: 130px;">
+                                <%--                            <a href="cart?action=add-to-cart&petID=${pet.petID}&projectName=${pet.product}&userID=${sessionScope.user.id}">--%>
+                            <button type="button" class="add-to-cart-btn btn btn-primary btn-lg btn-block">
+                                加入购物车
+                            </button>
+                                <%--                            </a>--%>
+                        </td>
+                    </tr>
+                    </c:if>
                     </c:forEach>
+                    </tbody>
                 </table>
             </c:if>
             <c:if test="${sessionScope.isEmpty == \"true\"}">
@@ -117,4 +135,7 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="static/js/pet.js"></script>
+
 <%@ include file="../common/bottom.jsp" %>

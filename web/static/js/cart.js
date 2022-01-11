@@ -3,12 +3,14 @@ function CartItem(item_id, item_amount) {
     this.itemAmount = item_amount;
 }
 
+var current_tr;
+
 function refreshTotalPrice() {
-    var cartData = new Array();
+    var cartData = "";
 
     $('#cart-table tr').each(function (i) {// 遍历 tr
         if (i !== 0) {
-            let item_id = (Number)($(this).attr("id"));
+            let item_id = ($(this).attr("id"));
             let unit_price = 0;
             let amount = 0;
 
@@ -26,38 +28,26 @@ function refreshTotalPrice() {
 
             });
 
-            cartData[i - 1] = new CartItem(item_id, amount);
+            cartData+=item_id+"@"+amount+"#";
         }
 
     });
-
-    refreshMyCart(JSON.stringify(cartData));
-
-}
-
-//字符串转base64
-function encode(str) {
-// 对字符串进行编码
-    var encode = encodeURI(str);
-// 对编码的字符串转化base64
-    var base64 = btoa(encode);
-    return base64;
+    refreshMyCart(cartData);
 }
 
 function refreshMyCart(data) {
     console.log("refreshMyCart => " + data);
 
-
     $.ajax({
         type: "GET",
-        url: "cart?action=update&data=" + encode(data),
+        url: "cart?action=update&data=" + encodeURIComponent(data),
         success: function (message) {
             if (message > 0) {
-                console.log("成功更新了服务器数据：" + message);
+                console.log("成功更新了购物车数据：" + message);
             }
         },
         error: function (message) {
-            console.log("更新服务器数据时出错：" + message);
+            console.log("更新购物车数据时出错：" + message);
         }
     });
 }
@@ -66,6 +56,8 @@ $(function () {
     $('#cart-table tr').each(function (i) {// 遍历 tr
         let unit_price = 0;
         let amount = 0;
+        let item_id = ($(this).attr("id"));
+        current_tr = $(this);
 
         $(this).children('td').each(function (j) {  //遍历 tr 的各个 td
             if (j === 2) {
@@ -109,6 +101,26 @@ $(function () {
                 $(this).text(((Number)(unit_price * amount)).toFixed(2));
             }
 
+            if (j === 5)
+            {
+                $(this).children("button").click(function (e) {
+                    $(this).parent().parent().remove();
+                    console.log("deleteCartItem is called");
+                    $.ajax({
+                        type: "GET",
+                        url: "cart?action=delete-from-cart&petID="+item_id,
+                        success: function (message) {
+                            console.log(message);
+                            if (message > 0) {
+                                console.log("成功更新了购物车数据：" + message);
+                            }
+                        },
+                        error: function (message) {
+                            console.log("更新购物车数据时出错：" + message);
+                        }
+                    })
+                });
+            }
         });
     });
 });

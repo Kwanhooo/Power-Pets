@@ -78,7 +78,7 @@
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <c:if test="${sessionScope.cartList.size() != 0 && sessionScope.cartList != null}">
-                    <table class="table table-bordered table-hover" id="cart-table"
+                    <table class="table table-bordered table-hover table-striped" id="cart-table"
                            style="margin: 0 auto;max-width:1600px;text-align: center;">
                         <thead>
                         <tr style="font-size:35px;">
@@ -104,7 +104,7 @@
                         </thead>
                         <tbody>
                         <c:forEach var="petToBuy" items="${sessionScope.cartList}">
-                            <tr class="info" style="font-size:30px;padding:70px 0;" id="${petToBuy.petID}">
+                            <tr style="font-size:30px;padding:70px 0;" id="${petToBuy.petID}">
                                 <td style="padding:30px 0;max-height: 130px;">
                                         ${petToBuy.petName}
                                 </td>
@@ -147,9 +147,7 @@
                                     <a href="order?action=checkout&orderPetID=${petToBuy.petID}&userID=${sessionScope.user.id}">
                                         <button type="button" class="btn btn-warning btn-lg btn-block">下单</button>
                                     </a>
-                                    <a href="cart?petID=${petToBuy.petID}&userID=${sessionScope.user.id}&action=delete-from-cart">
-                                        <button type="button" class="btn btn-danger btn-lg btn-block">删除</button>
-                                    </a>
+                                    <button type="button" class="btn btn-danger btn-lg btn-block">删除</button>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -169,82 +167,5 @@
 </div>
 
 <script type="text/javascript" src="static/js/cart.js"></script>
-<%--    function refreshTotalPrice() {--%>
-<%--        $('#cart-table tr').each(function (i) {// 遍历 tr--%>
-<%--            let unit_price = 0;--%>
-<%--            let amount = 0;--%>
 
-<%--            $(this).children('td').each(function (j) {  //遍历 tr 的各个 td--%>
-<%--                if (j === 2) {--%>
-<%--                    unit_price = (Number)($(this).text());--%>
-<%--                }--%>
-<%--                if (j === 3) {--%>
-<%--                    let input_amount = $(this).children().children().children(".col-md-6").children().children();--%>
-<%--                    amount = (Number)(input_amount.val());--%>
-<%--                }--%>
-<%--                if (j === 4) {--%>
-<%--                    $(this).text((unit_price * amount).toFixed(2));--%>
-<%--                }--%>
-
-<%--            });--%>
-<%--        });--%>
-<%--    }--%>
-
-<%--    $(function () {--%>
-<%--        $('#cart-table tr').each(function (i) {// 遍历 tr--%>
-<%--            let unit_price = 0;--%>
-<%--            let amount = 0;--%>
-
-<%--            $(this).children('td').each(function (j) {  //遍历 tr 的各个 td--%>
-<%--                if (j === 2) {--%>
-<%--                    unit_price = (Number)($(this).text());--%>
-<%--                    console.log(unit_price);--%>
-<%--                }--%>
-<%--                if (j === 3) {--%>
-<%--                    let input_amount = $(this).children().children().children(".col-md-6").children().children();--%>
-<%--                    amount = (Number)(input_amount.val());--%>
-<%--                    console.log(amount);--%>
-
-<%--                    input_amount.change(function (e) {--%>
-<%--                        if ($(this).val() < 0) {--%>
-<%--                            $(this).val(0);--%>
-<%--                        }--%>
-<%--                        if ($(this).val > 100) {--%>
-<%--                            $(this).val(100);--%>
-<%--                        }--%>
-<%--                        refreshTotalPrice();--%>
-<%--                    })--%>
-
-<%--                    let btn_add = $(this).children().children().children(".div-add").children();--%>
-<%--                    console.log(btn_add);--%>
-<%--                    btn_add.click(function (e) {--%>
-<%--                        console.log("btn_add is clicked");--%>
-<%--                        if (amount >= 100)--%>
-<%--                            return;--%>
-<%--                        amount++;--%>
-<%--                        input_amount.val(amount);--%>
-<%--                        refreshTotalPrice();--%>
-<%--                    })--%>
-
-
-<%--                    let btn_minus = $(this).children().children().children(".div-minus").children();--%>
-<%--                    btn_minus.click(function (e) {--%>
-<%--                        console.log("btn_minus is clicked");--%>
-<%--                        if (amount <= 0)--%>
-<%--                            return;--%>
-<%--                        amount--;--%>
-<%--                        input_amount.val(amount);--%>
-<%--                        refreshTotalPrice();--%>
-<%--                    })--%>
-
-<%--                }--%>
-<%--                if (j === 4) {--%>
-<%--                    $(this).text(((Number)(unit_price * amount)).toFixed(2));--%>
-<%--                    console.log(unit_price * amount);--%>
-<%--                }--%>
-
-<%--            });--%>
-<%--        });--%>
-<%--    });--%>
-<%--</script>--%>
 <%@ include file="../common/bottom.jsp" %>
