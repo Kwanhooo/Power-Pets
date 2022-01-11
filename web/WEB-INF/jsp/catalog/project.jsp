@@ -72,7 +72,7 @@
                             value="${project.projectName}"></c:out></a>
                 </h3>
                 <p class="projectDescription"><c:out value="${project.projectDescription}"></c:out></p>
-                <hr style="width: 1500px;margin-left: 0px">
+                <hr style="width: 1500px;margin-left: 0">
             </c:forEach>
         </div>
     </div>

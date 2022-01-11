@@ -16,7 +16,7 @@
   shitmountain
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,7 +149,7 @@
                         <a href="account?action=view">${sessionScope.user.username}</a>
                     </c:if>
                 </c:if> <img align="middle" src="static/images/separator.gif"/>
-                <a href="help.html">?</a>
+                <a href="https://github.com/Kwanhooo/Power-Pets">?</a>
             </div>
         </div>
     </div>
@@ -319,4 +319,4 @@
         </div>
     </div>
 
-    <%@ include file="../common/bottom.jsp" %>
+<%@ include file="../common/bottom.jsp" %>

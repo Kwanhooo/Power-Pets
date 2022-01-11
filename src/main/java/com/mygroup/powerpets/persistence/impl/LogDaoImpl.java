@@ -83,8 +83,19 @@ public class LogDaoImpl implements LogDao {
             pstmt.executeUpdate();
 
             DBUtils.close(connection, pstmt, null);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            try {
+                PreparedStatement pstmt = connection.prepareStatement(sql);
+                pstmt.setString(1, "");
+                pstmt.setString(2, "");
+                pstmt.setString(3, "");
+                pstmt.setInt(4, log.getUserID());
+                pstmt.executeUpdate();
+                DBUtils.close(connection, pstmt, null);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
         }
     }
 }

@@ -55,10 +55,10 @@ public class MainPageServlet extends HttpServlet {
             Cart cart = cartDaoImpl.selectByuserID(user.getId());
             String petId1 = cart.getPetsID();
             String[] petIdList = petId1.split("#");
-            StringBuffer stringBuffer = new StringBuffer();
+            StringBuilder stringBuffer = new StringBuilder();
             for (String s : petIdList) {
                 if (!String.valueOf(petId).equals(s)) {
-                    stringBuffer.append(s + "#");
+                    stringBuffer.append(s).append("#");
                 }
             }
             cart.setPetsID(stringBuffer.toString());
@@ -82,7 +82,7 @@ public class MainPageServlet extends HttpServlet {
             String keywords = req.getParameter("searchText");
 
             PetDaoImpl petDaoImpl = new PetDaoImpl();
-            String petList = "";//将要返回的结果
+            StringBuilder petList = new StringBuilder();//将要返回的结果
 
             List<Pet> petListSelectByProjectName = petDaoImpl.vagueSelectByProjectName(keywords);
             List<Pet> petListSelectByName = petDaoImpl.vagueSelectByName(keywords);
@@ -99,21 +99,21 @@ public class MainPageServlet extends HttpServlet {
             //如果是id
             if (notHaveLetter) {
                 if (petDaoImpl.selectById(Integer.parseInt(keywords)) != null) {
-                    petList += petDaoImpl.selectById(Integer.parseInt(keywords)).getPetName() + "*";
+                    petList.append(petDaoImpl.selectById(Integer.parseInt(keywords)).getPetName()).append("*");
                 }
             }
             //如果是名字
             if (petListSelectByName.size() > 0) {
                 for (int i = 0; i <= petListSelectByName.size() - 1; i++) {
                     // petList.add(petListSelectByName.get(i));
-                    petList += petListSelectByName.get(i).getPetName() + "*";
+                    petList.append(petListSelectByName.get(i).getPetName()).append("*");
                 }
             }
             //如果是品种
             if (petListSelectByProjectName.size() > 0)
                 for (int i = 0; i <= petListSelectByProjectName.size() - 1; i++) {
                     // petList.add(petListSelectByProjectName.get(i));
-                    petList += petListSelectByProjectName.get(i).getProduct() + "*";
+                    petList.append(petListSelectByProjectName.get(i).getProduct()).append("*");
                 }
 
             resp.setContentType("text/plain");

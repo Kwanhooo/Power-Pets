@@ -36,14 +36,9 @@ a {
     text-decoration: none
 }
 
-/*input{*/
-/*    outline-style: none;*/
-/*    border: 0;*/
-/*    background-color:#F1F3F4;*/
-/*    border-radius:15px;*/
-/*    height: 30px;*/
-/*    font-size: 20px;*/
-/*}*/
+a:hover {
+    color: #FF9465;
+}
 
 [type = "text"] {
     outline-style: none;
@@ -67,10 +62,6 @@ strong {
     font-size: 16px;
 }
 
-a:hover {
-    color: #FDDD00;
-}
-
 .wrapper {
     position: relative;
     width: 1890px;
@@ -82,9 +73,9 @@ a:hover {
 .topBar {
     position: absolute;
     height: 90px;
-    left: 0px;
-    right: 0px;
-    top: 0px;
+    left: 0;
+    right: 0;
+    top: 0;
 
     background: #f3f6fd;
 }
@@ -184,8 +175,8 @@ a:hover {
 
 .content {
     position: absolute;
-    left: 0px;
-    right: 0px;
+    left: 0;
+    right: 0;
     top: 90px;
     bottom: 100px;
     background: #f3f6fd;
@@ -195,7 +186,7 @@ a:hover {
     position: absolute;
     width: 1756px;
     left: 119px;
-    top: 0px;
+    top: 0;
     bottom: 17px;
     /*margin-left: 200px;*/
     /*max-width: 1500px;*/
@@ -218,12 +209,24 @@ a:hover {
     font-size: 25px;
 }
 
+#searchContent {
+    margin-top: 40px;
+    margin-left: 50px;
+    font-size: 25px;
+}
+
+#my-order-content {
+    margin-top: 40px;
+    margin-left: 50px;
+    font-size: 25px;
+}
+
 
 .navigator {
     position: absolute;
     width: 85px;
     left: 15px;
-    top: 0px;
+    top: 0;
     bottom: 17px;
 
     background: #ffffff;
@@ -361,17 +364,6 @@ a:hover {
 #pigBtn:hover {
     background-color: #1383B6;
     color: #F1FBFE;
-}
-
-#othersBtn {
-    transition-duration: 0.4s;
-    background-color: #E9FCF1;
-    color: #40C587;
-}
-
-#othersBtn:hover {
-    background-color: #40C587;
-    color: #E9FCF1;
 }
 
 .dog {
@@ -521,24 +513,12 @@ a:hover {
     width: 1860px;
     position: absolute;
     height: 100px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
     background: #ffffff;
     border-radius: 30px;
-}
-
-.display-table {
-    border: 1px solid #dee2e6;
-    display: table;
-    border-collapse: separate;
-    box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
 }
 
 .accountContent {

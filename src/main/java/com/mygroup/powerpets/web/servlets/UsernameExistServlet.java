@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class UsernameExistServlet extends HttpServlet {
-    UserDaoImpl userDaoImpl = new UserDaoImpl();
+    final UserDaoImpl userDaoImpl = new UserDaoImpl();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = (String) req.getParameter("username");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String username = req.getParameter("username");
         List<User> list = userDaoImpl.selectByName(username);
         ListIterator<User> listIterator = list.listIterator();
         resp.setContentType("text/plain");

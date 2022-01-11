@@ -49,7 +49,7 @@
                     <a href="account">我的</a>
                 </c:if>
             </c:if> <img align="middle" src="static/images/separator.gif"/>
-            <a href="help.html">?</a></div>
+            <a href="https://github.com/Kwanhooo/Power-Pets">?</a></div>
     </div>
 
     <div id="Search">
