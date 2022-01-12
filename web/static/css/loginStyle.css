@@ -24,3 +24,12 @@ body {
 .form-signin .form-control {
     padding: 10px;
 }
+
+.about-in-index {
+    max-width: 380px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px 40px 50px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+}

@@ -10,9 +10,28 @@
 <html>
 <head>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/address-book.css" rel="stylesheet">
+
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/address-book-account.js"></script>
 </head>
 <body>
+<div class="mask hide">
+    <div class="prompt_box">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="tabbable" id="address-book-tabs">
+                        <ul class="nav nav-tabs">
+                        </ul>
+                        <div class="tab-content">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="content" style="margin-top:50px;">
     <div class="navigator">
         <div class="navigator-item">
@@ -72,7 +91,7 @@
                     <div class="row clearfix">
                         <div class="col-md-8 column">
                             <h3 style="font-family: var(--font-family-sans-serif);">
-                                账号设定 ⚙
+                                ⚙ 账号设定
                             </h3>
                             <br>
                             <p>
@@ -92,11 +111,11 @@
                                 <%
                                     User user = (User) session.getAttribute("user");
                                     if (user.getSex().equals("male")) {
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\" checked=\"checked\">\uD83D\uDC68Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\">\uD83D\uDC67Female");
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\" checked=\"checked\">\uD83D\uDC68男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\">\uD83D\uDC67女");
                                     } else {
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\">\uD83D\uDC68Male&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\" checked=\"checked\">\uD83D\uDC67Female");
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\">\uD83D\uDC68男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
+                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\" checked=\"checked\">\uD83D\uDC67女");
                                     }
                                 %>
                             </p>
@@ -106,7 +125,7 @@
                                 <div class="col-md-12 column">
                                     <br>
                                     <h3 style="font-family: var(--font-family-sans-serif);">
-                                        <a href="account?action=view-order">我的订单</a>
+                                        <a href="account?action=view-order" class="">我的订单</a>
                                     </h3>
                                 </div>
                             </div>
@@ -124,7 +143,7 @@
                     <div class="row clearfix">
                         <div class="col-md-8 column">
                             <h3 style="font-family: var(--font-family-sans-serif);">
-                                收货地址📫
+                                📫 默认收货地址
                             </h3>
                             <br>
                             <%
@@ -132,7 +151,7 @@
                                 String city = "您还没有补全信息呢";
                                 String address = user.getAddress();
                                 String contact = "您还没有补全信息呢";
-                                String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("#");
+                                String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("@")[0].split("#");
                                 if (addressStr.length == 4) {
                                     consignee = addressStr[0];
                                     city = addressStr[1];
@@ -159,7 +178,7 @@
                         </div>
                         <div class="col-md-4 column">
                             <h3 style="font-family: var(--font-family-sans-serif);">
-                                联系方式📱
+                                📱 账户绑定
                             </h3>
                             <br>
                             <%
@@ -172,20 +191,30 @@
                                 <strong>邮箱&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;<input type="text" name="email"
                                                                                         value="${sessionScope.user.email}">
                             </p>
+                            <hr style="width:300px;">
+
+                            <h3 style="font-family: var(--font-family-sans-serif);">
+                                🔖 地址簿
+                            </h3>
+                            <br>
+                            <button type="button" class="btn btn-lg btn-primary" id="address-book-btn">查阅或修改</button>
                         </div>
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-12 column">
-                            <button class="btn btn-lg btn-danger btn-block" style="max-width: 90%;margin-top: 10px;">
+                            <button type="submit" class="btn btn-lg btn-danger btn-block"
+                                    style="max-width: 90%;margin-top: 10px;">
                                 确认修改
                             </button>
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+
 <%@ include file="../common/bottom.jsp" %>

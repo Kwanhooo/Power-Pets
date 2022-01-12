@@ -8,6 +8,10 @@
 <head>
     <meta charset="utf-8">
     <title>注册 - 电力宠物</title>
+    <link rel="Bookmark" type="image/png" href="static/images/PageLogo.png"/>
+    <link rel="icon" type="image/png" href="static/images/PageLogo.png"/>
+    <link rel="shortcut icon" type="image/png" href="static/images/PageLogo.png"/>
+
     <!-- Link CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/registerStyle.css">

@@ -53,6 +53,7 @@ function refreshMyCart(data) {
 }
 
 $(function () {
+    $('.wrapper').height(Math.max((($("#cart-table tr").length) * 110 + 450), 1080));
     $('#cart-table tr').each(function (i) {// 遍历 tr
         let unit_price = 0;
         let amount = 0;
@@ -104,12 +105,13 @@ $(function () {
             if (j === 5) {
                 $(this).children("button").click(function (e) {
                     $(this).parent().parent().remove();
-                    console.log("deleteCartItem is called");
+                    $('.wrapper').height(Math.max((($("#cart-table tr").length) * 110 + 450), 1080));
+                    // console.log("deleteCartItem is called");
                     $.ajax({
                         type: "GET",
                         url: "cart?action=delete-from-cart&petID=" + item_id,
                         success: function (message) {
-                            console.log(message);
+                            // console.log(message);
                             if (message > 0) {
                                 console.log("成功更新了购物车数据：" + message);
                             }

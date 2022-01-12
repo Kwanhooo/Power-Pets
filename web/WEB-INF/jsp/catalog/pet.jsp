@@ -11,10 +11,18 @@
 <html>
 <head>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/pet.css" rel="stylesheet">
+    <link href="static/css/pet-mask.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="mask hide">
+    <div class="prompt_box">
+        <div class="prompt_cont">
+            <p class="prompt_text" style="font-size: 21px;">成功加入购物车啦，再去挑点别的吧！</p>
+            <button class="btn-OK btn btn-primary" style="margin-left: 340px;">好</button>
+        </div>
+    </div>
+</div>
 <div class="content" style="margin-top:50px;">
     <div class="navigator">
         <div class="navigator-item">
@@ -75,17 +83,12 @@
                             挑选爱宠
                             <small>&nbsp;&nbsp;-&nbsp;选出你最爱的电力宠物！<strong><i>${sessionScope.user.username}</i></strong></small>
                         </h1>
+                        <i style="font-size:18px;color: grey;">您正在浏览&nbsp;<strong><span id="category-span"
+                                                                                        style="right: 50px;font-size:20px;color: grey;"></span></strong></i>
                     </div>
                 </div>
             </div>
-            <div class="mask hide">
-                <div class="prompt_box">
-                    <div class="prompt_cont">
-                        <p class="prompt_text" style="font-size: 21px;">成功加入购物车啦，再去挑点别的吧！</p>
-                        <button class="btn-OK btn btn-primary" style="margin-left: 340px;">好</button>
-                    </div>
-                </div>
-            </div>
+
             <%
                 List<Pet> petList = (List<Pet>) session.getAttribute("petList");
                 boolean isEmpty = true;
@@ -119,7 +122,7 @@
                     <c:forEach var="pet" items="${sessionScope.petList}">
                     <c:if test="${pet.status == \"1\"}">
                     <tbody>
-                    <tr>
+                    <tr style="font-size:30px;padding:70px 0;">
                         <td class="pet_id" style="padding:30px 0;max-height: 130px;">${pet.petID}</td>
                         <td style="padding:30px 0;max-height: 130px;">${pet.petName}</td>
                         <td style="padding:30px 0;max-height: 130px;">${pet.age}</td>
@@ -144,5 +147,9 @@
 </div>
 
 <script type="text/javascript" src="static/js/pet.js"></script>
-
+<script type="text/javascript">
+    $(function () {
+        $("#category-span").text(decodeURIComponent(window.location.href.split("=")[1]));
+    })()
+</script>
 <%@ include file="../common/bottom.jsp" %>

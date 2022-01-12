@@ -1,26 +1,21 @@
-<%@ page import="com.mygroup.powerpets.domain.User" %>
-<%@ page import="com.mygroup.powerpets.persistence.impl.ProjectDaoImpl" %>
-<%@ page import="com.mygroup.powerpets.persistence.impl.PetDaoImpl" %>
-<%@ page import="com.mygroup.powerpets.domain.Pet" %>
-<%@ page import="java.util.List" %>
 <%--
   Author: Kwanho
   Date: 2021/11/20
   Time: 10:13
 --%>
-<%@ include file="../common/header.jsp" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Kwanho
-  Date: 2021/11/19
-  Time: 14:38
---%>
 <%--
   shitmountain
 --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../common/header.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+
+<%@ page import="com.mygroup.powerpets.domain.User" %>
+<%@ page import="com.mygroup.powerpets.persistence.impl.ProjectDaoImpl" %>
+<%@ page import="com.mygroup.powerpets.persistence.impl.PetDaoImpl" %>
+<%@ page import="com.mygroup.powerpets.domain.Pet" %>
+<%@ page import="java.util.List" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,11 +31,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>电力宠物 - PowerPets</title>
     <script>
-        console.log("111");
         var xhr;
 
         function search(word) {
-            console.log(word);
+            // console.log(word);
             var searchText = word;
             xhr = new XMLHttpRequest();
             xhr.onreadystatechange = process;
@@ -49,23 +43,23 @@
         }
 
         function process() {
-            console.log("113");
+            // console.log("113");
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
-                    console.log("114");
+                    // console.log("114");
 
                     var $deleteli = $('li');
                     $deleteli.remove();
 
                     var msg = xhr.responseText;
-                    console.log("msg" + msg);
-                    console.log(msg.length);
+                    // console.log("msg" + msg);
+                    // console.log(msg.length);
                     if (msg.length < 1) {
-                        console.log("xiaoyu1")
+                        // console.log("xiaoyu1")
                         var $newul = $('<li>没有这样的宠物呢</li>');
                         $('ul').append($newul);
                     } else {
-                        console.log("dayuyi")
+                        // console.log("dayuyi")
                         var pro = "";
                         for (i = 0; i <= msg.length - 1; i++) {
                             if (msg.charAt(i) == '*') {
@@ -77,24 +71,13 @@
                             }
                         }
 
-                        var list = document.getElementsByTagName('li');
-                        for(var i=0;i<list.length;i++) {
-                            if(i%2===0){
-                                list[i].style.backgroundColor = "#ffffff";
-                            }else{
-                                list[i].style.backgroundColor = "#000000";
-                            }
-                        }
-
-                        console.log("到这里了吗");
-
                         $("#Search-Automatic-Completion").show();
 
                         $(function () {
                             var $listItems = $('li');
                             var $ulItem = $('ul');
                             $listItems.on('click', function () {
-                                console.log("haha");
+                                // console.log("haha");
                                 document.getElementById("search-keywords").value = this.innerHTML;
                                 // $ulItem.hidden;
                                 $("#Search-Automatic-Completion").hide();
@@ -108,7 +91,7 @@
         $(function () {
             var $listItems = $('li');
             $listItems.on('click', function () {
-                console.log("haha");
+                // console.log("haha");
                 document.getElementById("search-keywords").value = this.innerHTML;
             });
         });
@@ -117,14 +100,14 @@
         $(function () {
             var $listItems = $('#img1');
             $listItems.on('mouseover', function () {
-                console.log("hahaha");
+                // console.log("hahaha");
                 var e = event || window.event;
-                var x = e.screenX+330;
-                var y = e.screenY-100;
-                console.log(x);
-                console.log(y);
+                var x = e.screenX - 270;
+                var y = e.screenY - 100;
+                // console.log(x);
+                // console.log(y);
                 var box1 = document.getElementById("floatBox1");
-               $('#floatBox1').attr('style', 'top:' + y + 'px; left:' + x + 'px;').fadeIn();
+                $('#floatBox1').attr('style', 'top:' + y + 'px; left:' + x + 'px;').fadeIn();
 
             });
         });
@@ -139,12 +122,12 @@
         $(function () {
             var $listItems = $('#img2');
             $listItems.on('mouseover', function () {
-                console.log("hahaha");
+                // console.log("hahaha");
                 var e = event || window.event;
-                var x = e.screenX+330;
-                var y = e.screenY-100;
-                console.log(x);
-                console.log(y);
+                var x = e.screenX - 270;
+                var y = e.screenY - 100;
+                // console.log(x);
+                // console.log(y);
                 var box1 = document.getElementById("floatBox1");
                 $('#floatBox2').attr('style', 'top:' + y + 'px; left:' + x + 'px;').fadeIn();
 
@@ -161,12 +144,12 @@
         $(function () {
             var $listItems = $('#img3');
             $listItems.on('mouseover', function () {
-                console.log("hahaha");
+                // console.log("hahaha");
                 var e = event || window.event;
-                var x = e.screenX+330;
-                var y = e.screenY-100;
-                console.log(x);
-                console.log(y);
+                var x = e.screenX - 270;
+                var y = e.screenY - 100;
+                // console.log(x);
+                // console.log(y);
                 $('#floatBox3').attr('style', 'top:' + y + 'px; left:' + x + 'px;').fadeIn();
 
             });
@@ -372,8 +355,10 @@
 
                 <%--从这里开始插入展示宠物--%>
                 <div class="item">
-                    <img src="static/images/hashiqi.png" width="100px" height="100px" style="border-radius: 50px" id="img1" class="img1">
-                    <a href="project?projectName=哈士奇" ><p style="font-weight: bold; font-size:23px;color:#007BFF">&nbsp&nbsp&nbsp哈士奇</p>
+                    <img src="static/images/hashiqi.png" width="100px" height="100px" style="border-radius: 50px"
+                         id="img1" class="img1">
+                    <a href="project?projectName=哈士奇"><p style="font-weight: bold; font-size:23px;color:#007BFF">
+                        &nbsp;&nbsp;&nbsp;哈士奇</p>
                     </a>
                     <p>
                     </p>
@@ -381,8 +366,10 @@
                 <hr style="width: 400px">
 
                 <div class="item">
-                    <img src="static/images/yingduan.png" width="100px" height="100px" style="border-radius: 50px" id="img2">
-                    <a href="project?projectName=英短"><p style="font-weight: bold; font-size:23px;color:#007BFF">&nbsp&nbsp&nbsp英短</p>
+                    <img src="static/images/yingduan.png" width="100px" height="100px" style="border-radius: 50px"
+                         id="img2">
+                    <a href="project?projectName=英短"><p style="font-weight: bold; font-size:23px;color:#007BFF">
+                        &nbsp;&nbsp;&nbsp;英短</p>
                     </a>
                     <p>
                     </p>
@@ -390,8 +377,10 @@
                 <hr style="width: 400px">
 
                 <div class="item">
-                    <img src="static/images/kejiInMain.png" width="100px" height="100px" style="border-radius: 50px" id="img3">
-                    <a href="project?projectName=柯基"><p style="font-weight: bold; font-size:23px;color:#007BFF">&nbsp&nbsp&nbsp柯基</p>
+                    <img src="static/images/kejiInMain.png" width="100px" height="100px" style="border-radius: 50px"
+                         id="img3">
+                    <a href="project?projectName=柯基"><p style="font-weight: bold; font-size:23px;color:#007BFF">
+                        &nbsp;&nbsp;&nbsp;柯基</p>
                     </a>
                     <p>
                     </p>
@@ -401,7 +390,9 @@
 
         </div>
         <div id="floatBox1" class="floatBox2">
-            <p><h2><b>哈士奇:</b></h2></p>
+            <p>
+            <h2><b>哈士奇:</b></h2>
+            </p>
             <p>现有数量:<%
                 ProjectDaoImpl projectDaoImpl = new ProjectDaoImpl();
                 PetDaoImpl petDaoImpl = new PetDaoImpl();
@@ -413,7 +404,8 @@
         </div>
 
         <div id="floatBox2" class="floatBox2">
-            <p><h2><b>英短:</b></h2></p>
+            <p>
+            <h2><b>英短:</b></h2></p>
             <p>现有数量:<%
                 out.print(petDaoImpl.selectByProjectName("英短").size());
             %>只</p>
@@ -423,7 +415,8 @@
         </div>
 
         <div id="floatBox3" class="floatBox3">
-            <p><h2><b>柯基:</b></h2></p>
+            <p>
+            <h2><b>柯基:</b></h2></p>
             <p>现有数量:<%
                 out.print(petDaoImpl.selectByProjectName("柯基").size());
             %>只</p>
@@ -432,8 +425,6 @@
             %></p>
         </div>
     </div>
-
-
 
 
 <%@ include file="../common/bottom.jsp" %>
