@@ -77,7 +77,6 @@ public class MainPageServlet extends HttpServlet {
 
 
         if (req.getParameter("action").equals("searchAction")) {
-            System.out.println("6666");
 
             String keywords = req.getParameter("searchText");
 

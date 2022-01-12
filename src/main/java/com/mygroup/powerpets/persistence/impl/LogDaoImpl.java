@@ -84,7 +84,6 @@ public class LogDaoImpl implements LogDao {
 
             DBUtils.close(connection, pstmt, null);
         } catch (Exception e) {
-            e.printStackTrace();
             try {
                 PreparedStatement pstmt = connection.prepareStatement(sql);
                 pstmt.setString(1, "");

@@ -46,6 +46,7 @@ public class AccountServlet extends HttpServlet {
             out.flush();
             return;
         }
+
         //若用户未登录 先进行登录
         if (req.getSession().getAttribute("user") == null) {
             resp.sendRedirect("login");
@@ -79,8 +80,38 @@ public class AccountServlet extends HttpServlet {
             req.getSession().setAttribute("logList", browsedLogList);
             req.getRequestDispatcher(ForwardUtil.LOG_URL).forward(req, resp);
         }
+        if (req.getParameter("action").equals("get-address-book")) {
+            UserDaoImpl userDaoImpl = new UserDaoImpl();
+            String addressBookStr = userDaoImpl.selectById(user.getId()).getAddress();
+            addressBookStr = java.net.URLEncoder.encode(addressBookStr, "UTF-8");
+            resp.setContentType("text/plain");
+            PrintWriter writer = resp.getWriter();
+            writer.print(addressBookStr);
+        }
+        if (req.getParameter("action").equals("update-address-book")) {
+            String requestStr = req.getParameter("data");
+            int addressIndex = Integer.parseInt(requestStr.split("@")[0]);
+            String addressToUpdate = requestStr.split("@")[1];
 
-
+            UserDaoImpl userDaoImpl = new UserDaoImpl();
+            User userToUpdate = userDaoImpl.selectById(user.getId());
+            String[] addressArray = userToUpdate.getAddress().split("@");
+            String newAddressStr = "";
+            boolean isNew = true;
+            for (int i = 0; i < addressArray.length; i++) {
+                if (i != addressIndex) {
+                    newAddressStr += addressArray[i] + "@";
+                } else {
+                    newAddressStr += addressToUpdate + "@";
+                    isNew = false;
+                }
+            }
+            if (isNew)
+                newAddressStr += addressToUpdate + "@";
+            userToUpdate.setAddress(newAddressStr);
+            userDaoImpl.updateUser(userToUpdate);
+            req.getSession().setAttribute("user", userToUpdate);
+        }
     }
 
     @Override
@@ -100,7 +131,8 @@ public class AccountServlet extends HttpServlet {
         oldUser.setPassword(password);
         oldUser.setSex(sex);
         oldUser.setEmail(email);
-        oldUser.setAddress(consignee + "#" + city + "#" + address + "#" + contact);
+        //*****不从这里修改收货地址信息
+//        oldUser.setAddress(consignee + "#" + city + "#" + address + "#" + contact);
 
         UserDaoImpl userDaoImpl = new UserDaoImpl();
         userDaoImpl.updateUser(oldUser);
