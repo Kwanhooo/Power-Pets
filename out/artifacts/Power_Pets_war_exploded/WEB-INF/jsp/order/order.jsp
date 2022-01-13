@@ -18,7 +18,7 @@
                 url: "cart?action=delete-from-cart&petID=" + item_id,
                 success: function (message) {
                     // console.log(message);
-                    window.location.href = 'main?action=newMain&petId='+item_id;
+                    window.location.href = 'main?action=newMain&petId=' + item_id;
                     if (message > 0) {
                         console.log("成功更新了购物车数据：" + message);
 
@@ -118,7 +118,7 @@
                         </div>
                         <div class="orderUserList" style="font-size:25px;margin-left: 50px;">
                             <%
-                                String[] addressStr = ((String)(session.getAttribute("deliveryAddress"))).split("#");
+                                String[] addressStr = ((String) (session.getAttribute("deliveryAddress"))).split("#");
 
                                 String consignee = addressStr[0];
 
@@ -151,7 +151,7 @@
                                 if (Integer.valueOf(1) == request.getSession().getAttribute("orderCanBuy")) {
 //                                    out.println("<a href='main?action=newMain&petId=" + request.getSession().getAttribute("orderPetID") + "'><button class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\">把我领回家吧!</button></a>");
 //                                    out.println("<a href='main?action=newMain&petId=" + request.getSession().getAttribute("orderPetID") + "'><button class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\" onclick=\"deleteCartItem("+request.getSession().getAttribute("orderPetID")+");\">把我领回家吧!</button></a>");
-                                    out.println("<button type=\"button\" class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\" onclick=\"deleteCartItem("+request.getSession().getAttribute("orderPetID")+");\">把我领回家吧!</button>");
+                                    out.println("<button type=\"button\" class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\" onclick=\"deleteCartItem(" + request.getSession().getAttribute("orderPetID") + ");\">把我领回家吧!</button>");
                                 } else out.println("<button>呜呜余额不够呢</button>");
                             %>
                         </div>

@@ -72,7 +72,8 @@
                             购物车
                             <small>&nbsp;&nbsp;-&nbsp;在此下订吧！<strong><i>${sessionScope.user.username}</i></strong></small>
                         </h1>
-                        <span style="right: 50px;"><i>共 <strong id="totalAmount">${sessionScope.cartAmount}</strong> 件</i></span>
+                        <span style="right: 50px;"><i>共 <strong
+                                id="totalAmount">${sessionScope.cartAmount}</strong> 件</i></span>
                     </div>
                 </div>
             </div>
