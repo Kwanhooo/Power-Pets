@@ -27,7 +27,6 @@ public class AccountServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         if (req.getParameter("action").equals("validate")) {
             //account?action=validate&type=验证的类型&value=验证的内容
             String type = req.getParameter("type");
@@ -55,6 +54,7 @@ public class AccountServlet extends HttpServlet {
         }
 
         User user = (User) req.getSession().getAttribute("user");
+
         if (req.getParameter("action").equals("sign-out")) {
             req.getSession().removeAttribute("user");
             req.getSession().setAttribute("isLogin", "false");
@@ -112,30 +112,27 @@ public class AccountServlet extends HttpServlet {
             userDaoImpl.updateUser(userToUpdate);
             req.getSession().setAttribute("user", userToUpdate);
         }
-    }
+        if (req.getParameter("action").equals("update-user-info")) {
+            {
+                User oldUser;
+                UserDaoImpl userDaoImpl = new UserDaoImpl();
+                oldUser = userDaoImpl.selectById(user.getId());
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        User oldUser = (User) req.getSession().getAttribute("user");
+                String username = new String(req.getParameter("username").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+                String password = req.getParameter("password");
+                String sex = req.getParameter("sex");
+                String email = req.getParameter("email");
 
-        String username = new String(req.getParameter("username").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-        String password = req.getParameter("password");
-        String sex = req.getParameter("sex");
-        String email = req.getParameter("email");
-        String consignee = new String(req.getParameter("consignee").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-        String city = new String(req.getParameter("city").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-        String address = new String(req.getParameter("address").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-        String contact = req.getParameter("contact");
+                oldUser.setUsername(username);
+                oldUser.setPassword(password);
+                oldUser.setSex(sex);
+                oldUser.setEmail(email);
+                //*****不从这里修改收货地址信息
+                //oldUser.setAddress(consignee + "#" + city + "#" + address + "#" + contact);
 
-        oldUser.setUsername(username);
-        oldUser.setPassword(password);
-        oldUser.setSex(sex);
-        oldUser.setEmail(email);
-        //*****不从这里修改收货地址信息
-//        oldUser.setAddress(consignee + "#" + city + "#" + address + "#" + contact);
-
-        UserDaoImpl userDaoImpl = new UserDaoImpl();
-        userDaoImpl.updateUser(oldUser);
-        resp.sendRedirect("account?action=view");
+                userDaoImpl.updateUser(oldUser);
+                req.getSession().setAttribute("user", oldUser);
+            }
+        }
     }
 }

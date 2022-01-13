@@ -72,7 +72,8 @@
                             购物车
                             <small>&nbsp;&nbsp;-&nbsp;在此下订吧！<strong><i>${sessionScope.user.username}</i></strong></small>
                         </h1>
-                        <span style="right: 50px;"><i>共 <strong>${sessionScope.cartAmount}</strong> 件</i></span>
+                        <span style="right: 50px;"><i>共 <strong
+                                id="totalAmount">${sessionScope.cartAmount}</strong> 件</i></span>
                     </div>
                 </div>
             </div>
@@ -145,7 +146,7 @@
                                 <td style="padding:30px 0;max-height: 130px;">
                                 </td>
                                 <td style="max-height: 130px;">
-                                    <a href="order?action=checkout&orderPetID=${petToBuy.petID}&userID=${sessionScope.user.id}">
+                                    <a href="order?action=checkout&orderPetID=${petToBuy.petID}&userID=${sessionScope.user.id}&amount=${petToBuy.amount}">
                                         <button type="button" class="btn btn-warning btn-lg btn-block">下单</button>
                                     </a>
                                     <button type="button" class="btn btn-danger btn-lg btn-block">删除</button>

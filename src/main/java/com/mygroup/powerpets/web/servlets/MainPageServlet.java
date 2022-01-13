@@ -72,7 +72,8 @@ public class MainPageServlet extends HttpServlet {
             LogService.addOrderGenerated(user.getId(), listON.get(listON.size() - 2).getOrderID());
 
 
-            req.getRequestDispatcher(ForwardUtil.MAIN_URL).forward(req, resp);
+//            req.getRequestDispatcher(ForwardUtil.MY_ORDER_URL).forward(req, resp);
+            resp.sendRedirect("account?action=view-order");
         }
 
 

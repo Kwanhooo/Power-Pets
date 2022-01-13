@@ -174,7 +174,7 @@ strong {
 }
 
 .content {
-    z-index:0;
+    z-index: 0;
     position: absolute;
     left: 0;
     right: 0;
@@ -540,34 +540,34 @@ strong {
 }
 
 .floatBox1 {
-    display:none;
+    display: none;
     height: 250px;
     width: 200px;
     border: solid black 1px;
-    background-color:  #e5ffff;
+    background-color: #e5ffff;
     border-radius: 10px;
     position: absolute;
     z-index: 99999;
 }
 
 .floatBox2 {
-    display:none;
+    display: none;
     height: 250px;
     width: 200px;
     border: solid black 1px;
-    background-color:  #e5ffff;
+    background-color: #e5ffff;
     border-radius: 10px;
     position: absolute;
-    z-index:99999;
+    z-index: 99999;
 }
 
 .floatBox3 {
-    display:none;
+    display: none;
     height: 250px;
     width: 200px;
     border: solid black 1px;
-    background-color:  #e5ffff;
+    background-color: #e5ffff;
     border-radius: 10px;
     position: absolute;
-    z-index:99999;
+    z-index: 99999;
 }

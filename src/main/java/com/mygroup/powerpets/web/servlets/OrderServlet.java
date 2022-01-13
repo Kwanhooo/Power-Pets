@@ -26,8 +26,10 @@ public class OrderServlet extends HttpServlet {
 
         String petID1 = req.getParameter("orderPetID");
         // String userID1 = req.getParameter("userID");
-        if (petID1 != null)
+        if (petID1 != null) {
             req.getSession().setAttribute("petToBuyInOrder", petID1);
+            req.getSession().setAttribute("amountToBuyInOrder", req.getParameter("amount"));
+        }
 
         if (req.getParameter("action") != null) {
             if (req.getParameter("action").equals("checkout")) {
@@ -44,12 +46,7 @@ public class OrderServlet extends HttpServlet {
         User user = userDaoImpl.selectById(Integer.parseInt(userID));
         PetDaoImpl petdaoImpl = new PetDaoImpl();
         Pet pet = petdaoImpl.selectById(Integer.parseInt(petID));
-        int i = (user.getBalance().subtract(pet.getPrice())).compareTo(BigDecimal.ZERO);
-        if (i == -1)
-            req.getSession().setAttribute("orderCanBuy", 0);
-        else {
-            req.getSession().setAttribute("orderCanBuy", 1);
-        }
+
 
         req.getSession().setAttribute("orderUserName", user.getUsername());
         req.getSession().setAttribute("orderUserAddress", user.getAddress());
@@ -62,25 +59,37 @@ public class OrderServlet extends HttpServlet {
         req.getSession().setAttribute("orderPetCategory", pet.getCategory());
         req.getSession().setAttribute("orderPetStatus", pet.getStatus());
         req.getSession().setAttribute("orderPetProduct", pet.getProduct());
+        BigDecimal amount = BigDecimal.valueOf(Long.parseLong((String) (req.getSession().getAttribute("amountToBuyInOrder"))));
+        BigDecimal unitPrice = (BigDecimal) req.getSession().getAttribute("orderPetPrice");
+        req.getSession().setAttribute("totalPrice", amount.multiply(unitPrice));
+
+        int i = (user.getBalance().subtract((BigDecimal) req.getSession().getAttribute("totalPrice"))).compareTo(BigDecimal.ZERO);
+        if (i == -1)
+            req.getSession().setAttribute("orderCanBuy", 0);
+        else {
+            req.getSession().setAttribute("orderCanBuy", 1);
+        }
 
         req.getRequestDispatcher(ForwardUtil.ORDER_URL).forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        User oldUser = (User) req.getSession().getAttribute("user");
-
-        String email = req.getParameter("email");
+//        User oldUser = (User) req.getSession().getAttribute("user");
+//
+//        String email = req.getParameter("email");
         String consignee = new String(req.getParameter("consignee").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         String city = new String(req.getParameter("city").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         String address = new String(req.getParameter("address").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         String contact = req.getParameter("contact");
+//
+//        oldUser.setEmail(email);
+//        oldUser.setAddress();
+//
+//        UserDaoImpl userDaoImpl = new UserDaoImpl();
+//        userDaoImpl.updateUser(oldUser);
 
-        oldUser.setEmail(email);
-        oldUser.setAddress(consignee + "#" + city + "#" + address + "#" + contact);
-
-        UserDaoImpl userDaoImpl = new UserDaoImpl();
-        userDaoImpl.updateUser(oldUser);
+        req.getSession().setAttribute("deliveryAddress", consignee + "#" + city + "#" + address + "#" + contact);
 
         //我从这里开始复制的
         resp.sendRedirect("order");

@@ -23,6 +23,11 @@
                 <div class="col-md-12 column">
                     <div class="tabbable" id="address-book-tabs">
                         <ul class="nav nav-tabs">
+                            <div style="float: right;margin-right:455px;">
+                                <button class="btn btn-danger btn-OK" style="font-size:25px;height: 50px;width: 50px;">
+                                    ×
+                                </button>
+                            </div>
                         </ul>
                         <div class="tab-content">
                         </div>
@@ -32,6 +37,16 @@
         </div>
     </div>
 </div>
+
+<div class="mask-save hide">
+    <div class="prompt_box-save">
+        <div class="prompt_cont">
+            <p class="prompt_text" style="font-size: 24px;margin-left: 70px;margin-top: 60px;">已经修改成功啦！</p>
+            <button class="hint-btn-OK btn btn-primary" style="margin-left: 340px;margin-top: 40px;">好</button>
+        </div>
+    </div>
+</div>
+
 <div class="content" style="margin-top:50px;">
     <div class="navigator">
         <div class="navigator-item">
@@ -87,7 +102,7 @@
     <div class="mainContent">
         <div class="accountContent">
             <div class="container">
-                <form action="account" method="post">
+                <form id="account-form">
                     <div class="row clearfix">
                         <div class="col-md-8 column">
                             <h3 style="font-family: var(--font-family-sans-serif);">
@@ -97,13 +112,15 @@
                             <p>
                                 <strong>用户名 😊&nbsp;</strong>
                                 <label>
-                                    <input type="text" name="username" value="${sessionScope.user.username}">
+                                    <input id="username-account" type="text" name="username"
+                                           value="${sessionScope.user.username}">
                                 </label>
                             </p>
                             <p>
                                 <strong>密码 🔑&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
                                 <label>
-                                    <input type="text" name="password" value="${sessionScope.user.password}">
+                                    <input id="password-account" type="text" name="password"
+                                           value="${sessionScope.user.password}">
                                 </label>
                             </p>
                             <p>
@@ -111,11 +128,11 @@
                                 <%
                                     User user = (User) session.getAttribute("user");
                                     if (user.getSex().equals("male")) {
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\" checked=\"checked\">\uD83D\uDC68男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\">\uD83D\uDC67女");
+                                        out.println("<input id=\"male-account\" type=\"radio\" name=\"sex\" value=\"male\" checked=\"checked\">\uD83D\uDC68男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
+                                        out.println("<input id=\"female-account\"  type=\"radio\" name=\"sex\" value=\"female\">\uD83D\uDC67女");
                                     } else {
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"male\">\uD83D\uDC68男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
-                                        out.println("<input type=\"radio\" name=\"sex\" value=\"female\" checked=\"checked\">\uD83D\uDC67女");
+                                        out.println("<input id=\"male-account\" type=\"radio\" name=\"sex\" value=\"male\">\uD83D\uDC68男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n");
+                                        out.println("<input id=\"female-account\" type=\"radio\" name=\"sex\" value=\"female\" checked=\"checked\">\uD83D\uDC67女");
                                     }
                                 %>
                             </p>
@@ -183,12 +200,13 @@
                             <br>
                             <%
                                 out.println("<p>\n" +
-                                        "                        <strong>手机&nbsp;&nbsp;&nbsp;&nbsp;</strong> <input type=\"text\" name=\"phone\" value=\"" + contact + "\">\n" +
+                                        "                        <strong>手机&nbsp;&nbsp;&nbsp;&nbsp;</strong> <input id=\"phone-account\" type=\"text\" name=\"phone\" value=\"" + contact + "\">\n" +
                                         "                    </p>");
                             %>
 
                             <p>
-                                <strong>邮箱&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;<input type="text" name="email"
+                                <strong>邮箱&nbsp;&nbsp;&nbsp;&nbsp;</strong>&nbsp;<input id="email-account" type="text"
+                                                                                        name="email"
                                                                                         value="${sessionScope.user.email}">
                             </p>
                             <hr style="width:300px;">
@@ -202,9 +220,9 @@
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-12 column">
-                            <button type="submit" class="btn btn-lg btn-danger btn-block"
+                            <button id="save-account-info" type="button" class="btn btn-lg btn-danger btn-block"
                                     style="max-width: 90%;margin-top: 10px;">
-                                确认修改
+                                确认修改账户信息
                             </button>
                         </div>
                     </div>

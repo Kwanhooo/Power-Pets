@@ -11,6 +11,11 @@
 <head>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.wrapper').height(Math.max((($(".table-order tr").length) * 110 + 450), 1080));
+        })()
+    </script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -79,7 +84,7 @@
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <c:if test="${sessionScope.ongoingOrderList.size() != 0 && sessionScope.ongoingOrderList != null}">
-                    <table class="table table-bordered table-hover table-striped"
+                    <table class="table table-bordered table-hover table-striped table-order"
                            style="margin: 0 auto;max-width:1600px;text-align: center;">
                         <thead>
                         <tr style="font-size:35px">
@@ -127,5 +132,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+<%@ include file="../common/bottom.jsp" %>

@@ -23,6 +23,11 @@
                 <div class="col-md-12 column">
                     <div class="tabbable" id="address-book-tabs">
                         <ul class="nav nav-tabs">
+                            <div style="float: right;margin-right:455px;">
+                                <button class="btn btn-danger btn-OK" style="font-size:25px;height: 50px;width: 50px;">
+                                    ×
+                                </button>
+                            </div>
                         </ul>
                         <div class="tab-content">
                         </div>
@@ -144,13 +149,14 @@
                     </div>
 
                     <div style="position:fixed;top:400px;right: 400px;background-color:#eeeeee;border-radius:30px;width: 470px;height:250px;">
-                        <h3 class="text-warning" style="font-size:30px;margin-left: 10px;">不是寄送到这里？在这里切换！</h3>
-                        <h3 style="font-family: var(--font-family-sans-serif);margin-left: 20px;font-size:30px;">
+                        <h3 class="text-warning" style="font-size:30px;margin-left: 20px;margin-top: 30px;">
+                            不是寄送到这里？在这里切换！</h3>
+                        <h3 style="font-family: var(--font-family-sans-serif);margin-top: 40px;margin-left: 30px;font-size:30px;">
                             🔖 地址簿
                         </h3>
                         <br>
                         <button type="button" class="btn btn-lg btn-primary" id="address-book-checkout-btn"
-                                style="margin-left: 20px;width:200px;">选取你的地址
+                                style="margin-left: 30px;width:200px;">选取你的地址
                         </button>
                     </div>
 

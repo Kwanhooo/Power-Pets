@@ -161,7 +161,7 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
         Connection connection = DBUtils.getConnection();
         String sql = "UPDATE user SET username = ?,password = ?,address = ?, balance = ?, sex = ?, age = ?, email = ?" +
-                "WHERE id = ?";
+                " WHERE id = ?";
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, user.getUsername());
@@ -177,6 +177,7 @@ public class UserDaoImpl implements UserDao {
             DBUtils.close(connection, pstmt, null);
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println(sql);
         }
     }
 

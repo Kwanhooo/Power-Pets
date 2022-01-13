@@ -11,6 +11,25 @@
 <head>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function deleteCartItem(item_id) {
+            $.ajax({
+                type: "GET",
+                url: "cart?action=delete-from-cart&petID=" + item_id,
+                success: function (message) {
+                    // console.log(message);
+                    window.location.href = 'main?action=newMain&petId=' + item_id;
+                    if (message > 0) {
+                        console.log("成功更新了购物车数据：" + message);
+
+                    }
+                },
+                error: function (message) {
+                    console.log("更新购物车数据时出错：" + message);
+                }
+            })
+        }
+    </script>
 </head>
 <body>
 
@@ -80,7 +99,7 @@
                 </div>
             </div>
 
-            <div class="row clearfix">
+            <div class="row clearfix" style="width:1300px;">
                 <div class="col-md-8 column">
                     <div class="order">
                         <div class="orderPetList" style="font-size:25px">
@@ -88,16 +107,18 @@
                             <div style="margin-left: 50px;">
                                 <p>宠物名字: <%out.print(request.getSession().getAttribute("orderPetName"));%>&nbsp;&nbsp;&nbsp;
                                     ID: <%out.print(request.getSession().getAttribute("orderPetID"));%></p>
-                                <p>性别: <%out.print(request.getSession().getAttribute("orderPetSex"));%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <p>性别: <%out.print(request.getSession().getAttribute("orderPetSex"));%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     年龄: <%out.print(request.getSession().getAttribute("orderPetAge"));%></p>
                                 <p>种类: <%out.print(request.getSession().getAttribute("orderPetProduct"));%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    价格: <%out.print(request.getSession().getAttribute("orderPetPrice"));%></p>
+                                    单价: <%out.print(request.getSession().getAttribute("orderPetPrice"));%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数量：${sessionScope.amountToBuyInOrder}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总价：${sessionScope.totalPrice}
+                                </p>
+
                                 <br>
                             </div>
                         </div>
                         <div class="orderUserList" style="font-size:25px;margin-left: 50px;">
                             <%
-                                String[] addressStr = ((User) session.getAttribute("user")).getAddress().split("#");
+                                String[] addressStr = ((String) (session.getAttribute("deliveryAddress"))).split("#");
 
                                 String consignee = addressStr[0];
 
@@ -128,7 +149,9 @@
                             <%
                                 String str = (String) request.getSession().getAttribute("orderPetName");
                                 if (Integer.valueOf(1) == request.getSession().getAttribute("orderCanBuy")) {
-                                    out.println("<a href='main?action=newMain&petId=" + request.getSession().getAttribute("orderPetID") + "'><button class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\">把我领回家吧!</button></a>");
+//                                    out.println("<a href='main?action=newMain&petId=" + request.getSession().getAttribute("orderPetID") + "'><button class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\">把我领回家吧!</button></a>");
+//                                    out.println("<a href='main?action=newMain&petId=" + request.getSession().getAttribute("orderPetID") + "'><button class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\" onclick=\"deleteCartItem("+request.getSession().getAttribute("orderPetID")+");\">把我领回家吧!</button></a>");
+                                    out.println("<button type=\"button\" class=\"btn btn-primary btn-lg\" style=\"margin-left: 50px;width:420px;\" onclick=\"deleteCartItem(" + request.getSession().getAttribute("orderPetID") + ");\">把我领回家吧!</button>");
                                 } else out.println("<button>呜呜余额不够呢</button>");
                             %>
                         </div>

@@ -153,7 +153,25 @@ public class CartServlet extends HttpServlet {
                 count += Integer.parseInt((s.split("@"))[1]);
             }
             CartDaoImpl cartdaoimpl = new CartDaoImpl();
-            cartdaoimpl.updateCart(new Cart(Integer.parseInt(userID), newCartData, count));
+            PetDaoImpl petdaoimpl = new PetDaoImpl();
+            List<Pet> cartList = new ArrayList<>();
+            Cart nowCart = new Cart(Integer.parseInt(userID), newCartData, count);
+            cartdaoimpl.updateCart(nowCart);
+            String petString = nowCart.getPetsID();
+            if (!petString.equals("")) {
+                String[] petsIdAndAmount = petString.split("#");
+                for (String petIDAndAmount : petsIdAndAmount) {
+                    int amount = Integer.parseInt((petIDAndAmount.split("@"))[1]);
+                    int petID = Integer.parseInt(((petIDAndAmount.split("@"))[0]));
+                    Pet newPet = petdaoimpl.selectById(petID);
+                    newPet.setAmount(amount);
+                    cartList.add(newPet);
+                }
+            }
+
+            req.getSession().setAttribute("cartList", cartList);
+            req.getSession().setAttribute("cartAmount", nowCart.getAmount());
+
             resp.setContentType("text/plain");
             PrintWriter writer = resp.getWriter();
             writer.print("UPDATE SUCCESS");

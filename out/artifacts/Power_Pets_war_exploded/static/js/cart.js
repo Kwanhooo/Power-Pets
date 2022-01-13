@@ -53,7 +53,7 @@ function refreshMyCart(data) {
 }
 
 $(function () {
-    $('.wrapper').height(Math.max((($("#cart-table tr").length)*110+450),1080));
+    $('.wrapper').height(Math.max((($("#cart-table tr").length) * 110 + 450), 1080));
     $('#cart-table tr').each(function (i) {// 遍历 tr
         let unit_price = 0;
         let amount = 0;
@@ -105,7 +105,7 @@ $(function () {
             if (j === 5) {
                 $(this).children("button").click(function (e) {
                     $(this).parent().parent().remove();
-                    $('.wrapper').height(Math.max((($("#cart-table tr").length)*110+450),1080));
+                    $('.wrapper').height(Math.max((($("#cart-table tr").length) * 110 + 450), 1080));
                     // console.log("deleteCartItem is called");
                     $.ajax({
                         type: "GET",
