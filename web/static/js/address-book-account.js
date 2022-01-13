@@ -4,7 +4,6 @@ var isInitData = false;
 $(function () {
     (function () {
         $('#address-book-btn').click(function () {
-            // let pet_id = $(this).parent().parent().children(".pet_id").text();
             $.ajax({
                 type: "GET",
                 url: "account?action=get-address-book",
@@ -13,7 +12,7 @@ $(function () {
                     if (data === 'loginCertificateNeeded') {
                         window.location.href = "login";
                     } else {
-                        //这里设置数据
+                        //此函数为选项卡的div设置具体数据
                         setupDisplayTabs(data);
                         isInitData = true;
                         $('.mask').removeClass('hide').fadeIn();
