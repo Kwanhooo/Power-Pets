@@ -14,9 +14,33 @@
     left: 0;
 }
 
+
+.mask-save {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.prompt_box-save {
+    width: 400px;
+    height: 200px;
+    background: #ffffff;
+    border-radius: 6px;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    margin-left: -200px;
+    overflow: hidden;
+}
+
+
 .prompt_box {
     width: 700px;
-    height: 500px;
+    height: 550px;
     background: #ffffff;
     border-radius: 6px;
     position: fixed;

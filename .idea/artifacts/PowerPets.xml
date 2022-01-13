@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PowerPets">
+    <output-path>$PROJECT_DIR$/out/artifacts/PowerPets</output-path>
+    <root id="archive" name="PowerPets.war">
+      <element id="dir-copy" path="$PROJECT_DIR$/web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Power_Pets" />
+          <element id="library" level="application" name="bootstrap-table" />
+          <element id="library" level="application" name="jquery" />
+          <element id="library" level="application" name="popper" />
+          <element id="library" level="application" name="spacingjs" />
+          <element id="library" level="application" name="jquery.input-counter" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-8.0.26" />
+          <element id="library" level="application_server_libraries" name="Tomcat 8.5.71" />
+          <element id="library" level="project" name="jstl-1.2" />
+          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="fastjson-1.2.79" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="Power_Pets/web/Web" />
+    </root>
+  </artifact>
+</component>
