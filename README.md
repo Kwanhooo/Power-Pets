@@ -99,7 +99,7 @@ function process() {
 //以上截取部分
 ```
 
-- **最终效果图：**![image-20220113155103483](README.assets\image-20220113155103483.png?raw=true)
+- **最终效果图：**![image-20220113155103483](https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113155103483.png?raw=true)
 
 
 
@@ -152,15 +152,15 @@ $('#address-book-btn').click(function () {
 
 ***（可在账户设置页面调出）***
 
-![image-20220113161613308]( README.assets\image-20220113161613308.png?raw=true)
+![image-20220113161613308]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113161613308.png?raw=true)
 
 ***（可在下订页面调出）***
 
-![image-20220113161901712]( README.assets\image-20220113161901712.png?raw=true)
+![image-20220113161901712]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113161901712.png?raw=true)
 
 ***（遮罩弹窗）***
 
-![image-20220113162021296]( README.assets\image-20220113162021296.png?raw=true)
+![image-20220113162021296]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113162021296.png?raw=true)
 
 
 
@@ -283,7 +283,7 @@ $('#cart-table tr').each(function (i) {// 遍历 tr
 
 - **最终效果图**
 
-![image-20220113220549293]( README.assets\image-20220113220549293.png?raw=true)
+![image-20220113220549293]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113220549293.png?raw=true)
 
 
 
@@ -348,9 +348,9 @@ var xhr;
 
 - **最终效果图**
 
-![image-20220113225617715]( README.assets\image-20220113225617715.png?raw=true)
+![image-20220113225617715]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113225617715.png?raw=true)
 
-![image-20220113225631049]( README.assets\image-20220113225631049.png?raw=true)
+![image-20220113225631049]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113225631049.png?raw=true)
 
 
 
@@ -364,35 +364,35 @@ var xhr;
 
 - **主界面**
 
-​	主界面使用原生HTML以及CSS编写，主要由顶栏（用于展示标题logo、搜索、跳转至账户相关的页面）；中部的主框，主框包含左侧导航栏（方便快速跳转至各个门类），中部的门类仪表盘，右侧的统计、宠物推荐栏；以及底栏（用于展示一些网站信息）。![image-20220113221936950]( README.assets\image-20220113221936950.png?raw=true)
+​	主界面使用原生HTML以及CSS编写，主要由顶栏（用于展示标题logo、搜索、跳转至账户相关的页面）；中部的主框，主框包含左侧导航栏（方便快速跳转至各个门类），中部的门类仪表盘，右侧的统计、宠物推荐栏；以及底栏（用于展示一些网站信息）。![image-20220113221936950]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113221936950.png?raw=true)
 
 - **账户设置界面**
 
-​	此界面提供了一些分类布局过的输入框，允许用户查看、更改账户信息。![image-20220113222237639]( README.assets\image-20220113222237639.png?raw=true)
+​	此界面提供了一些分类布局过的输入框，允许用户查看、更改账户信息。![image-20220113222237639]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113222237639.png?raw=true)
 
 - **购物车界面**
 
-​		用户可以在此界面管理购物车，进行下单操作。![image-20220113223015872]( README.assets\image-20220113223015872.png?raw=true)
+​		用户可以在此界面管理购物车，进行下单操作。![image-20220113223015872]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113223015872.png?raw=true)
 
 - **品类展示界面**
 
-![image-20220113223422104]( README.assets\image-20220113223422104.png?raw=true)
+![image-20220113223422104]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113223422104.png?raw=true)
 
 - **商品介绍页面**
 
-![image-20220113223655085]( README.assets\image-20220113223655085.png?raw=true)
+![image-20220113223655085]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113223655085.png?raw=true)
 
 - **下单界面**
 
-![image-20220113223806297]( README.assets\image-20220113223806297.png?raw=true)
+![image-20220113223806297]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113223806297.png?raw=true)
 
 - **订单生成界面**
 
-![image-20220113223843605]( README.assets\image-20220113223843605.png?raw=true)
+![image-20220113223843605]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113223843605.png?raw=true)
 
 - **地址簿界面**
 
-![image-20220113223926030]( README.assets\image-20220113223926030.png?raw=true)
+![image-20220113223926030]( https://github.com/Kwanhooo/Power-Pets/blob/main/README.assets\image-20220113223926030.png?raw=true)
 
 
 
