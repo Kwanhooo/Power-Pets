@@ -99,7 +99,7 @@ function process() {
 //以上截取部分
 ```
 
-- **最终效果图：**![image-20220113155103483](https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113155103483.png?raw=true)
+- **最终效果图：**![image-20220113155103483](https://s2.loli.net/2022/01/13/ainXvLwSKyCGI3Y.png)
 
 
 
@@ -152,15 +152,15 @@ $('#address-book-btn').click(function () {
 
 ***（可在账户设置页面调出）***
 
-![image-20220113161613308]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113161613308.png?raw=true)
+![image-20220113161613308](https://s2.loli.net/2022/01/13/4GKRhsom7PiHSkU.png)
 
 ***（可在下订页面调出）***
 
-![image-20220113161901712]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113161901712.png?raw=true)
+![image-20220113161901712](https://s2.loli.net/2022/01/13/G859fYXnx6aoLzE.png)
 
 ***（遮罩弹窗）***
 
-![image-20220113162021296]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113162021296.png?raw=true)
+![image-20220113162021296](https://s2.loli.net/2022/01/13/jZNAqnSRM4t3VoC.png)
 
 
 
@@ -283,7 +283,7 @@ $('#cart-table tr').each(function (i) {// 遍历 tr
 
 - **最终效果图**
 
-![image-20220113220549293]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113220549293.png?raw=true)
+![image-20220113220549293](https://s2.loli.net/2022/01/14/6J2zFgKx1YXifE3.png)
 
 
 
@@ -348,9 +348,9 @@ var xhr;
 
 - **最终效果图**
 
-![image-20220113225617715]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113225617715.png?raw=true)
+<img src="https://s2.loli.net/2022/01/14/erZSlxwXRoYnMsz.png" alt="image-20220113225617715" style="zoom: 67%;" />
 
-![image-20220113225631049]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113225631049.png?raw=true)
+<img src="https://s2.loli.net/2022/01/14/DUkIFvzVoNKpbw9.png" alt="image-20220113225631049" style="zoom:67%;" />
 
 
 
@@ -364,35 +364,35 @@ var xhr;
 
 - **主界面**
 
-​	主界面使用原生HTML以及CSS编写，主要由顶栏（用于展示标题logo、搜索、跳转至账户相关的页面）；中部的主框，主框包含左侧导航栏（方便快速跳转至各个门类），中部的门类仪表盘，右侧的统计、宠物推荐栏；以及底栏（用于展示一些网站信息）。![image-20220113221936950]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113221936950.png?raw=true)
+​	主界面使用原生HTML以及CSS编写，主要由顶栏（用于展示标题logo、搜索、跳转至账户相关的页面）；中部的主框，主框包含左侧导航栏（方便快速跳转至各个门类），中部的门类仪表盘，右侧的统计、宠物推荐栏；以及底栏（用于展示一些网站信息）。![image-20220113221936950](https://s2.loli.net/2022/01/14/d3tinT2pPeBlGDg.png)
 
 - **账户设置界面**
 
-​	此界面提供了一些分类布局过的输入框，允许用户查看、更改账户信息。![image-20220113222237639]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113222237639.png?raw=true)
+​	此界面提供了一些分类布局过的输入框，允许用户查看、更改账户信息。![image-20220113222237639](https://s2.loli.net/2022/01/14/YsC8THK5n7De3a6.png)
 
 - **购物车界面**
 
-​		用户可以在此界面管理购物车，进行下单操作。![image-20220113223015872]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113223015872.png?raw=true)
+​		用户可以在此界面管理购物车，进行下单操作。![image-20220113223015872](https://s2.loli.net/2022/01/14/ygdoNQbC9qUEaxP.png)
 
 - **品类展示界面**
 
-![image-20220113223422104]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113223422104.png?raw=true)
+![image-20220113223422104](https://s2.loli.net/2022/01/14/jarNFYO56p9bEf3.png)
 
 - **商品介绍页面**
 
-![image-20220113223655085]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113223655085.png?raw=true)
+![image-20220113223655085](https://s2.loli.net/2022/01/14/tpg2NVLqYWdrbT4.png)
 
 - **下单界面**
 
-![image-20220113223806297]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113223806297.png?raw=true)
+![image-20220113223806297](https://s2.loli.net/2022/01/14/fW7chbCJmZM1udI.png)
 
 - **订单生成界面**
 
-![image-20220113223843605]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113223843605.png?raw=true)
+![image-20220113223843605](https://s2.loli.net/2022/01/14/3g8tXjmwEoJhrMp.png)
 
 - **地址簿界面**
 
-![image-20220113223926030]( https://raw.githubusercontent.com/Kwanhooo/Power-Pets/main/README.assets/image-20220113223926030.png?raw=true)
+![image-20220113223926030](https://s2.loli.net/2022/01/14/ZylTOzepGMaAWJI.png)
 
 
 
