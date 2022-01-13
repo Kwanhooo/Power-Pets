@@ -83,7 +83,8 @@
                             挑选爱宠
                             <small>&nbsp;&nbsp;-&nbsp;选出你最爱的电力宠物！<strong><i>${sessionScope.user.username}</i></strong></small>
                         </h1>
-                        <i style="font-size:18px;color: grey;">您正在浏览&nbsp;<strong><span id="category-span" style="right: 50px;font-size:20px;color: grey;"></span></strong></i>
+                        <i style="font-size:18px;color: grey;">您正在浏览&nbsp;<strong><span id="category-span"
+                                                                                        style="right: 50px;font-size:20px;color: grey;"></span></strong></i>
                     </div>
                 </div>
             </div>

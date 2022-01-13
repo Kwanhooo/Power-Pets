@@ -28,7 +28,29 @@ $(function () {
         })
 
         $('.prompt_sure,.prompt_cancel,.btn-OK').click(function () {
-            $('.mask').addClass('hide');
+            $('.mask').fadeOut().removeClass('hide');
+        })
+
+        $('.hint-btn-OK').click(function () {
+            $('.mask-save').fadeOut().removeClass('hide');
+            window.location.reload();
+        })
+
+        $("#save-account-info").click(function (e) {
+            let dataStr = "username=" + $("#username-account").val() + "&" + "password=" + $("#password-account").val() + "&" + "sex=" + ($("#male-account").attr("checked") === "checked" ? "male" : "female") + "&" + "email=" + $("#email-account").val();
+            console.log(dataStr);
+            $.ajax({
+                type: "GET",
+                url: "account?action=update-user-info&" + (dataStr),
+                success: function (msg) {
+                    console.log("success");
+                    $('.mask-save').removeClass('hide').fadeIn();
+                },
+                error: function (msg) {
+                    $('.prompt_text').text('信息提交失败，请稍后再试 ~');
+                    $('.mask-save').removeClass('hide');
+                }
+            })
         })
     })();
 });
@@ -46,14 +68,14 @@ function saveChanges(index, isNew) {
         success: function () {
             console.log("更新地址簿成功");
             $('.mask').fadeOut().removeClass('hide');
+            if (isNew) {
+                window.location.reload();
+            }
         },
         error: function () {
             console.log("更新地址簿失败");
         }
     })
-    if (isNew) {
-
-    }
 }
 
 function setupDisplayTabs(data) {
@@ -107,7 +129,7 @@ function setupDisplayTabs(data) {
             "    </div>\n" +
             "    <div class=\"row clearfix\">\n" +
             "        <div class=\"col-md-8 column\">\n" +
-            "            <button type=\"submit\" class=\"btn btn-lg btn-danger btn-block\"\n" +
+            "            <button type=\"submit\" class=\"btn btn-lg btn-success btn-block\"\n" +
             "                    style=\"max-width: 90%;margin-top: 10px;\" onclick=\"saveChanges(" + (i) + ",false" + ");\">\n" +
             "                帮我保存吧\n" +
             "            </button>\n" +
@@ -147,7 +169,7 @@ function setupDisplayTabs(data) {
         "    </div>\n" +
         "    <div class=\"row clearfix\">\n" +
         "        <div class=\"col-md-8 column\">\n" +
-        "            <button type=\"submit\" class=\"btn btn-lg btn-danger btn-block\"\n" +
+        "            <button type=\"submit\" class=\"btn btn-lg btn-success btn-block\"\n" +
         "                    style=\"max-width: 90%;margin-top: 10px;\" onclick=\"saveChanges(" + (addressArray.length - 1) + ",true" + ");\">\n" +
         "                帮我保存吧\n" +
         "            </button>\n" +

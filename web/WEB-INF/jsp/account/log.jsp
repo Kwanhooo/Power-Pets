@@ -11,6 +11,11 @@
 <head>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.wrapper').height(Math.max((($(".table-log tr").length) * 60 + 450), 1080));
+        })()
+    </script>
 </head>
 <body>
 <div class="content" style="margin-top:50px;">
@@ -78,7 +83,7 @@
             </div>
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-log">
                         <thead>
                         <tr style="font-size:35px">
                             <th>
@@ -109,5 +114,4 @@
     </div>
 </div>
 </body>
-</body>
-</html>
+<%@ include file="../common/bottom.jsp" %>

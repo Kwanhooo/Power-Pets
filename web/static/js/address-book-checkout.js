@@ -29,7 +29,7 @@ $(function () {
         })
 
         $('.prompt_sure,.prompt_cancel,.btn-OK').click(function () {
-            $('.mask').addClass('hide');
+            $('.mask').fadeOut().removeClass('hide');
         })
     })();
 });

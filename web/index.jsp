@@ -44,7 +44,7 @@
             <p style="font-family: var(--font-family-sans-serif);font-size:10px;font-style: italic;margin-top: 5px">2022
                 &copy; Copyright&nbsp;Power-Pets&nbsp;电力宠物<br>&nbsp;&nbsp;&nbsp;
                 <text style="font-family: var(--font-family-sans-serif);color: #007BFF;font-style: italic;font-weight: bold;">
-                    <a target="_blank" style="font-size:12px;" href="https://github.com/Himxs">@Mxs</a>&nbsp;&nbsp;&nbsp;
+                    <a target="_blank" style="font-size:12px;" href="https://github.com/Himxs">@Himxs</a>&nbsp;&nbsp;&nbsp;
                     <a target="_blank" style="font-size:12px;" href="https://github.com/xaiodao">@xaiodao</a>&nbsp;&nbsp;&nbsp;
                     <a target="_blank" style="font-size:12px;" href="https://github.com/Kwanhooo">@Kwanhooo</a>
                 </text>
