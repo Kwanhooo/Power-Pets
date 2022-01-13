@@ -99,7 +99,7 @@ function process() {
 //以上截取部分
 ```
 
-- **最终效果图：**![image-20220113155103483](E:\Power-Pets\README.assets\image-20220113155103483.png)
+- **最终效果图：**![image-20220113155103483](README.assets\image-20220113155103483.png)
 
 
 
@@ -152,15 +152,15 @@ $('#address-book-btn').click(function () {
 
 ***（可在账户设置页面调出）***
 
-![image-20220113161613308](E:\Power-Pets\README.assets\image-20220113161613308.png)
+![image-20220113161613308]( README.assets\image-20220113161613308.png)
 
 ***（可在下订页面调出）***
 
-![image-20220113161901712](E:\Power-Pets\README.assets\image-20220113161901712.png)
+![image-20220113161901712]( README.assets\image-20220113161901712.png)
 
 ***（遮罩弹窗）***
 
-![image-20220113162021296](E:\Power-Pets\README.assets\image-20220113162021296.png)
+![image-20220113162021296]( README.assets\image-20220113162021296.png)
 
 
 
@@ -283,7 +283,7 @@ $('#cart-table tr').each(function (i) {// 遍历 tr
 
 - **最终效果图**
 
-![image-20220113220549293](E:\Power-Pets\README.assets\image-20220113220549293.png)
+![image-20220113220549293]( README.assets\image-20220113220549293.png)
 
 
 
@@ -348,9 +348,9 @@ var xhr;
 
 - **最终效果图**
 
-![image-20220113225617715](E:\Power-Pets\README.assets\image-20220113225617715.png)
+![image-20220113225617715]( README.assets\image-20220113225617715.png)
 
-![image-20220113225631049](E:\Power-Pets\README.assets\image-20220113225631049.png)
+![image-20220113225631049]( README.assets\image-20220113225631049.png)
 
 
 
@@ -364,35 +364,35 @@ var xhr;
 
 - **主界面**
 
-​	主界面使用原生HTML以及CSS编写，主要由顶栏（用于展示标题logo、搜索、跳转至账户相关的页面）；中部的主框，主框包含左侧导航栏（方便快速跳转至各个门类），中部的门类仪表盘，右侧的统计、宠物推荐栏；以及底栏（用于展示一些网站信息）。![image-20220113221936950](E:\Power-Pets\README.assets\image-20220113221936950.png)
+​	主界面使用原生HTML以及CSS编写，主要由顶栏（用于展示标题logo、搜索、跳转至账户相关的页面）；中部的主框，主框包含左侧导航栏（方便快速跳转至各个门类），中部的门类仪表盘，右侧的统计、宠物推荐栏；以及底栏（用于展示一些网站信息）。![image-20220113221936950]( README.assets\image-20220113221936950.png)
 
 - **账户设置界面**
 
-​	此界面提供了一些分类布局过的输入框，允许用户查看、更改账户信息。![image-20220113222237639](E:\Power-Pets\README.assets\image-20220113222237639.png)
+​	此界面提供了一些分类布局过的输入框，允许用户查看、更改账户信息。![image-20220113222237639]( README.assets\image-20220113222237639.png)
 
 - **购物车界面**
 
-​		用户可以在此界面管理购物车，进行下单操作。![image-20220113223015872](E:\Power-Pets\README.assets\image-20220113223015872.png)
+​		用户可以在此界面管理购物车，进行下单操作。![image-20220113223015872]( README.assets\image-20220113223015872.png)
 
 - **品类展示界面**
 
-![image-20220113223422104](E:\Power-Pets\README.assets\image-20220113223422104.png)
+![image-20220113223422104]( README.assets\image-20220113223422104.png)
 
 - **商品介绍页面**
 
-![image-20220113223655085](E:\Power-Pets\README.assets\image-20220113223655085.png)
+![image-20220113223655085]( README.assets\image-20220113223655085.png)
 
 - **下单界面**
 
-![image-20220113223806297](E:\Power-Pets\README.assets\image-20220113223806297.png)
+![image-20220113223806297]( README.assets\image-20220113223806297.png)
 
 - **订单生成界面**
 
-![image-20220113223843605](E:\Power-Pets\README.assets\image-20220113223843605.png)
+![image-20220113223843605]( README.assets\image-20220113223843605.png)
 
 - **地址簿界面**
 
-![image-20220113223926030](E:\Power-Pets\README.assets\image-20220113223926030.png)
+![image-20220113223926030]( README.assets\image-20220113223926030.png)
 
 
 
