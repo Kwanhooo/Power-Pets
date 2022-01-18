@@ -109,6 +109,7 @@ function process() {
 ```
 
 - **最终效果图：**![image-20220113155103483](https://s2.loli.net/2022/01/13/ainXvLwSKyCGI3Y.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FKwanhooo%2FPower-Pets.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FKwanhooo%2FPower-Pets?ref=badge_shield)
 
 
 
@@ -411,3 +412,7 @@ var xhr;
 
 - #### **请跳转至**：*http://120.78.235.195:8080/PowerPets/*
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FKwanhooo%2FPower-Pets.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FKwanhooo%2FPower-Pets?ref=badge_large)
