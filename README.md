@@ -410,7 +410,7 @@ var xhr;
 
 ## 体验本项目
 
-- #### **请跳转至**：*http://120.78.235.195:8080/PowerPets/*
+- #### **请跳转至**：*http://powerpets.0xcccc.studio*
 
 
 
